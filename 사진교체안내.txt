@@ -11,8 +11,11 @@ img/leather 폴더 안에 아티클별 폴더가 있습니다.
 모두 교체한 뒤 index.html에서 const PLACEHOLDER=true 를 false 로 바꾸면 "예시 이미지" 표시가 사라집니다.
 
 [campo]
+  black.jpg
   detail.jpg
   drape.jpg
+  kale.jpg
+  light-cognac.jpg
   lime-stone.jpg
   snow-white.jpg
   umber.jpg

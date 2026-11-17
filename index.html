@@ -698,18 +698,18 @@ header.top .wrap{position:relative}
 <script>
 (function(){
 const C={'BLACK':['#1a1715','DL011'],'ICE':['#dfe2df','DL008'],'COGNAC':['#8a4a24','DL010'],'D-BROWN':['#4a2e1f',''],'MOSS':['#5d5a36',''],
-'BROWN COGNAC':['#7a4222','DL156'],'BIANCO':['#efebe2','DL155'],'208 LAMB':['#cdb89a','DL171'],'UMBER':['#6a5038','DL179'],'LIME STONE':['#cbc3b2','DL176'],'SNOW WHITE':['#f4f2ec','DL172'],
+'BROWN COGNAC':['#7a4222','DL156'],'BIANCO':['#efebe2','DL155'],'208 LAMB':['#cdb89a','DL171'],'UMBER':['#6a5038','DL179'],'LIME STONE':['#cbc3b2','DL176'],'SNOW WHITE':['#f4f2ec','DL172'],'KALE':['#4f5a40',''],'LIGHT COGNAC':['#a86a3c',''],
 '1501 SADDLE':['#94582b',''],'CREAM':['#e9dfc8','DL090'],'665 MARMO':['#a69c8d','DL058'],'6044 MIEL':['#b47b3e','DL108'],'AQUA BLUE':['#5d8796','DL028'],'N-BEIGE':['#d1bc9c','DL034'],'AQUA-MINT':['#9fbfb3','DL071'],
 'M-LUCKY-GREY':['#8e8b86','DL111'],'DEEP GREEN':['#2f4a3a','DL098'],'NAVY':['#26304a','DL005'],'641 LOTUS':['#c9a7a0','DL103'],'6048 PEACOCK GREEN':['#1f5552','DL104'],'7733 L.GREY':['#b9b6b0','DL105'],'GREY':['#7c7a76','DL003'],
 '679 MIEL':['#a8723a','DL164'],'MARRONE':['#5e3a26','DL113'],'PASTEL-BLUE':['#a9bccb','DL075'],'WOODY':['#7b5a3c','DL147'],'GRIGIO':['#8a8782','DL004'],'LUCKY-GREY':['#a19d97','DL073']};
-const FAM={'BLACK':'dark','D-BROWN':'brown','COGNAC':'brown','BROWN COGNAC':'brown','UMBER':'brown','1501 SADDLE':'brown','6044 MIEL':'brown','679 MIEL':'brown','MARRONE':'brown','WOODY':'brown','MOSS':'color',
+const FAM={'BLACK':'dark','D-BROWN':'brown','COGNAC':'brown','BROWN COGNAC':'brown','UMBER':'brown','LIGHT COGNAC':'brown','KALE':'color','1501 SADDLE':'brown','6044 MIEL':'brown','679 MIEL':'brown','MARRONE':'brown','WOODY':'brown','MOSS':'color',
 'ICE':'light','BIANCO':'light','SNOW WHITE':'light','CREAM':'light','208 LAMB':'light','N-BEIGE':'light','LIME STONE':'light','641 LOTUS':'light',
 '665 MARMO':'grey','M-LUCKY-GREY':'grey','7733 L.GREY':'grey','GREY':'grey','GRIGIO':'grey','LUCKY-GREY':'grey',
 'AQUA BLUE':'color','AQUA-MINT':'color','DEEP GREEN':'color','NAVY':'dark','6048 PEACOCK GREEN':'color','PASTEL-BLUE':'color'};
 const A=[
 {key:'oldenglish',name:'OLD ENGLISH',line:'PALLADIO',thick:'0.9–1.1',pvc:false,colors:['BLACK','1501 SADDLE'],desc:'얇고 유연한 두께에 클래식한 표정을 담은 아티클. 빈티지한 무드의 소파와 체어에 어울립니다.'},
 {key:'togo',name:'TOGO',line:'PALLADIO',thick:'1.6–1.8',pvc:false,colors:['BROWN COGNAC','BIANCO','208 LAMB'],desc:'도톰한 두께감과 풍성한 볼륨. 하이엔드 소파의 시트와 등받이에 깊은 존재감을 더합니다.'},
-{key:'campo',name:'CAMPO',line:'PALLADIO',thick:'1.3–1.5',pvc:false,colors:['UMBER','LIME STONE','SNOW WHITE'],desc:'자연에서 가져온 절제된 톤. 모던 인테리어에 어울리는 차분한 뉴트럴 팔레트입니다.'},
+{key:'campo',name:'CAMPO',line:'PALLADIO',thick:'1.3–1.5',pvc:false,colors:['BLACK','KALE','LIGHT COGNAC','LIME STONE','SNOW WHITE','UMBER'],desc:'자연에서 가져온 절제된 톤. 모던 인테리어에 어울리는 차분한 뉴트럴 팔레트입니다.'},
 {key:'tango',name:'TANGO',line:'PALLADIO',thick:'0.9–1.1',pvc:false,colors:['BLACK','ICE','COGNAC','D-BROWN','MOSS'],desc:'가볍고 부드러운 핸들링으로 다양한 디자인에 대응하는 아티클. 기본 컬러를 폭넓게 운용합니다.'},
 {key:'prescott',name:'PRESCOTT',line:'PALLADIO',thick:'1.2–1.4',pvc:true,colors:['COGNAC','CREAM','665 MARMO','BLACK'],desc:'안정적인 두께와 균일한 품질. 꾸준히 찾는 기본 컬러 중심의 스테디 아티클입니다.'},
 {key:'softprimo',name:'SOFT PRIMO',line:'AMBRA',thick:'1.8–2.0',pvc:false,colors:['CREAM','6044 MIEL','N-BEIGE','AQUA BLUE','AQUA-MINT','M-LUCKY-GREY','DEEP GREEN'],desc:'라인업 중 가장 두툼한 1.8–2.0mm. 이름처럼 부드러운 촉감과 다양한 컬러가 강점입니다.'},
@@ -883,7 +883,7 @@ document.querySelectorAll('[data-copy]').forEach(b=>b.onclick=()=>copyText(b.dat
 
 /* search: articles, colors, keywords — results update as you type */
 const ART_KO={oldenglish:'올드잉글리쉬 올드잉글리시',togo:'토고',campo:'캄포 깜포',tango:'탱고 탕고',prescott:'프레스콧 프레스코트',softprimo:'소프트프리모',luna:'루나',sole:'솔레',dolce:'돌체'};
-const COL_KO={'BLACK':'블랙 검정 검은색','ICE':'아이스','COGNAC':'코냑','D-BROWN':'다크브라운 진갈색','MOSS':'모스 카키','BROWN COGNAC':'브라운코냑','BIANCO':'비앙코 흰색 화이트','208 LAMB':'램','UMBER':'엄버','LIME STONE':'라임스톤','SNOW WHITE':'스노우화이트 흰색 화이트','1501 SADDLE':'새들','CREAM':'크림 아이보리','665 MARMO':'마르모','6044 MIEL':'미엘','AQUA BLUE':'아쿠아블루 하늘색','N-BEIGE':'베이지','AQUA-MINT':'아쿠아민트 민트','M-LUCKY-GREY':'럭키그레이','DEEP GREEN':'딥그린 초록 녹색 그린','NAVY':'네이비 남색','641 LOTUS':'로터스 핑크 분홍','6048 PEACOCK GREEN':'피콕그린 청록','7733 L.GREY':'라이트그레이 연회색','GREY':'그레이 회색','679 MIEL':'미엘','MARRONE':'마로네 밤색','PASTEL-BLUE':'파스텔블루 블루 파란색','WOODY':'우디','GRIGIO':'그리지오','LUCKY-GREY':'럭키그레이'};
+const COL_KO={'BLACK':'블랙 검정 검은색','ICE':'아이스','COGNAC':'코냑','D-BROWN':'다크브라운 진갈색','MOSS':'모스 카키','BROWN COGNAC':'브라운코냑','BIANCO':'비앙코 흰색 화이트','208 LAMB':'램','UMBER':'엄버','KALE':'케일 그린 녹색','LIGHT COGNAC':'라이트코냑 밝은코냑','LIME STONE':'라임스톤','SNOW WHITE':'스노우화이트 흰색 화이트','1501 SADDLE':'새들','CREAM':'크림 아이보리','665 MARMO':'마르모','6044 MIEL':'미엘','AQUA BLUE':'아쿠아블루 하늘색','N-BEIGE':'베이지','AQUA-MINT':'아쿠아민트 민트','M-LUCKY-GREY':'럭키그레이','DEEP GREEN':'딥그린 초록 녹색 그린','NAVY':'네이비 남색','641 LOTUS':'로터스 핑크 분홍','6048 PEACOCK GREEN':'피콕그린 청록','7733 L.GREY':'라이트그레이 연회색','GREY':'그레이 회색','679 MIEL':'미엘','MARRONE':'마로네 밤색','PASTEL-BLUE':'파스텔블루 블루 파란색','WOODY':'우디','GRIGIO':'그리지오','LUCKY-GREY':'럭키그레이'};
 const FAM_KO={light:'라이트 밝은',brown:'브라운 갈색',grey:'그레이 회색',color:'포인트컬러',dark:'다크 어두운'};
 const SEC_IX=[
   {sec:'intro',b:'palladio',t:'팔라디오 소개',d:'아르치냐노 장인의 프리미엄 가죽',k:'palladio 팔라디오 프리미엄 아르치냐노 아르지아노 이탈리아 하이엔드'},
