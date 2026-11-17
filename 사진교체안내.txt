@@ -1,0 +1,96 @@
+가죽 사진 교체 안내
+
+img/leather 폴더 안에 아티클별 폴더가 있습니다.
+촬영한 사진을 아래 파일 이름 그대로 덮어쓰기만 하면 사이트에 바로 반영됩니다.
+
+- drape.jpg : 대표 사진 (목록에서 마우스를 올리면 확대되는 사진, 상세 화면 첫 장)
+- detail.jpg : 가죽 결 클로즈업 (상세 화면 마지막 장)
+- 컬러이름.jpg : 컬러별 사진 (상세 화면에서 컬러를 누르면 나오는 사진)
+
+권장: 정사각형(1:1), 가로세로 1200px 이상, JPG
+모두 교체한 뒤 index.html에서 const PLACEHOLDER=true 를 false 로 바꾸면 "예시 이미지" 표시가 사라집니다.
+
+[campo]
+  detail.jpg
+  drape.jpg
+  lime-stone.jpg
+  snow-white.jpg
+  umber.jpg
+
+[dolce]
+  6044-miel.jpg
+  black.jpg
+  cognac.jpg
+  cream.jpg
+  deep-green.jpg
+  detail.jpg
+  drape.jpg
+  grigio.jpg
+  lucky-grey.jpg
+  n-beige.jpg
+  pastel-blue.jpg
+  woody.jpg
+
+[luna]
+  6048-peacock-green.jpg
+  641-lotus.jpg
+  7733-l-grey.jpg
+  black.jpg
+  cognac.jpg
+  deep-green.jpg
+  detail.jpg
+  drape.jpg
+  grey.jpg
+  ice.jpg
+  n-beige.jpg
+  navy.jpg
+
+[oldenglish]
+  1501-saddle.jpg
+  black.jpg
+  detail.jpg
+  drape.jpg
+
+[prescott]
+  665-marmo.jpg
+  black.jpg
+  cognac.jpg
+  cream.jpg
+  detail.jpg
+  drape.jpg
+
+[softprimo]
+  6044-miel.jpg
+  aqua-blue.jpg
+  aqua-mint.jpg
+  cream.jpg
+  deep-green.jpg
+  detail.jpg
+  drape.jpg
+  m-lucky-grey.jpg
+  n-beige.jpg
+
+[sole]
+  679-miel.jpg
+  7733-l-grey.jpg
+  cream.jpg
+  deep-green.jpg
+  detail.jpg
+  drape.jpg
+  marrone.jpg
+
+[tango]
+  black.jpg
+  cognac.jpg
+  d-brown.jpg
+  detail.jpg
+  drape.jpg
+  ice.jpg
+  moss.jpg
+
+[togo]
+  208-lamb.jpg
+  bianco.jpg
+  brown-cognac.jpg
+  detail.jpg
+  drape.jpg
