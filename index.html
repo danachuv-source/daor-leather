@@ -939,10 +939,10 @@ const SEC_IX=[
 const norm=x=>String(x).toLowerCase().replace(/[\s\-._·,/()]+/g,'');
 const IX=[];
 A.forEach(a=>IX.push({t:'art',a,title:a.name,pri:[a.name,...ART_KO[a.key].split(' ')].map(norm),
-  sx:norm([a.line,BR[a.line.toLowerCase()].ko,a.desc,a.pvc?'매칭pvc 피브이씨 합성':'',...a.colors,...a.colors.map(c=>COL_KO[c]||'')].join('|')),
+  sx:norm([a.line,BR[a.line.toLowerCase()].ko,a.desc,a.pvc?'매칭pvc 피브이씨 합성':'',...a.colors,...a.colors.map(cn),...a.colors.map(c=>COL_KO[c]||'')].join('|')),
   rng:(n=>n.length?[Math.min(...n),Math.max(...n)]:[NaN,NaN])((a.thick.match(/\d+(\.\d+)?/g)||[]).map(Number))}));
 const used={};A.forEach(a=>a.colors.forEach(c=>(used[c]=used[c]||[]).push(a)));
-Object.keys(used).forEach(c=>IX.push({t:'col',name:c,title:c,arts:used[c],pri:[c,C[c][1],...(COL_KO[c]||'').split(' ')].filter(Boolean).map(norm),sx:norm(FAM_KO[FAM[c]]||'')}));
+Object.keys(used).forEach(c=>IX.push({t:'col',name:c,title:c,arts:used[c],pri:[c,cn(c),C[c][1],...(COL_KO[c]||'').split(' ')].filter(Boolean).map(norm),sx:norm(FAM_KO[FAM[c]]||'')}));
 SEC_IX.forEach(x=>IX.push({...x,t:'sec',title:x.t,pri:[x.t,...x.k.split(' ')].map(norm),sx:norm(x.d)}));
 
 function scoreOf(it,toks){let tot=0;
