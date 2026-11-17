@@ -859,7 +859,7 @@ function parse(){
 }
 const href=(b,k)=>k==='intro'?'#'+b:`#${b}-${k}`;
 function buildNav(b,sec){
-  const B=b.toUpperCase(), others=Object.keys(BR).filter(x=>x!==b);
+  const B=b.toUpperCase(), others=['palladio','ambra'].filter(x=>x!==b); /* Mastrotto (external brand) stays out of the top bar; it is in the side menu switch */
   $('#vnavIn').innerHTML=SECS.map(k=>`<a href="${href(b,k)}"${k===sec?' aria-current="page"':''}${k==='intro'?' class="brand"':''}>${k==='intro'?B:LABEL[k]}</a>`).join('')+others.map(o=>`<a class="other" href="#${o}">${o.toUpperCase()} →</a>`).join('');
   $('#menuNav').innerHTML=`<a href="#home">처음으로${ARROW}</a>`+SECS.map(k=>`<a href="${href(b,k)}"${k===sec?' aria-current="page"':''}>${k==='intro'?BR[b].ko+' 소개':MLABEL[k]}${ARROW}</a>`).join('');
   document.querySelectorAll('.switch a').forEach(a=>{if(a.dataset.sw===b)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});

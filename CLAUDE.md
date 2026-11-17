@@ -8,7 +8,7 @@
 - index.html: CSS·JS 모두 인라인. 해시 라우팅.
   - `#home` 대문(팔라디오/암브라 두 패널만, 헤더·푸터 없음)
   - `#palladio`, `#ambra`, `#mastrotto` 브랜드 화면, `#palladio-{intro|articles|colors|house|craft|lwg|contact}`
-  - 대문은 팔라디오·암브라 투톱만. 마스트로또는 메뉴·브랜드 화면에서만 노출
+  - 대문은 팔라디오·암브라 투톱만. 마스트로또(외부 브랜드)는 상단 헤더·서브내비에 넣지 않고 좌측 메뉴 하단 전환 버튼에서만 진입
   - 브랜드 목록은 스크립트의 `BR`, 아티클 필터는 `LINES`
 - 데이터: 스크립트 상단 `C`(컬러 hex·코드), `FAM`(컬러 계열), `A`(아티클 목록: key, name, line, thick, pvc, colors, desc)
   - line: PALLADIO / AMBRA / MASTROTTO. thick를 비우면 "두께 확인 중"으로 표시
