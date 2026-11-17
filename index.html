@@ -40,9 +40,9 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 :focus-visible{outline:2px solid var(--verde);outline-offset:3px}
 .wrap{max-width:1360px;margin:0 auto;padding-left:var(--gut-l);padding-right:var(--gut-r)}
 .mark{font-family:var(--f-mark);letter-spacing:.18em;text-transform:uppercase;font-weight:400}
-.eyebrow{font-family:var(--f-mark);font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
-.h2{font-family:var(--f-head);font-weight:300;font-size:clamp(26px,3.6vw,42px);line-height:1.35;letter-spacing:-.01em;margin:0;text-wrap:balance}
-.lede{color:var(--muted);max-width:34em}
+.eyebrow{font-family:var(--f-mark);font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:#5E5A54}
+.h2{font-family:var(--f-head);font-weight:400;font-size:clamp(26px,3.6vw,42px);line-height:1.35;letter-spacing:-.01em;margin:0;text-wrap:balance}
+.lede{color:#57534D;max-width:34em;font-weight:400;font-size:15.5px;line-height:1.8}
 .ulink{display:inline-block;font-size:14px;font-weight:400;padding-bottom:4px;border-bottom:1px solid currentColor;text-decoration:none;transition:opacity .3s var(--ease)}
 .ulink:hover{opacity:.6}
 section{padding-block:clamp(64px,9vw,128px)}
@@ -134,8 +134,8 @@ header.top .wrap{display:grid;grid-template-columns:1fr auto 1fr;align-items:cen
 .nt .st{aspect-ratio:1/1;display:flex;overflow:hidden;border-radius:2px;box-shadow:0 10px 22px -16px rgba(0,0,0,.5);transition:transform .5s var(--ease)}
 .nt .st span{flex:1;position:relative}
 .nt:hover .st{transform:translateY(-3px)}
-.nt b{font-family:var(--f-mark);font-weight:400;font-size:12px;letter-spacing:.14em;color:var(--ink)}
-.nt small{font-size:11.5px;color:var(--muted);margin-top:-4px;font-variant-numeric:tabular-nums}
+.nt b{font-family:var(--f-mark);font-weight:400;font-size:13.5px;letter-spacing:.12em;color:var(--ink)}
+.nt small{font-size:12px;color:var(--muted);margin-top:-4px;font-variant-numeric:tabular-nums;font-weight:400;line-height:1.55}
 .sec-head{display:flex;flex-direction:column;gap:14px;align-items:center;text-align:center}
 
 /* ways — horizontal track */
@@ -151,18 +151,19 @@ header.top .wrap{display:grid;grid-template-columns:1fr auto 1fr;align-items:cen
 
 /* articles */
 .chips{display:flex;gap:8px;overflow-x:auto;padding:2px 0 6px;scrollbar-width:none;justify-content:flex-start}
-.chips button{flex:none;padding:9px 18px;border:1px solid var(--line);border-radius:999px;font-size:13px;background:var(--paper);transition:background .3s var(--ease),color .3s var(--ease)}
+.chips button{flex:none;padding:9px 18px;border:1px solid var(--line);border-radius:999px;font-size:14px;font-weight:400;background:var(--paper);transition:background .3s var(--ease),color .3s var(--ease)}
 .chips button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
 @media(min-width:760px){.chips{justify-content:center}}
-.count{font-size:13px;color:var(--muted);text-align:center;margin:18px 0 28px}
+.count{font-size:13.5px;font-weight:400;color:var(--muted);text-align:center;margin:18px 0 28px}
 .pgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 12px}
 @media(min-width:960px){.pgrid{grid-template-columns:repeat(3,minmax(0,1fr));gap:48px 24px;max-width:1240px;margin:0 auto}}
 .prod{display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;min-width:0}
 .prod .sw{width:100%;aspect-ratio:4/5;background:var(--tile);position:relative;overflow:hidden;margin-bottom:12px}
 .prod .sw .fan{background:transparent}
-.prod .tag{position:absolute;top:12px;left:12px;font-family:var(--f-mark);font-size:10.5px;letter-spacing:.16em;color:var(--muted)}
-.prod .nm{font-family:var(--f-mark);font-size:15px;letter-spacing:.12em}
-.prod .spec{font-size:12.5px;color:var(--muted);font-variant-numeric:tabular-nums}
+.prod .tag{position:absolute;top:12px;left:12px;font-family:var(--f-mark);font-size:11px;letter-spacing:.16em;color:var(--muted)}
+.prod .nm{font-family:var(--f-mark);font-size:16px;letter-spacing:.12em}
+.prod .ko{font-size:12.5px;color:var(--muted);font-weight:400;margin-top:-4px}
+.prod .spec{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums;font-weight:400;max-width:26em;line-height:1.6}
 .dots{display:flex;gap:7px;align-items:center;font-size:12px;color:var(--muted);margin-top:4px}
 .dots i{width:11px;height:11px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(0,0,0,.12)}
 .prod:hover .fan span{transform:translateY(-4px) rotate(var(--r))}
@@ -178,10 +179,18 @@ header.top .wrap{display:grid;grid-template-columns:1fr auto 1fr;align-items:cen
 .sheet dl{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:24px 0;padding:18px 0;border-block:1px solid var(--line)}
 .sheet dt{font-size:12px;color:var(--muted)}
 .sheet dd{margin:0;font-weight:400;font-variant-numeric:tabular-nums}
+.sheet .ko-name{margin:6px 0 0;font-family:var(--f-head);font-size:15px;font-weight:400;color:var(--muted);letter-spacing:.02em}
+.sheet dl.spec2{grid-template-columns:1fr 1fr;row-gap:18px}
+.sheet dl.spec2 .thk{grid-column:1 / -1}
+.sheet dl.spec2 .thk dt span{font-size:11px;letter-spacing:.04em}
+.sheet dl.spec2 .thk dd{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.sheet dl.spec2 .thk dd span{font-size:12.5px;line-height:1;padding:7px 10px;border:1px solid var(--line);border-radius:999px;color:var(--ink);background:var(--paper)}
+.sheet dt{font-size:12.5px;color:var(--muted);font-weight:400}
 .clist{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:14px}
 .clist div{display:flex;gap:10px;align-items:center;font-size:13px;min-width:0}
 .clist i{width:30px;height:30px;border-radius:50%;flex:none;box-shadow:inset 0 0 0 1px rgba(0,0,0,.12)}
-.clist small{display:block;color:var(--muted);font-size:11.5px}
+.clist small{display:block;color:var(--muted);font-size:12px;font-weight:400;margin-top:1px}
+.clist span{font-weight:400;letter-spacing:.02em}
 
 /* colors */
 .colors{background:var(--paper)}
@@ -306,7 +315,11 @@ footer .legal{grid-column:1/-1;padding-top:20px;border-top:1px solid var(--line)
 .vnav{background:var(--paper);border-bottom:1px solid var(--line)}
 .vnav .wrap{display:flex;gap:26px;overflow-x:auto;scrollbar-width:none;justify-content:flex-start;height:46px;align-items:center;white-space:nowrap}
 .vnav .wrap::-webkit-scrollbar{display:none}
-.vnav a{font-size:13px;text-decoration:none;color:var(--muted);padding:12px 0;border-bottom:1px solid transparent;transition:color .3s var(--ease)}
+.vnav a{font-size:14px;font-weight:400;text-decoration:none;color:#55514B;padding:12px 0;border-bottom:1.5px solid transparent;transition:color .3s var(--ease)}
+.vnav a.home{display:inline-flex;align-items:center;gap:6px;color:var(--ink);padding-right:22px;border-right:1px solid var(--line);border-bottom:0;margin-right:-4px}
+.vnav a.home svg{flex:none}
+.vnav a.brand{font-size:14px}
+.vnav a.other{font-size:12.5px}
 .vnav a:hover{color:var(--ink)}
 .vnav a[aria-current="page"]{color:var(--ink);border-bottom-color:var(--ink)}
 @media(min-width:760px){.vnav .wrap{justify-content:center;gap:40px}}
@@ -401,7 +414,8 @@ header.top .wrap{position:relative}
 .pv-prev{left:16px}.pv-next{right:16px}
 @media(hover:hover) and (pointer:fine){.pv-nav{display:grid}}
 .pv-meta{display:flex;justify-content:space-between;gap:12px;align-items:baseline;padding:12px var(--gut-r) 10px var(--gut-l);font-size:12.5px;color:var(--muted)}
-.pv-meta b{font-family:var(--f-mark);font-weight:400;letter-spacing:.12em;color:var(--ink);font-size:13px}
+.pv-meta b{font-family:var(--f-mark);font-weight:400;letter-spacing:.12em;color:var(--ink);font-size:13.5px}
+.pv-meta #pvSub{font-size:12.5px;margin-left:6px}
 .pv-thumbs{display:flex;gap:8px;overflow-x:auto;padding:2px var(--gut-r) 6px var(--gut-l);scrollbar-width:none}
 .pv-thumbs::-webkit-scrollbar{display:none}
 .pv-thumbs button{flex:none;width:58px;height:58px;border-radius:3px;overflow:hidden;opacity:.5;outline:1px solid transparent;outline-offset:2px;transition:opacity .3s var(--ease),outline-color .3s var(--ease)}
@@ -518,7 +532,7 @@ header.top .wrap{position:relative}
           <a class="ulink" href="#articles" style="justify-self:start;align-self:flex-start">암브라 아티클 보기</a>
         </article>
         <article class="line-card" data-line="MASTROTTO">
-          <figure><img src="img/wingchair.jpg" alt="회색 배경의 가죽 윙체어" loading="lazy"></figure>
+          <figure><img src="img/mastrotto-hides.jpg" alt="마스트로또 공장에 컬러별로 걸려 건조 중인 가죽" loading="lazy"></figure>
           <h3 class="brand-logo mas"><img src="img/logo-mastrotto.png" alt="Gruppo Mastrotto" width="677" height="158"></h3>
           <span class="sub">Gruppo Mastrotto · Arzignano, Italy</span>
           <p class="lede">이탈리아 아르치냐노에서 시작된 가죽 그룹, 마스트로또. 가구와 자동차, 패션과 요트·항공까지 쓰임에 맞춘 가죽을 폭넓게 선보입니다. 다오르가 그중 일상의 가구에 어울리는 아티클을 골라 소개합니다.</p>
@@ -552,7 +566,7 @@ header.top .wrap{position:relative}
           <p>스와치와 샘플북, 맞춤 재단, 매칭 PVC 원단까지. 필요한 모든 것을 앞서 준비합니다.</p>
         </article>
         <article>
-          <figure><img src="img/bags.jpg" alt="밝은 벽 앞에 나란히 선 가죽 가방 세 개" loading="lazy" style="object-position:50% 70%"></figure>
+          <figure><img src="img/sunlit-sofa.jpg" alt="햇살이 비치는 코냑 가죽 소파" loading="lazy"></figure>
           <h3>새로운 가능성을 향한 여정</h3>
           <p>새로운 소재와 마감, 새로운 쓰임과 시장. 업홀스터리를 넘어 레더 굿즈와 글로벌 무대로 영역을 넓혀갑니다.</p>
         </article>
@@ -565,7 +579,7 @@ header.top .wrap{position:relative}
       <div class="sec-head" style="margin-bottom:32px">
         <span class="eyebrow">Articles</span>
         <h2 class="h2" id="artTitle">아티클</h2>
-        <p class="lede">두께, 촉감, 컬러 구성. 아티클을 누르면 컬러와 코드를 볼 수 있습니다.</p>
+        <p class="lede">두께, 촉감, 컬러 구성. 아티클을 누르면 컬러와 두께를 볼 수 있습니다.</p>
       </div>
       <div class="chips" id="lineChips" role="group" aria-label="컬렉션 필터" hidden></div>
       <p class="count" id="artCount"></p>
@@ -718,6 +732,13 @@ const C={'BLACK':['#1a1715','DL011'],'ICE':['#dfe2df','DL008'],'COGNAC':['#8a4a2
 '1501 SADDLE':['#94582b',''],'CREAM':['#e9dfc8','DL090'],'665 MARMO':['#a69c8d','DL058'],'6044 MIEL':['#b47b3e','DL108'],'AQUA BLUE':['#5d8796','DL028'],'N-BEIGE':['#d1bc9c','DL034'],'AQUA-MINT':['#9fbfb3','DL071'],
 'M-LUCKY-GREY':['#8e8b86','DL111'],'DEEP GREEN':['#2f4a3a','DL098'],'NAVY':['#26304a','DL005'],'641 LOTUS':['#c9a7a0','DL103'],'6048 PEACOCK GREEN':['#1f5552','DL104'],'7733 L.GREY':['#b9b6b0','DL105'],'GREY':['#7c7a76','DL003'],
 '679 MIEL':['#a8723a','DL164'],'MARRONE':['#5e3a26','DL113'],'PASTEL-BLUE':['#a9bccb','DL075'],'WOODY':['#7b5a3c','DL147'],'GRIGIO':['#8a8782','DL004'],'LUCKY-GREY':['#a19d97','DL073']};
+const NAME_KO={oldenglish:'올드 잉글리시',togo:'토고',campo:'캄포',santa:'산타',nuvolana:'누볼라나',tango:'탱고',prescott:'프레스콧',softprimo:'소프트 프리모',luna:'루나',sole:'솔레',dolce:'돌체'};
+const CN_KO={'BLACK':'블랙','ICE':'아이스','COGNAC':'코냑','D-BROWN':'다크 브라운','MOSS':'모스','BROWN COGNAC':'브라운 코냑','BIANCO':'비앙코','208 LAMB':'램','UMBER':'엄버','KALE':'케일','STONE':'스톤','COCCO':'코코','CASTLE ROCK':'캐슬 록','LIGHT COGNAC':'라이트 코냑','LIME STONE':'라임 스톤','SNOW WHITE':'스노우 화이트','1501 SADDLE':'새들','CREAM':'크림','665 MARMO':'마르모','6044 MIEL':'미엘','AQUA BLUE':'아쿠아 블루','N-BEIGE':'베이지','AQUA-MINT':'아쿠아 민트','M-LUCKY-GREY':'럭키 그레이','DEEP GREEN':'딥 그린','NAVY':'네이비','641 LOTUS':'로터스','6048 PEACOCK GREEN':'피콕 그린','7733 L.GREY':'라이트 그레이','GREY':'그레이','679 MIEL':'미엘','MARRONE':'마로네','PASTEL-BLUE':'파스텔 블루','WOODY':'우디','GRIGIO':'그리지오','LUCKY-GREY':'럭키 그레이'};
+const CN_FIX={'D-BROWN':'DARK BROWN','N-BEIGE':'BEIGE','M-LUCKY-GREY':'LUCKY GREY','7733 L.GREY':'LIGHT GREY'};
+/* customer-facing color names: no ERP numbers or DL codes */
+const cn=c=>CN_FIX[c]||c.replace(/^\d+\s+/,'').replace(/-/g,' ');
+const ko=c=>CN_KO[c]||'';
+const thkList=a=>a.thick?a.thick.split(' / '):[];
 const FAM={'BLACK':'dark','D-BROWN':'brown','COGNAC':'brown','BROWN COGNAC':'brown','UMBER':'brown','LIGHT COGNAC':'brown','COCCO':'brown','STONE':'light','CASTLE ROCK':'grey','KALE':'color','1501 SADDLE':'brown','6044 MIEL':'brown','679 MIEL':'brown','MARRONE':'brown','WOODY':'brown','MOSS':'color',
 'ICE':'light','BIANCO':'light','SNOW WHITE':'light','CREAM':'light','208 LAMB':'light','N-BEIGE':'light','LIME STONE':'light','641 LOTUS':'light',
 '665 MARMO':'grey','M-LUCKY-GREY':'grey','7733 L.GREY':'grey','GREY':'grey','GRIGIO':'grey','LUCKY-GREY':'grey',
@@ -744,9 +765,9 @@ let line='ALL', fam='all';
    drape.jpg = first/hover shot, <color>.jpg = one per color, detail.jpg = close-up. Set PLACEHOLDER=false once replaced. */
 const PLACEHOLDER=true;
 const slug=c=>c.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
-function shots(a){return [{src:`img/leather/${a.key}/drape.jpg`,cap:a.name,sub:'Drape'},
-  ...a.colors.map(c=>({src:`img/leather/${a.key}/${slug(c)}.jpg`,cap:c,sub:C[c][1]||'',c})),
-  {src:`img/leather/${a.key}/detail.jpg`,cap:a.name,sub:'Grain detail'}];}
+function shots(a){return [{src:`img/leather/${a.key}/drape.jpg`,cap:a.name,sub:NAME_KO[a.key]||''},
+  ...a.colors.map(c=>({src:`img/leather/${a.key}/${slug(c)}.jpg`,cap:a.name+' '+cn(c),sub:(NAME_KO[a.key]||'')+' '+ko(c),c})),
+  {src:`img/leather/${a.key}/detail.jpg`,cap:a.name,sub:'결 디테일'}];}
 
 function fan(colors,max){
   const cs=colors.slice(0,max||6), n=cs.length, spread=Math.min(36,8*n);
@@ -765,7 +786,7 @@ function renderArticles(){
   $('#artCount').textContent=list.length+' 아티클';
   $('#pgrid').innerHTML=list.map(a=>`<button class="prod" data-key="${a.key}" aria-label="${a.name} 상세 보기">
     <div class="sw"><span class="tag">${a.line}</span><div class="fan">${fan(a.colors,6)}</div><img class="ph" src="${shots(a)[0].src}" alt="" loading="lazy"></div>
-    <span class="nm">${a.name}</span><span class="spec">${thk(a)}${a.pvc?' · 매칭 PVC':''}</span>
+    <span class="nm">${a.name}</span><span class="ko">${NAME_KO[a.key]||''}</span><span class="spec">${thk(a)}${a.pvc?' · 매칭 PVC':''}</span>
     <span class="dots">${a.colors.slice(0,3).map(c=>`<i style="background:${C[c][0]}"></i>`).join('')}${a.colors.length>3?`+${a.colors.length-3}`:''}</span></button>`).join('');
 }
 function renderColors(){
@@ -777,7 +798,7 @@ function renderColors(){
   const NOTE=' 화면의 색은 참고용이며, 정확한 색감은 실물 스와치로 경험해 보세요.';
   $('#colorLede').textContent=(line==='PALLADIO'?'장인의 손끝에서 깊어진 색. 시간이 흐를수록 더욱 풍부해지는 팔라디오의 팔레트를 만나보세요.':line==='AMBRA'?'일상에 생기를 더하는 색. 어떤 공간에도 자연스럽게 어우러지는 암브라의 다채로운 팔레트를 만나보세요.':line==='MASTROTTO'?'마스트로또의 컬러 팔레트를 만나보세요.':'시간이 흘러도 변함없는 시그니처 컬러를 톤별로 소개합니다.')+NOTE;
   $('#lib').innerHTML=names.filter(n=>fam==='all'||FAM[n]===fam).map(n=>`<figure data-c="${esc(n)}"><div class="chip grain" style="background:${C[n][0]}"></div>
-    <figcaption>${esc(n)}${C[n][1]?` <span style="color:var(--muted);font-weight:300">${C[n][1]}</span>`:''}<small>${used[n].join(' · ')}</small></figcaption></figure>`).join('');
+    <figcaption>${esc(cn(n))}${ko(n)?` <span style="color:var(--muted);font-weight:400">${ko(n)}</span>`:''}<small>${used[n].join(' · ')}</small></figcaption></figure>`).join('');
 }
 function renderAll(){renderArticles();renderColors();
 }
@@ -799,11 +820,11 @@ function openArt(key,color){const a=A.find(x=>x.key===key);const S=shots(a);
      <div class="pv-thumbs">${S.map((x,i)=>`<button data-go="${i}" aria-label="${esc(x.cap)} ${esc(x.sub)}"><img src="${x.src}" alt="" loading="lazy"></button>`).join('')}</div>
    </div>
    <div class="pv-info">
-   <div class="row"><div><span class="eyebrow">${a.line}</span><h3>${a.name}</h3></div>
+   <div class="row"><div><span class="eyebrow">${a.line}</span><h3>${a.name}</h3><p class="ko-name">${NAME_KO[a.key]||''}</p></div>
    <button class="ulink" data-close>닫기</button></div>
    <p class="lede" style="margin:16px 0 0">${a.desc}</p>
-   <dl><div><dt>두께</dt><dd>${a.thick?a.thick+' mm':'—'}</dd></div><div><dt>컬러</dt><dd>${a.colors.length||'—'}</dd></div><div><dt>매칭 PVC</dt><dd>${a.pvc?'공급 가능':'—'}</dd></div></dl>
-   <div class="clist">${a.colors.map(c=>`<button data-col="${esc(c)}"><i class="grain" style="position:relative;overflow:hidden;background:${C[c][0]}"></i><span>${c}<small>${C[c][1]||'—'}</small></span></button>`).join('')}</div>
+   <dl class="spec2"><div class="thk"><dt>두께 <span>mm</span></dt><dd>${thkList(a).length?thkList(a).map(x=>`<span>${x}</span>`).join(''):'확인 중'}</dd></div><div><dt>컬러</dt><dd>${a.colors.length?a.colors.length+'색':'—'}</dd></div><div><dt>매칭 PVC</dt><dd>${a.pvc?'공급 가능':'—'}</dd></div></dl>
+   <div class="clist">${a.colors.map(c=>`<button data-col="${esc(c)}"><i class="grain" style="position:relative;overflow:hidden;background:${C[c][0]}"></i><span>${esc(cn(c))}<small>${ko(c)}</small></span></button>`).join('')}</div>
    <a class="ulink" href="#contact" data-req="${a.line}" style="margin-top:28px">담당 매니저에게 문의</a></div></div>`;
   sheet.hidden=false;
   const tr=sheet.querySelector('.pv-track'),th=[...sheet.querySelectorAll('.pv-thumbs button')],cb=[...sheet.querySelectorAll('.clist button')];
@@ -858,9 +879,10 @@ function parse(){
   return {b,s:sec};
 }
 const href=(b,k)=>k==='intro'?'#'+b:`#${b}-${k}`;
+const HOME_IC='<svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M2 7.2L8 2l6 5.2V14H10V10H6v4H2z"/></svg>';
 function buildNav(b,sec){
   const B=b.toUpperCase(), others=['palladio','ambra'].filter(x=>x!==b); /* Mastrotto (external brand) stays out of the top bar; it is in the side menu switch */
-  $('#vnavIn').innerHTML=SECS.map(k=>`<a href="${href(b,k)}"${k===sec?' aria-current="page"':''}${k==='intro'?' class="brand"':''}>${k==='intro'?B:LABEL[k]}</a>`).join('')+others.map(o=>`<a class="other" href="#${o}">${o.toUpperCase()} →</a>`).join('');
+  $('#vnavIn').innerHTML=`<a class="home" href="#home" aria-label="처음으로">${HOME_IC}<span>처음으로</span></a>`+SECS.map(k=>`<a href="${href(b,k)}"${k===sec?' aria-current="page"':''}${k==='intro'?' class="brand"':''}>${k==='intro'?B:LABEL[k]}</a>`).join('')+others.map(o=>`<a class="other" href="#${o}">${o.toUpperCase()} →</a>`).join('');
   $('#menuNav').innerHTML=`<a href="#home">처음으로${ARROW}</a>`+SECS.map(k=>`<a href="${href(b,k)}"${k===sec?' aria-current="page"':''}>${k==='intro'?BR[b].ko+' 소개':MLABEL[k]}${ARROW}</a>`).join('');
   document.querySelectorAll('.switch a').forEach(a=>{if(a.dataset.sw===b)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});
   $('#hdRight').innerHTML=others.map(o=>`<a class="nav-d" href="#${o}">${BR[o].en}</a>`).join('')+`<a href="${href(b,'contact')}">문의</a>`;
@@ -942,8 +964,8 @@ const SUG=['루나','돌체','코냑','딥그린','매칭 PVC','1.4mm','LWG','�
 const sr=document.createElement('div');sr.className='sr';sr.hidden=true;sr.innerHTML='<div class="in" role="listbox" aria-label="검색 결과"><div class="wrap" id="srIn"></div></div>';document.body.appendChild(sr);
 let curForm=null,flat=[],act=-1,pendingGo=null,tmr=0;
 function row(it,i,q){
-  if(it.t==='art'){const a=it.a;return `<button class="sr-i" data-i="${i}" role="option"><span class="st">${a.colors.slice(0,6).map(c=>`<span style="background:${C[c][0]}"></span>`).join('')}</span><span class="tx"><b>${hl(a.name,q)}</b><small>${a.line} · ${thk(a)}${a.colors.length?` · ${a.colors.length}색`:''}${a.pvc?' · 매칭 PVC':''}</small></span></button>`;}
-  if(it.t==='col')return `<button class="sr-i" data-i="${i}" role="option"><span class="st grain" style="position:relative;background:${C[it.name][0]}"></span><span class="tx"><b>${hl(it.name,q)}${C[it.name][1]?` <small style="display:inline">${C[it.name][1]}</small>`:''}</b><small>${it.arts.map(a=>a.name).join(' · ')}</small></span></button>`;
+  if(it.t==='art'){const a=it.a;return `<button class="sr-i" data-i="${i}" role="option"><span class="st">${a.colors.slice(0,6).map(c=>`<span style="background:${C[c][0]}"></span>`).join('')}</span><span class="tx"><b>${hl(a.name,q)} <small style="display:inline">${NAME_KO[a.key]||''}</small></b><small>${a.line} · ${thk(a)}${a.colors.length?` · ${a.colors.length}색`:''}${a.pvc?' · 매칭 PVC':''}</small></span></button>`;}
+  if(it.t==='col')return `<button class="sr-i" data-i="${i}" role="option"><span class="st grain" style="position:relative;background:${C[it.name][0]}"></span><span class="tx"><b>${hl(cn(it.name),q)}${ko(it.name)?` <small style="display:inline">${ko(it.name)}</small>`:''}</b><small>${it.arts.map(a=>a.name).join(' · ')}</small></span></button>`;
   return `<button class="sr-i" data-i="${i}" role="option"><span class="st sec">${SEC_ICON}</span><span class="tx"><b>${esc(it.title)}</b><small>${esc(it.d)}</small></span></button>`;
 }
 function render(){
