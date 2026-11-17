@@ -121,6 +121,12 @@ header.top .wrap{display:grid;grid-template-columns:1fr auto 1fr;align-items:cen
 .line-card figure img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
 .line-card:hover figure img{transform:scale(1.03)}
 .line-card .mark{font-size:24px}
+.brand-logo{margin:0;line-height:0}
+.brand-logo+.sub{margin-top:-4px}
+.brand-logo img{width:auto;max-width:100%}
+.brand-logo.pal img{height:64px}
+.brand-logo.amb img{height:88px}
+@media(min-width:960px){.lines.single .brand-logo{align-self:end}.brand-logo.pal img{height:84px}.brand-logo.amb img{height:116px}}
 .line-card .sub{font-size:13px;color:var(--muted);margin-top:-12px}
 .line-card .names{display:grid;grid-template-columns:repeat(auto-fill,minmax(104px,1fr));gap:14px 12px;margin-top:4px}
 .nt{display:flex;flex-direction:column;gap:7px;text-align:left;min-width:0}
@@ -495,7 +501,7 @@ header.top .wrap{position:relative}
       <div class="grid">
         <article class="line-card" data-line="PALLADIO">
           <figure><img src="img/palladio-black.jpg" alt="소용돌이처럼 흐르는 팔라디오 블랙 가죽" loading="lazy"></figure>
-          <span class="mark">Palladio</span>
+          <h3 class="brand-logo pal"><img src="img/logo-palladio.png" alt="Palladio" width="900" height="428"></h3>
           <span class="sub">Made in Arzignano, Italy</span>
           <p class="lede">아르치냐노 전통 무두질로 완성한 업홀스터리 가죽. 원피 선별부터 마감까지 엄격하게 관리해, 하이엔드 소파와 가구에 깊은 질감과 색을 냅니다. 수십 년간 이탈리아 안팎의 브랜드에 공급해 온 이름을 이제 다오르가 이어갑니다.</p>
           <div class="names" id="namesP"></div>
@@ -503,7 +509,7 @@ header.top .wrap{position:relative}
         </article>
         <article class="line-card" data-line="AMBRA">
           <figure><img src="img/ambra-living.jpg" alt="밝은 벽 앞, 회색 쿠션을 올린 코냑 가죽 소파" loading="lazy"></figure>
-          <span class="mark">Ambra</span>
+          <h3 class="brand-logo amb"><img src="img/logo-ambra.png" alt="Ambra" width="328" height="419"></h3>
           <span class="sub">Ambra Conceria · Registered in Italy</span>
           <p class="lede">이탈리아에 정식 등록된 다오르의 가죽 브랜드, 암브라 콘체리아. 다채로운 컬러와 안정적인 공급으로 일상의 가구에도 천연 가죽의 감촉을 자연스럽게 더합니다. 일부 아티클은 같은 색의 매칭 PVC 원단과 함께 선보입니다.</p>
           <div class="names" id="namesA"></div>
