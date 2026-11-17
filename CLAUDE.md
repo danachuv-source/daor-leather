@@ -1,4 +1,4 @@
-# DAOR Leather 웹사이트 (팔라디오 · 암브라)
+# DAOR Leather 웹사이트 (팔라디오 · 암브라 · 마스트로또)
 
 다오르(주)(DAOR CO., LTD.)의 가죽 브랜드 사이트. 정적 HTML 한 장(index.html) + img/ + media/. 빌드 없음.
 미리보기: 이 폴더에서 `npx serve .` 또는 `python -m http.server` 후 브라우저로 열기.
@@ -7,8 +7,11 @@
 ## 구조
 - index.html: CSS·JS 모두 인라인. 해시 라우팅.
   - `#home` 대문(팔라디오/암브라 두 패널만, 헤더·푸터 없음)
-  - `#palladio`, `#ambra` 브랜드 화면, `#palladio-{intro|articles|colors|house|craft|lwg|contact}`
+  - `#palladio`, `#ambra`, `#mastrotto` 브랜드 화면, `#palladio-{intro|articles|colors|house|craft|lwg|contact}`
+  - 대문은 팔라디오·암브라 투톱만. 마스트로또는 메뉴·브랜드 화면에서만 노출
+  - 브랜드 목록은 스크립트의 `BR`, 아티클 필터는 `LINES`
 - 데이터: 스크립트 상단 `C`(컬러 hex·코드), `FAM`(컬러 계열), `A`(아티클 목록: key, name, line, thick, pvc, colors, desc)
+  - line: PALLADIO / AMBRA / MASTROTTO. thick를 비우면 "두께 확인 중"으로 표시
 - 검색: 왼쪽 위 검색창. `ART_KO`, `COL_KO`, `SEC_IX`에 한글 검색어·바로가기 키워드
 - 아티클 상세: `openArt(key, color)` — 큰 사진 갤러리, 커서 위치 확대(마우스), 컬러 클릭 시 해당 사진으로 이동
 - 문의: 방문자 정보를 수집하지 않음(폼 없음). 버튼을 누르면 대표전화 031-591-3900, info@daor.it 표시

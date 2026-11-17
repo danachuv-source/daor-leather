@@ -97,3 +97,11 @@ img/leather 폴더 안에 아티클별 폴더가 있습니다.
   brown-cognac.jpg
   detail.jpg
   drape.jpg
+
+[santa]
+  detail.jpg
+  drape.jpg
+
+[nuvola]
+  detail.jpg
+  drape.jpg

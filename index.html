@@ -88,8 +88,8 @@ header.top .wrap{display:grid;grid-template-columns:1fr auto 1fr;align-items:cen
 .ms{display:flex;flex-direction:column;padding:0 0 12px 2px}
 .menu .ms a{font-size:16px;padding:10px 0}
 .menu nav a[aria-current="page"]{font-weight:500}
-.menu .switch{display:grid;grid-template-columns:1fr 1fr;background:var(--tile);border-radius:6px;padding:5px;gap:5px}
-.menu .switch a{text-align:center;text-decoration:none;padding:12px;border-radius:4px;font-family:var(--f-mark);letter-spacing:.16em;font-size:13px;color:var(--muted)}
+.menu .switch{display:grid;grid-template-columns:1fr 1fr 1fr;background:var(--tile);border-radius:6px;padding:5px;gap:5px}
+.menu .switch a{text-align:center;text-decoration:none;padding:12px 4px;border-radius:4px;font-family:var(--f-mark);letter-spacing:.12em;font-size:12px;color:var(--muted)}
 .menu .switch a[aria-current="page"]{background:var(--paper);color:var(--ink)}
 
 /* heroes */
@@ -451,6 +451,7 @@ header.top .wrap{position:relative}
     <div class="switch" role="group" aria-label="컬렉션 선택">
       <a href="#palladio" data-sw="palladio">PALLADIO</a>
       <a href="#ambra" data-sw="ambra">AMBRA</a>
+      <a href="#mastrotto" data-sw="mastrotto">MASTROTTO</a>
     </div>
     
   </div>
@@ -514,6 +515,14 @@ header.top .wrap{position:relative}
           <p class="lede">이탈리아에 정식 등록된 다오르의 가죽 브랜드, 암브라 콘체리아. 다채로운 컬러와 안정적인 공급으로 일상의 가구에도 천연 가죽의 감촉을 자연스럽게 더합니다. 일부 아티클은 같은 색의 매칭 PVC 원단과 함께 선보입니다.</p>
           <div class="names" id="namesA"></div>
           <a class="ulink" href="#articles" style="justify-self:start;align-self:flex-start">암브라 아티클 보기</a>
+        </article>
+        <article class="line-card" data-line="MASTROTTO">
+          <figure><img src="img/wingchair.jpg" alt="회색 배경의 가죽 윙체어" loading="lazy"></figure>
+          <span class="mark">Mastrotto</span>
+          <span class="sub">Mastrotto · Arzignano, Italy</span>
+          <p class="lede">이탈리아 아르치냐노에서 온 마스트로또의 가죽. 다오르가 엄선한 마스트로또 아티클을 소개합니다.</p>
+          <div class="names" id="namesM"></div>
+          <a class="ulink" href="#articles" style="justify-self:start;align-self:flex-start">마스트로또 아티클 보기</a>
         </article>
       </div>
     </div>
@@ -697,7 +706,7 @@ header.top .wrap{position:relative}
       <p>Italy</p>
       <p class="sel">www.daoritaly.it</p>
     </div>
-    <div class="legal"><span>PALLADIO · AMBRA</span><span>© DAOR Co., Ltd.</span></div>
+    <div class="legal"><span>PALLADIO · AMBRA · MASTROTTO</span><span>© DAOR Co., Ltd.</span></div>
   </div>
 </footer>
 
@@ -716,14 +725,18 @@ const A=[
 {key:'oldenglish',name:'OLD ENGLISH',line:'PALLADIO',thick:'0.9–1.1',pvc:false,colors:['BLACK','1501 SADDLE'],desc:'얇고 유연한 두께에 클래식한 표정을 담은 아티클. 빈티지한 무드의 소파와 체어에 어울립니다.'},
 {key:'togo',name:'TOGO',line:'PALLADIO',thick:'1.6–1.8',pvc:false,colors:['BROWN COGNAC','BIANCO','208 LAMB'],desc:'도톰한 두께감과 풍성한 볼륨. 하이엔드 소파의 시트와 등받이에 깊은 존재감을 더합니다.'},
 {key:'campo',name:'CAMPO',line:'PALLADIO',thick:'1.3–1.5',pvc:false,colors:['BLACK','KALE','LIGHT COGNAC','LIME STONE','SNOW WHITE','UMBER'],desc:'자연에서 가져온 절제된 톤. 모던 인테리어에 어울리는 차분한 뉴트럴 팔레트입니다.'},
-{key:'tango',name:'TANGO',line:'PALLADIO',thick:'0.9–1.1',pvc:false,colors:['BLACK','ICE','COGNAC','D-BROWN','MOSS'],desc:'가볍고 부드러운 핸들링으로 다양한 디자인에 대응하는 아티클. 기본 컬러를 폭넓게 운용합니다.'},
-{key:'prescott',name:'PRESCOTT',line:'PALLADIO',thick:'1.2–1.4',pvc:true,colors:['COGNAC','CREAM','665 MARMO','BLACK'],desc:'안정적인 두께와 균일한 품질. 꾸준히 찾는 기본 컬러 중심의 스테디 아티클입니다.'},
+{key:'santa',name:'SANTA',line:'PALLADIO',thick:'',pvc:false,colors:[],desc:''},
+{key:'nuvola',name:'NUVOLA',line:'PALLADIO',thick:'',pvc:false,colors:[],desc:''},
+{key:'tango',name:'TANGO',line:'AMBRA',thick:'0.9–1.1',pvc:false,colors:['BLACK','ICE','COGNAC','D-BROWN','MOSS'],desc:'가볍고 부드러운 핸들링으로 다양한 디자인에 대응하는 아티클. 기본 컬러를 폭넓게 운용합니다.'},
+{key:'prescott',name:'PRESCOTT',line:'AMBRA',thick:'1.2–1.4',pvc:true,colors:['COGNAC','CREAM','665 MARMO','BLACK'],desc:'안정적인 두께와 균일한 품질. 꾸준히 찾는 기본 컬러 중심의 스테디 아티클입니다.'},
 {key:'softprimo',name:'SOFT PRIMO',line:'AMBRA',thick:'1.8–2.0',pvc:false,colors:['CREAM','6044 MIEL','N-BEIGE','AQUA BLUE','AQUA-MINT','M-LUCKY-GREY','DEEP GREEN'],desc:'라인업 중 가장 두툼한 1.8–2.0mm. 이름처럼 부드러운 촉감과 다양한 컬러가 강점입니다.'},
-{key:'luna',name:'LUNA',line:'AMBRA',thick:'1.3–1.5',pvc:true,colors:['NAVY','BLACK','COGNAC','ICE','N-BEIGE','641 LOTUS','6048 PEACOCK GREEN','7733 L.GREY','DEEP GREEN','GREY'],desc:'가장 넓은 컬러 레인지를 가진 아티클. 포인트 컬러부터 뉴트럴까지 한 아티클로 구성할 수 있습니다.'},
+{key:'luna',name:'LUNA',line:'MASTROTTO',thick:'1.3–1.5',pvc:true,colors:['NAVY','BLACK','COGNAC','ICE','N-BEIGE','641 LOTUS','6048 PEACOCK GREEN','7733 L.GREY','DEEP GREEN','GREY'],desc:'가장 넓은 컬러 레인지를 가진 아티클. 포인트 컬러부터 뉴트럴까지 한 아티클로 구성할 수 있습니다.'},
 {key:'sole',name:'SOLE',line:'AMBRA',thick:'1.3–1.5',pvc:true,colors:['679 MIEL','CREAM','MARRONE','7733 L.GREY','DEEP GREEN'],desc:'따뜻한 브라운 계열과 뉴트럴 톤 중심. 합리적인 가격대의 소파에 안정적으로 쓰입니다.'},
 {key:'dolce',name:'DOLCE',line:'AMBRA',thick:'1.4–1.6',pvc:true,colors:['CREAM','N-BEIGE','6044 MIEL','COGNAC','WOODY','PASTEL-BLUE','LUCKY-GREY','GRIGIO','DEEP GREEN','BLACK'],desc:'다오르의 대표 볼륨 아티클. 크림부터 파스텔, 그린까지 고른 컬러와 매칭 PVC를 함께 제공합니다.'}];
 const FAMS=[['all','전체'],['light','라이트'],['brown','브라운'],['grey','그레이'],['color','컬러'],['dark','다크']];
-const LINES=[['ALL','전체'],['PALLADIO','PALLADIO'],['AMBRA','AMBRA']];
+const LINES=[['ALL','전체'],['PALLADIO','PALLADIO'],['AMBRA','AMBRA'],['MASTROTTO','MASTROTTO']];
+const BR={palladio:{ko:'팔라디오',en:'Palladio'},ambra:{ko:'암브라',en:'Ambra'},mastrotto:{ko:'마스트로또',en:'Mastrotto'}};
+const thk=a=>a.thick?a.thick+' mm':'두께 확인 중';
 const $=s=>document.querySelector(s), esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 let line='ALL', fam='all';
 /* Leather photos: replace the files in img/leather/<article>/ with real shots, keeping the same names.
@@ -739,8 +752,7 @@ function fan(colors,max){
   return cs.map((c,i)=>{const r=n>1?(-spread/2+spread*i/(n-1)):0;
     return `<span class="grain" style="position:relative;background:${C[c][0]};--r:${r}deg;transform:rotate(${r}deg)"></span>`}).join('');
 }
-$('#namesP').innerHTML=A.filter(a=>a.line==='PALLADIO').map(a=>`<button class="nt" data-key="${a.key}" aria-label="${a.name} 상세 보기"><span class="st">${a.colors.map(c=>`<span class="grain" style="background:${C[c][0]}"></span>`).join('')}</span><b>${a.name}</b><small>${a.thick} mm · ${a.colors.length}색</small></button>`).join('');
-$('#namesA').innerHTML=A.filter(a=>a.line==='AMBRA').map(a=>`<button class="nt" data-key="${a.key}" aria-label="${a.name} 상세 보기"><span class="st">${a.colors.map(c=>`<span class="grain" style="background:${C[c][0]}"></span>`).join('')}</span><b>${a.name}</b><small>${a.thick} mm · ${a.colors.length}색</small></button>`).join('');
+[['P','PALLADIO'],['A','AMBRA'],['M','MASTROTTO']].forEach(([id,L])=>{$('#names'+id).innerHTML=A.filter(a=>a.line===L).map(a=>`<button class="nt" data-key="${a.key}" aria-label="${a.name} 상세 보기"><span class="st">${a.colors.map(c=>`<span class="grain" style="background:${C[c][0]}"></span>`).join('')}</span><b>${a.name}</b><small>${thk(a)}${a.colors.length?` · ${a.colors.length}색`:''}</small></button>`).join('');});
 
 function chips(el,list,cur,on){
   el.innerHTML=list.map(([k,l])=>`<button data-k="${k}" aria-pressed="${k===cur}">${l}</button>`).join('');
@@ -752,7 +764,7 @@ function renderArticles(){
   $('#artCount').textContent=list.length+' 아티클';
   $('#pgrid').innerHTML=list.map(a=>`<button class="prod" data-key="${a.key}" aria-label="${a.name} 상세 보기">
     <div class="sw"><span class="tag">${a.line}</span><div class="fan">${fan(a.colors,6)}</div><img class="ph" src="${shots(a)[0].src}" alt="" loading="lazy"></div>
-    <span class="nm">${a.name}</span><span class="spec">${a.thick} mm${a.pvc?' · 매칭 PVC':''}</span>
+    <span class="nm">${a.name}</span><span class="spec">${thk(a)}${a.pvc?' · 매칭 PVC':''}</span>
     <span class="dots">${a.colors.slice(0,3).map(c=>`<i style="background:${C[c][0]}"></i>`).join('')}${a.colors.length>3?`+${a.colors.length-3}`:''}</span></button>`).join('');
 }
 function renderColors(){
@@ -760,9 +772,9 @@ function renderColors(){
   const pool=A.filter(a=>line==='ALL'||a.line===line), used={};
   pool.forEach(a=>a.colors.forEach(c=>(used[c]=used[c]||[]).push(a.name)));
   const names=Object.keys(used);
-  $('#colorTitle').textContent=(line==='PALLADIO'?'팔라디오, ':line==='AMBRA'?'암브라, ':'')+`${names.length}가지 컬러 팔레트`;
+  $('#colorTitle').textContent=(BR[line.toLowerCase()]?BR[line.toLowerCase()].ko+', ':'')+`${names.length}가지 컬러 팔레트`;
   const NOTE=' 화면의 색은 참고용이며, 정확한 색감은 실물 스와치로 경험해 보세요.';
-  $('#colorLede').textContent=(line==='PALLADIO'?'장인의 손끝에서 깊어진 색. 시간이 흐를수록 더욱 풍부해지는 팔라디오의 팔레트를 만나보세요.':line==='AMBRA'?'일상에 생기를 더하는 색. 어떤 공간에도 자연스럽게 어우러지는 암브라의 다채로운 팔레트를 만나보세요.':'시간이 흘러도 변함없는 시그니처 컬러를 톤별로 소개합니다.')+NOTE;
+  $('#colorLede').textContent=(line==='PALLADIO'?'장인의 손끝에서 깊어진 색. 시간이 흐를수록 더욱 풍부해지는 팔라디오의 팔레트를 만나보세요.':line==='AMBRA'?'일상에 생기를 더하는 색. 어떤 공간에도 자연스럽게 어우러지는 암브라의 다채로운 팔레트를 만나보세요.':line==='MASTROTTO'?'마스트로또의 컬러 팔레트를 만나보세요.':'시간이 흘러도 변함없는 시그니처 컬러를 톤별로 소개합니다.')+NOTE;
   $('#lib').innerHTML=names.filter(n=>fam==='all'||FAM[n]===fam).map(n=>`<figure data-c="${esc(n)}"><div class="chip grain" style="background:${C[n][0]}"></div>
     <figcaption>${esc(n)}${C[n][1]?` <span style="color:var(--muted);font-weight:300">${C[n][1]}</span>`:''}<small>${used[n].join(' · ')}</small></figcaption></figure>`).join('');
 }
@@ -789,7 +801,7 @@ function openArt(key,color){const a=A.find(x=>x.key===key);const S=shots(a);
    <div class="row"><div><span class="eyebrow">${a.line}</span><h3>${a.name}</h3></div>
    <button class="ulink" data-close>닫기</button></div>
    <p class="lede" style="margin:16px 0 0">${a.desc}</p>
-   <dl><div><dt>두께</dt><dd>${a.thick} mm</dd></div><div><dt>컬러</dt><dd>${a.colors.length}</dd></div><div><dt>매칭 PVC</dt><dd>${a.pvc?'공급 가능':'—'}</dd></div></dl>
+   <dl><div><dt>두께</dt><dd>${a.thick?a.thick+' mm':'—'}</dd></div><div><dt>컬러</dt><dd>${a.colors.length||'—'}</dd></div><div><dt>매칭 PVC</dt><dd>${a.pvc?'공급 가능':'—'}</dd></div></dl>
    <div class="clist">${a.colors.map(c=>`<button data-col="${esc(c)}"><i class="grain" style="position:relative;overflow:hidden;background:${C[c][0]}"></i><span>${c}<small>${C[c][1]||'—'}</small></span></button>`).join('')}</div>
    <a class="ulink" href="#contact" data-req="${a.line}" style="margin-top:28px">담당 매니저에게 문의</a></div></div>`;
   sheet.hidden=false;
@@ -840,17 +852,17 @@ function parse(){
   let h=decodeURIComponent(location.hash.slice(1))||'home'; h=ALIAS[h]||h;
   if(h==='home')return {b:null,s:'gate'};
   let [b,sec]=h.split('-');
-  if(b!=='palladio'&&b!=='ambra'){sec=ALIAS[b]||b;b=brand||'palladio';}
+  if(!BR[b]){sec=ALIAS[b]||b;b=brand||'palladio';}
   sec=ALIAS[sec]||sec||'intro'; if(!SECS.includes(sec))sec='intro';
   return {b,s:sec};
 }
 const href=(b,k)=>k==='intro'?'#'+b:`#${b}-${k}`;
 function buildNav(b,sec){
-  const B=b.toUpperCase(), other=b==='palladio'?'ambra':'palladio';
-  $('#vnavIn').innerHTML=SECS.map(k=>`<a href="${href(b,k)}"${k===sec?' aria-current="page"':''}${k==='intro'?' class="brand"':''}>${k==='intro'?B:LABEL[k]}</a>`).join('')+`<a class="other" href="#${other}">${other.toUpperCase()} →</a>`;
-  $('#menuNav').innerHTML=`<a href="#home">처음으로${ARROW}</a>`+SECS.map(k=>`<a href="${href(b,k)}"${k===sec?' aria-current="page"':''}>${k==='intro'?(b==='palladio'?'팔라디오':'암브라')+' 소개':MLABEL[k]}${ARROW}</a>`).join('');
+  const B=b.toUpperCase(), others=Object.keys(BR).filter(x=>x!==b);
+  $('#vnavIn').innerHTML=SECS.map(k=>`<a href="${href(b,k)}"${k===sec?' aria-current="page"':''}${k==='intro'?' class="brand"':''}>${k==='intro'?B:LABEL[k]}</a>`).join('')+others.map(o=>`<a class="other" href="#${o}">${o.toUpperCase()} →</a>`).join('');
+  $('#menuNav').innerHTML=`<a href="#home">처음으로${ARROW}</a>`+SECS.map(k=>`<a href="${href(b,k)}"${k===sec?' aria-current="page"':''}>${k==='intro'?BR[b].ko+' 소개':MLABEL[k]}${ARROW}</a>`).join('');
   document.querySelectorAll('.switch a').forEach(a=>{if(a.dataset.sw===b)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});
-  $('#hdRight').innerHTML=`<a class="nav-d" href="#${other}">${other==='palladio'?'Palladio':'Ambra'}</a><a href="${href(b,'contact')}">문의</a>`;
+  $('#hdRight').innerHTML=others.map(o=>`<a class="nav-d" href="#${o}">${BR[o].en}</a>`).join('')+`<a href="${href(b,'contact')}">문의</a>`;
 }
 function route(){
   const {b,s:sec}=parse(); brand=b;
@@ -860,7 +872,7 @@ function route(){
     const B=b.toUpperCase(); line=B;
     document.querySelectorAll('.line-card').forEach(c=>{c.hidden=c.dataset.line!==B});
     renderAll(); buildNav(b,sec);
-    $('#artTitle').textContent=(b==='palladio'?'팔라디오':'암브라')+' 아티클';
+    $('#artTitle').textContent=BR[b].ko+' 아티클';
   }
   sheet.hidden=true; setMenu(false);
   if(sec==='contact')openAsk();
@@ -888,12 +900,13 @@ async function copyText(t,btn){
 document.querySelectorAll('[data-copy]').forEach(b=>b.onclick=()=>copyText(b.dataset.copy,b));
 
 /* search: articles, colors, keywords — results update as you type */
-const ART_KO={oldenglish:'올드잉글리쉬 올드잉글리시',togo:'토고',campo:'캄포 깜포',tango:'탱고 탕고',prescott:'프레스콧 프레스코트',softprimo:'소프트프리모',luna:'루나',sole:'솔레',dolce:'돌체'};
+const ART_KO={santa:'산타',nuvola:'누볼라',oldenglish:'올드잉글리쉬 올드잉글리시',togo:'토고',campo:'캄포 깜포',tango:'탱고 탕고',prescott:'프레스콧 프레스코트',softprimo:'소프트프리모',luna:'루나 마스트로또',sole:'솔레',dolce:'돌체'};
 const COL_KO={'BLACK':'블랙 검정 검은색','ICE':'아이스','COGNAC':'코냑','D-BROWN':'다크브라운 진갈색','MOSS':'모스 카키','BROWN COGNAC':'브라운코냑','BIANCO':'비앙코 흰색 화이트','208 LAMB':'램','UMBER':'엄버','KALE':'케일 그린 녹색','LIGHT COGNAC':'라이트코냑 밝은코냑','LIME STONE':'라임스톤','SNOW WHITE':'스노우화이트 흰색 화이트','1501 SADDLE':'새들','CREAM':'크림 아이보리','665 MARMO':'마르모','6044 MIEL':'미엘','AQUA BLUE':'아쿠아블루 하늘색','N-BEIGE':'베이지','AQUA-MINT':'아쿠아민트 민트','M-LUCKY-GREY':'럭키그레이','DEEP GREEN':'딥그린 초록 녹색 그린','NAVY':'네이비 남색','641 LOTUS':'로터스 핑크 분홍','6048 PEACOCK GREEN':'피콕그린 청록','7733 L.GREY':'라이트그레이 연회색','GREY':'그레이 회색','679 MIEL':'미엘','MARRONE':'마로네 밤색','PASTEL-BLUE':'파스텔블루 블루 파란색','WOODY':'우디','GRIGIO':'그리지오','LUCKY-GREY':'럭키그레이'};
 const FAM_KO={light:'라이트 밝은',brown:'브라운 갈색',grey:'그레이 회색',color:'포인트컬러',dark:'다크 어두운'};
 const SEC_IX=[
   {sec:'intro',b:'palladio',t:'팔라디오 소개',d:'아르치냐노 장인의 프리미엄 가죽',k:'palladio 팔라디오 프리미엄 아르치냐노 아르지아노 이탈리아 하이엔드'},
   {sec:'intro',b:'ambra',t:'암브라 소개',d:'일상에 스며드는 이탈리아 가죽',k:'ambra 암브라 콘체리아 일상 데일리 상표'},
+  {sec:'intro',b:'mastrotto',t:'마스트로또 소개',d:'이탈리아 아르치냐노의 가죽',k:'mastrotto 마스트로또 마스트로토 마스트로토'},
   {sec:'articles',t:'아티클',d:'두께와 컬러로 보는 전체 라인업',k:'아티클 제품 가죽 라인업 상품 article product'},
   {sec:'colors',t:'컬러 라이브러리',d:'톤별 컬러 팔레트',k:'컬러 색상 색깔 팔레트 스와치 color'},
   {sec:'house',t:'다오르의 가치',d:'다오르가 가죽을 대하는 방식',k:'다오르 daor 회사 가치 파트너 파트너십 헤리티지 소개'},
@@ -903,7 +916,7 @@ const SEC_IX=[
 const norm=x=>String(x).toLowerCase().replace(/[\s\-._·,/()]+/g,'');
 const IX=[];
 A.forEach(a=>IX.push({t:'art',a,title:a.name,pri:[a.name,...ART_KO[a.key].split(' ')].map(norm),
-  sx:norm([a.line,a.line==='PALLADIO'?'팔라디오':'암브라',a.desc,a.pvc?'매칭pvc 피브이씨 합성':'',...a.colors,...a.colors.map(c=>COL_KO[c]||'')].join('|')),
+  sx:norm([a.line,BR[a.line.toLowerCase()].ko,a.desc,a.pvc?'매칭pvc 피브이씨 합성':'',...a.colors,...a.colors.map(c=>COL_KO[c]||'')].join('|')),
   rng:a.thick.split('–').map(Number)}));
 const used={};A.forEach(a=>a.colors.forEach(c=>(used[c]=used[c]||[]).push(a)));
 Object.keys(used).forEach(c=>IX.push({t:'col',name:c,title:c,arts:used[c],pri:[c,C[c][1],...(COL_KO[c]||'').split(' ')].filter(Boolean).map(norm),sx:norm(FAM_KO[FAM[c]]||'')}));
@@ -928,7 +941,7 @@ const SUG=['루나','돌체','코냑','딥그린','매칭 PVC','1.4mm','LWG','�
 const sr=document.createElement('div');sr.className='sr';sr.hidden=true;sr.innerHTML='<div class="in" role="listbox" aria-label="검색 결과"><div class="wrap" id="srIn"></div></div>';document.body.appendChild(sr);
 let curForm=null,flat=[],act=-1,pendingGo=null,tmr=0;
 function row(it,i,q){
-  if(it.t==='art'){const a=it.a;return `<button class="sr-i" data-i="${i}" role="option"><span class="st">${a.colors.slice(0,6).map(c=>`<span style="background:${C[c][0]}"></span>`).join('')}</span><span class="tx"><b>${hl(a.name,q)}</b><small>${a.line} · ${a.thick} mm · ${a.colors.length}색${a.pvc?' · 매칭 PVC':''}</small></span></button>`;}
+  if(it.t==='art'){const a=it.a;return `<button class="sr-i" data-i="${i}" role="option"><span class="st">${a.colors.slice(0,6).map(c=>`<span style="background:${C[c][0]}"></span>`).join('')}</span><span class="tx"><b>${hl(a.name,q)}</b><small>${a.line} · ${thk(a)}${a.colors.length?` · ${a.colors.length}색`:''}${a.pvc?' · 매칭 PVC':''}</small></span></button>`;}
   if(it.t==='col')return `<button class="sr-i" data-i="${i}" role="option"><span class="st grain" style="position:relative;background:${C[it.name][0]}"></span><span class="tx"><b>${hl(it.name,q)}${C[it.name][1]?` <small style="display:inline">${C[it.name][1]}</small>`:''}</b><small>${it.arts.map(a=>a.name).join(' · ')}</small></span></button>`;
   return `<button class="sr-i" data-i="${i}" role="option"><span class="st sec">${SEC_ICON}</span><span class="tx"><b>${esc(it.title)}</b><small>${esc(it.d)}</small></span></button>`;
 }
