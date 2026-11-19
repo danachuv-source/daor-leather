@@ -312,7 +312,8 @@ html,body{overflow-x:clip}
 
 .lwg-film{position:relative;height:100svh;min-height:420px;overflow:hidden;background:#1b1a18;padding:0}
 .lwg-film video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .9s ease}
-.lwg-film video.fade{opacity:0}
+.lwg-film video.fade,.ed-film video.fade{opacity:0}
+.ed-film video{transition:opacity .9s ease}
 .lwg-film::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,18,14,.42) 0%,rgba(20,18,14,.12) 45%,transparent 70%),linear-gradient(180deg,transparent 45%,rgba(20,18,14,.3) 100%);pointer-events:none}
 
 .lwg .split{display:grid;gap:44px;grid-template-columns:1fr;align-items:center}
@@ -1310,10 +1311,16 @@ if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>es.fo
 })();
 </script>
 
-<script>(()=>{const v=document.querySelector('.lwg-film video');if(!v)return;
-if(matchMedia('(prefers-reduced-motion: reduce)').matches){v.removeAttribute('autoplay');v.dataset.hold='1';v.pause();return}
+<script>(()=>{const vs=document.querySelectorAll('.lwg-film video,.ed-film video');if(!vs.length)return;
+const rm=matchMedia('(prefers-reduced-motion: reduce)').matches,port=matchMedia('(max-aspect-ratio: 1/1)');
+vs.forEach(v=>{v.removeAttribute('loop');v.loop=false;
+if(rm){v.removeAttribute('autoplay');v.dataset.hold='1';v.pause();return}
 v.addEventListener('timeupdate',()=>{if(v.duration&&v.currentTime>v.duration-1)v.classList.add('fade')});
-v.addEventListener('ended',()=>{v.currentTime=0;v.play().catch(()=>{});setTimeout(()=>v.classList.remove('fade'),60)});})();</script>
+v.addEventListener('ended',()=>{v.currentTime=0;v.play().catch(()=>{});setTimeout(()=>v.classList.remove('fade'),60)});
+/* portrait phones: the cropped film pans slowly left to right so the whole scene is seen */
+const ease=t=>t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2;
+const tick=()=>{if(port.matches&&v.duration){const t=Math.min(1,v.currentTime/(v.duration-1));v.style.objectPosition=(ease(t)*100).toFixed(2)+'% 50%'}else if(v.style.objectPosition)v.style.objectPosition='';requestAnimationFrame(tick)};
+requestAnimationFrame(tick);});})();</script>
 <script>(()=>{
 const scroller=el=>{for(;el&&el!==document.body;el=el.parentElement){const o=getComputedStyle(el).overflowX;if((o==='auto'||o==='scroll')&&el.scrollWidth>el.clientWidth+2)return el;}return null};
 const mark=()=>document.querySelectorAll('.ed-tri .row,.track,.chips,.vnav .wrap,.pv-track,.pv-thumbs').forEach(e=>e.classList.toggle('dragscroll',e.scrollWidth>e.clientWidth+2));
