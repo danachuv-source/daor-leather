@@ -79,6 +79,7 @@ header.top .wrap{display:grid;grid-template-columns:1fr auto 1fr;align-items:cen
 .mg:last-child{border-bottom:1px solid var(--line)}
 .mg summary{list-style:none;display:flex;justify-content:space-between;align-items:center;padding:18px 0;cursor:pointer}
 .mg summary::-webkit-details-marker{display:none}
+video::-webkit-media-controls,video::-webkit-media-controls-start-playback-button,video::-webkit-media-controls-overlay-play-button{display:none!important;-webkit-appearance:none;opacity:0}
 .mg summary span{display:flex;flex-direction:column;gap:2px}
 .mg summary b{font-family:var(--f-mark);font-weight:400;font-size:20px;letter-spacing:.16em}
 .mg summary small{font-size:12px;color:var(--muted)}
@@ -1303,7 +1304,7 @@ kick();
 window.addEventListener('hashchange',()=>setTimeout(kick,50));
 window.addEventListener('pageshow',kick);
 document.addEventListener('visibilitychange',()=>{if(!document.hidden)kick();});
-['touchstart','pointerdown','scroll','keydown'].forEach(t=>window.addEventListener(t,kick,{passive:true,capture:true}));
+['touchstart','touchend','pointerdown','click','scroll','keydown'].forEach(t=>window.addEventListener(t,kick,{passive:true,capture:true}));
 if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)kick();}));vids.forEach(v=>io.observe(v));}
 })();
 </script>
