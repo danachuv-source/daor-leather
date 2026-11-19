@@ -313,11 +313,6 @@ html,body{overflow-x:clip}
 .lwg-film{position:relative;height:100svh;min-height:420px;overflow:hidden;background:#1b1a18;padding:0}
 .lwg-film video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .9s ease}
 .lwg-film video.fade{opacity:0}
-@media(max-aspect-ratio:1/1){
-.lwg-film,.ed-film{background:#1b1a18 var(--pbg) center/cover no-repeat}
-.lwg-film::before,.ed-film::before{content:"";position:absolute;inset:-60px;background:inherit;filter:blur(30px) brightness(.62) saturate(.9)}
-.lwg-film video,.ed-film video{object-fit:contain}
-.lwg-film::after,.ed-film::after{background:linear-gradient(180deg,transparent 55%,rgba(20,18,14,.35) 100%)}}
 .lwg-film::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,18,14,.42) 0%,rgba(20,18,14,.12) 45%,transparent 70%),linear-gradient(180deg,transparent 45%,rgba(20,18,14,.3) 100%);pointer-events:none}
 
 .lwg .split{display:grid;gap:44px;grid-template-columns:1fr;align-items:center}
@@ -705,7 +700,7 @@ img.plx{transform:translate3d(0,var(--py,0px),0) scale(var(--ps,1.2))!important;
     </div>
   </section>
 
-  <section class="ed-film" style="--pbg:url(img/ed/arch-poster.jpg)" data-s="intro" aria-label="다오르 콘셉트 필름">
+  <section class="ed-film" data-s="intro" aria-label="다오르 콘셉트 필름">
     <video src="media/ed/arch.mp4" poster="img/ed/arch-poster.jpg" autoplay muted loop playsinline webkit-playsinline preload="metadata" disablepictureinpicture disableremoteplayback aria-hidden="true"></video>
     <div class="ed-cap"><span class="ey">Dream Leather</span><p>빛과 시간이 머무는 곳,<br>한 장의 가죽이 형태가 됩니다</p><a href="#articles">아티클 보기</a></div>
   </section>
@@ -859,7 +854,7 @@ img.plx{transform:translate3d(0,var(--py,0px),0) scale(var(--ps,1.2))!important;
     </div>
   </section>
 
-  <section class="lwg-film" style="--pbg:url(img/lwg-bg-poster.jpg)" data-s="lwg" aria-label="다오르 필름">
+  <section class="lwg-film" data-s="lwg" aria-label="다오르 필름">
     <video src="media/lwg-bg.mp4" poster="img/lwg-bg-poster.jpg" autoplay muted playsinline webkit-playsinline preload="metadata" disablepictureinpicture disableremoteplayback aria-hidden="true"></video>
     <div class="lwg-film-cap"><span class="ey">LWG Gold Rated</span><p class="t" style="margin:0">LWG 골드 등급,<br>지속가능한 가죽의 국제 기준</p></div>
   </section>
