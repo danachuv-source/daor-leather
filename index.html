@@ -18,7 +18,8 @@
   --ink:#1D1C1A;
   --muted:#6E6A64;
   --line:#DEDAD3;
-  --verde:#2F4A3A;       /* DL098 DEEP GREEN — house accent */
+  --verde:#4B5130;       /* gold green — house accent (Momo 2026-11-19) */
+  --gold:#CDB679;
   --cognac:#8A4A24;      /* DL010 COGNAC — small marks only */
   --on-image:#FFFFFF;
   --f-mark:'Marcellus','Times New Roman',serif;
@@ -97,6 +98,7 @@ header.top .wrap{display:grid;grid-template-columns:1fr auto 1fr;align-items:cen
 .hero{position:relative;aspect-ratio:4/5;max-height:860px;overflow:hidden;color:var(--on-image);display:flex;align-items:flex-end;justify-content:center;text-align:center;max-width:100%}
 .hero video,.hero img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 @media(max-width:759px){.hero video.m-top{object-position:center top}}
+.hero img.kb{object-position:50% 40%;transform-origin:52% 45%;will-change:transform}
 .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.05) 40%,rgba(0,0,0,.55))}
 .hero .cap{position:relative;z-index:1;padding:0 20px clamp(36px,6vw,64px);display:flex;flex-direction:column;align-items:center;gap:10px}
 .hero .cap .mark{font-size:clamp(34px,5vw,56px);letter-spacing:.2em;padding-left:.2em;line-height:1.1}
@@ -168,6 +170,15 @@ header.top .wrap{display:grid;grid-template-columns:1fr auto 1fr;align-items:cen
 .dots i{width:11px;height:11px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(0,0,0,.12)}
 .prod:hover .fan span{transform:translateY(-4px) rotate(var(--r))}
 .fan span{transition:transform .6s var(--ease)}
+/* Palladio: swatch deck fanned from a single brass rivet, stitched edges */
+.prod .sw:has(.fan.lux){background:radial-gradient(120% 90% at 50% 88%,#F1EDE6 0%,#E3DDD3 70%,#DAD3C7 100%)}
+.fan.lux{display:block;padding:0;background:transparent}
+.fan.lux span{position:absolute;left:50%;bottom:8%;width:20%;margin-left:-10%;aspect-ratio:1/4;border-radius:999px 999px 5px 5px;transform-origin:50% 91%;transform:rotate(var(--r));
+  box-shadow:0 1px 1px rgba(0,0,0,.12),0 14px 26px -16px rgba(40,28,15,.55);transition:transform .9s var(--ease)}
+.fan.lux span::before{content:"";position:absolute;inset:8px 8px 16% 8px;border:1px dashed var(--st);border-radius:999px 999px 3px 3px;z-index:1;pointer-events:none}
+.fan.lux .rv{position:absolute;left:50%;top:91%;width:16px;height:16px;margin:-8px 0 0 -8px;border-radius:50%;z-index:2;
+  background:radial-gradient(circle at 35% 30%,#F3E3B8 0%,#C9A766 45%,#8C6A2E 100%);box-shadow:0 1px 2px rgba(0,0,0,.35),inset 0 0 0 1px rgba(255,255,255,.25)}
+.prod:hover .fan.lux span{transform:rotate(calc(var(--r)*1.18)) translateY(-3px)}
 
 /* detail sheet */
 .sheet{position:fixed;inset:0;z-index:40;background:rgba(29,28,26,.32);display:flex;align-items:flex-end;justify-content:center}
@@ -194,9 +205,32 @@ header.top .wrap{display:grid;grid-template-columns:1fr auto 1fr;align-items:cen
 
 /* colors */
 .colors{background:var(--paper)}
-.lib{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:22px 16px;margin-top:28px}
+.lib{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:34px 22px;margin-top:32px}
+@media(max-width:560px){.lib{grid-template-columns:1fr 1fr;gap:24px 12px}}
 .lib figure{margin:0;display:flex;flex-direction:column;gap:8px;min-width:0}
-.lib .chip{aspect-ratio:3/2;border-radius:3px;position:relative;overflow:hidden;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08)}
+.lib .chip{aspect-ratio:1/1;border-radius:3px;position:relative;overflow:hidden;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08)}
+.lib .chip img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;cursor:zoom-in;transition:opacity .35s var(--ease),transform .8s var(--ease)}
+.lib .chip:hover img{transform:scale(1.03)}
+.lib .chip .sw{position:absolute;right:10px;bottom:10px;z-index:2;width:22px;height:22px;border-radius:50%;box-shadow:0 0 0 2px rgba(255,255,255,.9);pointer-events:none}
+.cv-nav{position:absolute;top:50%;z-index:2;width:34px;height:34px;margin-top:-17px;border-radius:50%;background:rgba(255,255,255,.88);color:var(--ink);display:grid;place-items:center;opacity:0;transition:opacity .25s var(--ease)}
+.cv-nav.p{left:8px}.cv-nav.n{right:8px}
+.lib .chip:hover .cv-nav,.cv-nav:focus-visible{opacity:1}
+@media(hover:none){.cv-nav{opacity:.9;width:28px;height:28px;margin-top:-14px}}
+.cv-dots{position:absolute;left:0;right:0;bottom:12px;z-index:2;display:flex;justify-content:center;gap:5px;pointer-events:none}
+.cv-dots i{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.55)}.cv-dots i.on{background:#fff}
+.lib figcaption .cur{display:block;font-size:11.5px;color:var(--ink);margin-top:3px;letter-spacing:.02em}
+/* color lightbox */
+.lbx{position:fixed;inset:0;z-index:45;background:rgba(24,23,21,.96);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:56px 16px 24px;animation:fade .3s var(--ease)}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.lbx figure{margin:0;position:relative;max-width:min(92vw,1100px);display:flex;flex-direction:column;align-items:center;gap:14px}
+.lbx img{max-width:100%;max-height:calc(100vh - 160px);object-fit:contain;border-radius:2px;background:#2a2826}
+.lbx figcaption{color:#F4F1EC;font-size:14px;text-align:center;line-height:1.5}
+.lbx figcaption small{display:block;color:rgba(244,241,236,.62);font-size:12px}
+.lbx .x,.lbx .nv{position:absolute;color:#F4F1EC;width:44px;height:44px;display:grid;place-items:center;border-radius:50%}
+.lbx .x{top:12px;right:12px}
+.lbx .nv{top:50%;margin-top:-22px;background:rgba(255,255,255,.08)}.lbx .nv:hover{background:rgba(255,255,255,.18)}
+.lbx .nv.p{left:12px}.lbx .nv.n{right:12px}
+.lbx .pv-badge{top:10px;left:10px}
 .grain::after{content:"";position:absolute;inset:0;opacity:.22;mix-blend-mode:multiply;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .5 0 0 0 0 .5 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 .lib figcaption{font-size:13px;font-weight:400;line-height:1.4}
 .lib figcaption small{display:block;font-weight:300;color:var(--muted);font-size:11.5px;margin-top:2px}
@@ -253,7 +287,7 @@ header.top .wrap{display:grid;grid-template-columns:1fr auto 1fr;align-items:cen
 
 /* together */
 .together{background:var(--verde);color:#EEF0EB}
-.together .eyebrow{color:#B9C4BB}
+.together .eyebrow{color:var(--gold)}
 .nums{display:flex;gap:clamp(32px,6vw,80px);flex-wrap:wrap;margin-top:36px}
 .nums b{display:block;font-family:var(--f-mark);font-weight:400;font-size:clamp(44px,6vw,68px);line-height:1;font-variant-numeric:tabular-nums}
 .nums span{font-size:13px;color:#B9C4BB}
@@ -267,6 +301,8 @@ header.top .wrap{display:grid;grid-template-columns:1fr auto 1fr;align-items:cen
 /* request */
 .request .split{display:grid;gap:44px;grid-template-columns:1fr}
 @media(min-width:960px){.request .split{grid-template-columns:5fr 6fr;gap:80px}}
+.request .touch{margin:32px 0 0;aspect-ratio:1/1;max-width:400px;overflow:hidden;background:#D9D4CC}
+.request .touch img{width:100%;height:100%;object-fit:cover}
 .compose{display:grid;gap:24px}
 .ask{display:flex;flex-direction:column;align-items:flex-start;gap:28px;justify-content:center}
 .direct{display:grid;width:100%;animation:up .45s var(--ease)}
@@ -434,6 +470,87 @@ header.top .wrap{position:relative}
   .pv-info{overflow:auto;padding:48px 44px 40px}
 }
 
+/* ===== maison refinement (ref. Hermès · Dior · Van Cleef): lighter, smaller type; hairline product grid ===== */
+body{font-size:14.5px}
+.eyebrow{font-size:11px;letter-spacing:.3em;color:#6E6A64}
+.h2{font-weight:300;font-size:clamp(22px,2.7vw,32px);letter-spacing:.01em;line-height:1.45}
+.lede{font-size:14px;font-weight:300;color:#5E5A54;line-height:1.9}
+.sec-head{gap:12px}
+.vnav a{font-size:12.5px;letter-spacing:.04em}
+/* filter tabs: quiet text tabs instead of pills */
+.chips{gap:26px}
+.chips button{padding:8px 0;border:0;border-radius:0;background:none;font-size:12.5px;letter-spacing:.06em;color:var(--muted);border-bottom:1px solid transparent}
+.chips button[aria-pressed="true"]{background:none;color:var(--ink);border-bottom-color:var(--ink)}
+.count{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;margin:22px 0 26px}
+/* article grid: hairline cells, square tiles, small centred captions */
+.pgrid{gap:0;border-top:1px solid var(--line);border-left:1px solid var(--line);max-width:1240px;margin:0 auto}
+@media(min-width:960px){.pgrid{grid-template-columns:repeat(3,minmax(0,1fr));gap:0}}
+.prod{border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:clamp(14px,2vw,28px) clamp(10px,1.6vw,24px) clamp(22px,2.6vw,34px);gap:5px;background:var(--paper)}
+.prod .sw{aspect-ratio:1/1;margin-bottom:18px;background:#F4F3F0}
+.prod .tag{font-size:9.5px;letter-spacing:.24em;top:10px;left:10px}
+.prod .nm{font-size:13px;letter-spacing:.2em}
+.prod .ko{font-size:11.5px;margin-top:-2px}
+.prod .spec{font-size:11px;letter-spacing:.02em;line-height:1.7}
+.dots{gap:6px;font-size:11px}
+.dots i{width:8px;height:8px}
+.fan.lux span{bottom:9%}
+/* colour library: Dior-like portrait tiles, tight gutters, centred captions */
+.lib{gap:30px 8px;margin-top:28px}
+@media(min-width:960px){.lib{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.lib .chip{aspect-ratio:4/5;border-radius:0;box-shadow:none}
+.lib figcaption{text-align:center;font-size:12px;letter-spacing:.08em;line-height:1.55;margin-top:6px}
+.lib figcaption .cur{font-size:11px;letter-spacing:.04em;color:var(--muted)}
+.lib figcaption small{font-size:10.5px;letter-spacing:.02em}
+.nt b{font-size:12.5px;letter-spacing:.16em}
+.nt small{font-size:11px}
+.prod .meta{display:flex;flex-direction:column;align-items:center;gap:5px;width:100%}
+/* together: compact */
+.together{color:#F1EEE3}.nums b{color:var(--gold)}.nums span{color:#CFCBB5}.svc p{color:#D4D0BC}.svc svg{color:var(--gold)}.svc div{border-top-color:rgba(205,182,121,.3)}
+.together{padding-block:clamp(48px,6vw,84px)}
+.together .wrap{max-width:1120px}
+.together .h2{font-size:clamp(20px,2.2vw,26px)}
+.nums{gap:clamp(28px,5vw,64px);margin-top:26px}
+.nums b{font-size:clamp(30px,3.4vw,40px)}
+.nums span{font-size:11.5px;letter-spacing:.04em;display:block;margin-top:6px}
+.svc{margin-top:36px;gap:0 28px}
+@media(min-width:960px){.svc{grid-template-columns:repeat(4,1fr)}}
+.svc div{grid-template-columns:22px 1fr;gap:3px 12px;padding:16px 0}
+.svc svg{width:20px;height:20px}
+.svc b{font-size:13.5px;letter-spacing:.02em}
+.svc p{font-size:12px;line-height:1.7}
+@media(max-width:720px){.prod .tag{display:none}.prod .spec{font-size:10.5px}}
+/* rhythm with a twist: one wide feature tile in the hairline grid, staggered color columns */
+.prod.feat{grid-column:span 2}
+.prod.feat .sw{aspect-ratio:16/10}
+.prod.feat .fan.lux{rotate:-6deg}
+.prod.feat.rev .fan.lux{rotate:5deg}
+.prod.feat .fan:not(.lux){scale:.84;rotate:-4deg}
+@media(min-width:960px){
+ .prod.feat{flex-direction:row;align-items:flex-end;gap:clamp(24px,3vw,48px);text-align:left}
+ .prod.feat .sw{flex:0 0 55%;aspect-ratio:auto;align-self:stretch;min-height:420px;margin:0}
+ .prod.feat.rev{flex-direction:row-reverse}
+ .prod.feat .meta{align-items:flex-start;flex:1;min-width:0}
+ .prod.feat .nm{font-size:15px;letter-spacing:.26em}
+ .prod.feat .dots{margin-top:6px}
+}
+@media(max-width:959px){.prod.feat .sw{aspect-ratio:4/3}.prod.feat .fan.lux span{width:12%;margin-left:-6%}.prod.feat .fan:not(.lux){scale:.7}}
+/* house film: near full-screen editorial film */
+.film{position:relative;height:min(92svh,62vw + 200px);min-height:420px;overflow:hidden;background:#1b1a18;padding:0;color:#fff}
+.film video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.film::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(0,0,0,.55));pointer-events:none}
+.film-cap{position:absolute;z-index:1;left:var(--gut-l);right:84px;bottom:clamp(28px,5vw,56px);display:flex;flex-direction:column;gap:8px;padding-left:clamp(0px,3vw,40px)}
+.film-cap .eyebrow{color:rgba(255,255,255,.82)}
+.film-cap p{margin:0;font-family:var(--f-head);font-weight:300;font-size:clamp(17px,2vw,22px)}
+.film-cap small{font-size:13px;font-weight:300;opacity:.86;max-width:30em;line-height:1.6}
+.film-cta{align-self:flex-start;margin-top:10px;display:inline-flex;align-items:center;gap:10px;padding:11px 22px;border:1px solid rgba(255,255,255,.75);border-radius:999px;color:#fff;text-decoration:none;font-size:13.5px;font-weight:400;letter-spacing:.02em;transition:background .3s var(--ease),color .3s var(--ease)}
+.film-cta:hover{background:#fff;color:var(--ink)}
+.film-pp{position:absolute;z-index:1;right:max(var(--gut-r),clamp(16px,3vw,56px));bottom:clamp(28px,5vw,56px);width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.55);color:#fff;display:grid;place-items:center;transition:background .3s var(--ease)}
+.film-pp:hover{background:rgba(255,255,255,.14)}
+@media(max-width:759px){.film{height:78svh}}
+img.plx{transform:translate3d(0,var(--py,0px),0) scale(var(--ps,1.2))!important;transition:none!important;will-change:transform}
+.rv-up{opacity:0;transform:translateY(28px);transition:opacity 1.4s cubic-bezier(.22,.7,.2,1),transform 1.4s cubic-bezier(.22,.7,.2,1)}
+.rv-up.in{opacity:1;transform:none}
+.craft figure.rv-up.in{transform:none}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
@@ -475,11 +592,11 @@ header.top .wrap{position:relative}
     <div class="gate-logo" aria-hidden="true"><svg viewBox="-1 -1 163 42"><use href="#daorMark"/></svg><small>Dream Leather</small></div>
     <form class="srch gate-srch" role="search" data-srch><button type="button" class="ic" aria-label="검색"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><circle cx="7.6" cy="7.6" r="6"/><path d="M12 12l5 5"/></svg></button><input type="search" placeholder="검색" aria-label="아티클, 컬러, 키워드 검색" autocomplete="off" enterkeyhint="search"><button type="button" class="x">닫기</button></form>
     <a class="hero" href="#palladio">
-      <video class="m-top" src="media/palladio-logo.mp4" poster="img/palladio-logo-poster.jpg" data-src-m="media/palladio-logo-m.mp4" data-poster-m="img/palladio-logo-m-poster.jpg" autoplay muted loop playsinline webkit-playsinline preload="auto" disablepictureinpicture disableremoteplayback aria-hidden="true"></video>
+      <img class="bg kb" src="img/palladio-villa.jpg" alt="" aria-hidden="true" fetchpriority="high">
       <div class="cap">
         <span class="tier">Premium Italian Leather</span>
         <span class="mark">Palladio</span>
-        <p>아르치냐노 장인의 손끝에서 완성된 프리미엄 가죽</p>
+        <p>아르지아노 장인의 손끝에서 완성된 프리미엄 가죽</p>
         <span class="ulink">자세히 보기</span>
       </div>
     </a>
@@ -498,7 +615,7 @@ header.top .wrap{position:relative}
     <div class="wrap">
       <svg class="seal" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1"><circle cx="22" cy="22" r="20.5"/><circle cx="22" cy="22" r="17" stroke-dasharray="1.2 2.4"/><path d="M15 13h7.5a9 9 0 010 18H15z"/><path d="M18.5 13v18"/></svg>
       <span class="eyebrow">Pelle italiana · Since Arzignano</span>
-      <h1 class="h2">아르치냐노에서 시작된<br>이탈리아 가죽의 정수</h1>
+      <h1 class="h2">아르지아노에서 시작된<br>이탈리아 가죽의 정수</h1>
       <p class="lede">엄선된 원피와 이탈리아 전통 공정, 정교한 컬러 개발. 다오르는 가구와 레더 굿즈를 위한 최상의 가죽을 선보입니다.</p>
       <a class="ulink" href="#articles">아티클 살펴보기</a>
     </div>
@@ -516,7 +633,7 @@ header.top .wrap{position:relative}
           <figure><img src="img/palladio-black.jpg" alt="소용돌이처럼 흐르는 팔라디오 블랙 가죽" loading="lazy"></figure>
           <h3 class="brand-logo pal"><img src="img/logo-palladio.png" alt="Palladio" width="900" height="428"></h3>
           <span class="sub">Made in Arzignano, Italy</span>
-          <p class="lede">아르치냐노 전통 무두질로 완성한 업홀스터리 가죽. 원피 선별부터 마감까지 엄격하게 관리해, 하이엔드 소파와 가구에 깊은 질감과 색을 냅니다. 수십 년간 이탈리아 안팎의 브랜드에 공급해 온 이름을 이제 다오르가 이어갑니다.</p>
+          <p class="lede">아르지아노 전통 무두질로 완성한 업홀스터리 가죽. 원피 선별부터 마감까지 엄격하게 관리해, 하이엔드 소파와 가구에 깊은 질감과 색을 냅니다. 수십 년간 이탈리아 안팎의 브랜드에 공급해 온 이름을 이제 다오르가 이어갑니다.</p>
           <div class="names" id="namesP"></div>
           <a class="ulink" href="#articles" style="justify-self:start;align-self:flex-start">팔라디오 아티클 보기</a>
         </article>
@@ -532,7 +649,7 @@ header.top .wrap{position:relative}
           <figure><img src="img/mastrotto-hides.jpg" alt="마스트로또 공장에 컬러별로 걸려 건조 중인 가죽" loading="lazy"></figure>
           <h3 class="brand-logo mas"><img src="img/logo-mastrotto.png" alt="Gruppo Mastrotto" width="677" height="158"></h3>
           <span class="sub">Gruppo Mastrotto · Arzignano, Italy</span>
-          <p class="lede">이탈리아 아르치냐노에서 시작된 가죽 그룹, 마스트로또. 가구와 자동차, 패션과 요트·항공까지 쓰임에 맞춘 가죽을 폭넓게 선보입니다. 다오르가 그중 일상의 가구에 어울리는 아티클을 골라 소개합니다.</p>
+          <p class="lede">이탈리아 아르지아노에서 시작된 가죽 그룹, 마스트로또. 가구와 자동차, 패션과 요트·항공까지 쓰임에 맞춘 가죽을 폭넓게 선보입니다. 다오르가 그중 일상의 가구에 어울리는 아티클을 골라 소개합니다.</p>
           <div class="names" id="namesM"></div>
           <a class="ulink" href="#articles" style="justify-self:start;align-self:flex-start">마스트로또 아티클 보기</a>
         </article>
@@ -598,7 +715,7 @@ header.top .wrap{position:relative}
 
   <section class="craft" id="craft" data-s="craft">
     <div class="wrap split">
-      <figure><img src="img/tannery.jpg" alt="이탈리아 제혁 공장에서 가죽을 살피는 장인" loading="lazy"></figure>
+      <figure><img src="img/craft-hall.jpg" alt="천창으로 빛이 드는 제혁 공장, 나무 드럼과 팔레트 위에 쌓인 토프·코냑·블랙 가죽" loading="lazy"></figure>
       <div>
         <span class="eyebrow">Making leather</span>
         <h2 class="h2" style="margin-top:14px">원피에서 완성까지,<br>여섯 단계의 여정</h2>
@@ -654,7 +771,7 @@ header.top .wrap{position:relative}
           <div><b>추적 가능한 원료</b><p>제혁 파트너와 원자재의 출처를 관리하고 추적합니다.</p></div>
           <div><b>Wet White</b><p>유해 화학물질을 줄이면서 크롬 태닝 특유의 부드러움을 유지하는 공정.</p></div>
           <div><b>REACH</b><p>팔라디오 가죽의 EU REACH 규정 적합성 선언을 보유하고 있습니다.</p></div>
-          <div><b>Made in Italy</b><p>아르치냐노 생산, AMBRA CONCERIA 이탈리아 상표 등록.</p></div>
+          <div><b>Made in Italy</b><p>아르지아노 생산, AMBRA CONCERIA 이탈리아 상표 등록.</p></div>
         </div>
       </div>
     </div>
@@ -665,18 +782,24 @@ header.top .wrap{position:relative}
     <img src="img/lwg-1.jpg" alt="LWG 골드 등급 인증서 확대">
   </div>
 
+  <section class="film" data-s="house" aria-label="다오르 필름">
+    <video src="media/daor-film.mp4" poster="img/daor-film-poster.jpg" autoplay muted loop playsinline webkit-playsinline preload="metadata" disablepictureinpicture disableremoteplayback aria-hidden="true"></video>
+    <div class="film-cap"><p>머무는 공간에서, 당신의 스타일까지</p><small>다오르의 가죽으로 새로운 제품을 구상하고 계신가요? 기획 단계부터 함께합니다.</small><a class="film-cta" href="#contact">제품 개발 문의</a></div>
+    <button class="film-pp" type="button" aria-label="영상 일시정지"><svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor" aria-hidden="true"><rect x="3" y="2" width="2.6" height="10"/><rect x="8.4" y="2" width="2.6" height="10"/></svg></button>
+  </section>
+
   <section class="together" id="together" data-s="house">
     <div class="wrap">
       <span class="eyebrow">Together</span>
       <h2 class="h2" style="margin-top:14px;max-width:16em">소재 그 이상의 가치를 전합니다</h2>
       <div class="nums">
-        <div><b>170+</b><span>국내외 가구·소재 거래처</span></div>
-        <div><b>4</b><span>출고 국가 · 한국 중국 이탈리아 스페인</span></div>
+        <div><b>170+</b><span>국내외 가구·소재 파트너</span></div>
+        <div><b>4</b><span>함께하는 나라 · 한국 중국 이탈리아 스페인</span></div>
       </div>
       <div class="svc">
         <div><svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1"><rect x="5" y="4" width="13" height="18" rx="1"/><rect x="10" y="7" width="13" height="18" rx="1"/></svg><b>샘플북 · 스와치</b><p>아티클별 컬러 스와치를 신속히 보내드리고, 신규 디자인 단계부터 함께 검토합니다.</p></div>
-        <div><svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1"><path d="M4 11l10-6 10 6v12H4z"/><path d="M10 23v-7h8v7"/></svg><b>재고 즉시 출고</b><p>남양주 본사 창고에 주력 컬러를 상시 보유해, 주문 당일 출고에 대응합니다.</p></div>
-        <div><svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1"><circle cx="8" cy="20" r="3.5"/><circle cx="20" cy="20" r="3.5"/><path d="M10.5 17.5L22 4M17.5 17.5L6 4"/></svg><b>자동 재단</b><p>자동 재단기로 자른 재단품을 공급해 거래처의 공정 부담을 줄입니다.</p></div>
+        <div><svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1"><path d="M4 11l10-6 10 6v12H4z"/><path d="M10 23v-7h8v7"/></svg><b>상시 준비된 컬러</b><p>남양주 본사에 주력 컬러를 늘 갖추고 있어, 주문 당일 보내드립니다.</p></div>
+        <div><svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1"><circle cx="8" cy="20" r="3.5"/><circle cx="20" cy="20" r="3.5"/><path d="M10.5 17.5L22 4M17.5 17.5L6 4"/></svg><b>자동 재단</b><p>자동 재단기로 자른 재단품을 공급해 파트너의 공정 부담을 줄입니다.</p></div>
         <div><svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1"><rect x="4" y="6" width="9" height="16" rx="1"/><rect x="15" y="6" width="9" height="16" rx="1" stroke-dasharray="2 2"/></svg><b>매칭 PVC</b><p>돌체·루나·솔레·프레스콧 컬러에 맞춘 PVC 원단으로 측·후면 마감을 간편하게 합니다.</p></div>
       </div>
     </div>
@@ -688,6 +811,7 @@ header.top .wrap{position:relative}
         <span class="eyebrow">Contact</span>
         <h2 class="h2" style="margin-top:14px">가죽의 질감을<br>직접 경험해 보세요</h2>
         <p class="lede" style="margin-top:18px">샘플과 스와치, 신규 개발 상담은 담당 매니저가 직접 안내해 드립니다.</p>
+        <figure class="touch"><img src="img/consult.jpg" alt="밝은 쇼룸에서 고객에게 코냑 가죽을 펼쳐 보이며 결을 손으로 짚어 보는 매니저" loading="lazy"></figure>
       </div>
       <div class="ask">
         <button class="send" id="askBtn" type="button" aria-expanded="false" aria-controls="askPanel">담당 매니저에게 문의 <i>→</i></button>
@@ -766,6 +890,12 @@ function shots(a){return [{src:`img/leather/${a.key}/drape.jpg`,cap:a.name,sub:N
   ...a.colors.map(c=>({src:`img/leather/${a.key}/${slug(c)}.jpg`,cap:a.name+' '+cn(c),sub:(NAME_KO[a.key]||'')+' '+ko(c),c})),
   {src:`img/leather/${a.key}/detail.jpg`,cap:a.name,sub:'결 디테일'}];}
 
+function luxFan(colors){
+  const cs=colors.slice(0,7), n=cs.length, spread=n>1?Math.min(64,18*(n-1)):0;
+  const lum=h=>{const v=parseInt(h.slice(1),16);return (0.299*(v>>16&255)+0.587*(v>>8&255)+0.114*(v&255))/255};
+  return cs.map((c,i)=>{const r=n>1?(-spread/2+spread*i/(n-1)):0;
+    return `<span class="grain" style="background:${C[c][0]};--r:${r}deg;--st:${lum(C[c][0])>.62?'rgba(60,45,30,.32)':'rgba(255,255,255,.34)'}">${i===n-1?'<i class="rv"></i>':''}</span>`}).join('');
+}
 function fan(colors,max){
   const cs=colors.slice(0,max||6), n=cs.length, spread=Math.min(36,8*n);
   return cs.map((c,i)=>{const r=n>1?(-spread/2+spread*i/(n-1)):0;
@@ -781,22 +911,59 @@ function renderArticles(){
   chips($('#lineChips'),LINES,line,k=>{location.hash=k==='ALL'?'articles':k.toLowerCase()});
   const list=A.filter(a=>line==='ALL'||a.line===line);
   $('#artCount').textContent=list.length+' 아티클';
-  $('#pgrid').innerHTML=list.map(a=>`<button class="prod" data-key="${a.key}" aria-label="${a.name} 상세 보기">
-    <div class="sw"><span class="tag">${a.line}</span><div class="fan">${fan(a.colors,6)}</div><img class="ph" src="${shots(a)[0].src}" alt="" loading="lazy"></div>
-    <span class="nm">${a.name}</span><span class="ko">${NAME_KO[a.key]||''}</span><span class="spec">${thk(a)}${a.pvc?' · 매칭 PVC':''}</span>
-    <span class="dots">${a.colors.slice(0,3).map(c=>`<i style="background:${C[c][0]}"></i>`).join('')}${a.colors.length>3?`+${a.colors.length-3}`:''}</span></button>`).join('');
+  const n=list.length,fi=(n+1)%3===0?[0]:(n+2)%3===0?[0,n-1]:[];
+  $('#pgrid').innerHTML=list.map((a,i)=>`<button class="prod${fi.includes(i)?' feat'+(i?' rev':''):''}" data-key="${a.key}" aria-label="${a.name} 상세 보기">
+    <div class="sw"><span class="tag">${a.line}</span>${a.line==='PALLADIO'?`<div class="fan lux">${luxFan(a.colors)}</div>`:`<div class="fan">${fan(a.colors,6)}</div>`}<img class="ph" src="${shots(a)[0].src}" alt="" loading="lazy"></div>
+    <div class="meta"><span class="nm">${a.name}</span><span class="ko">${NAME_KO[a.key]||''}</span><span class="spec">${thk(a)}${a.pvc?' · 매칭 PVC':''}</span>
+    <span class="dots">${a.colors.slice(0,3).map(c=>`<i style="background:${C[c][0]}"></i>`).join('')}${a.colors.length>3?`+${a.colors.length-3}`:''}</span></div></button>`).join('');
 }
 function renderColors(){
   chips($('#famChips'),FAMS,fam,k=>{fam=k;renderColors()});
   const pool=A.filter(a=>line==='ALL'||a.line===line), used={};
   pool.forEach(a=>a.colors.forEach(c=>(used[c]=used[c]||[]).push(a.name+(NAME_KO[a.key]?' '+NAME_KO[a.key]:''))));
+  CV={};pool.forEach(a=>a.colors.forEach(c=>(CV[c]=CV[c]||[]).push(a)));
   const names=Object.keys(used);
   $('#colorTitle').textContent=(BR[line.toLowerCase()]?BR[line.toLowerCase()].ko+', ':'')+`${names.length}가지 컬러 팔레트`;
   const NOTE=' 화면의 색은 참고용이며, 정확한 색감은 실물 스와치로 경험해 보세요.';
   $('#colorLede').textContent=(line==='PALLADIO'?'장인의 손끝에서 깊어진 색. 시간이 흐를수록 더욱 풍부해지는 팔라디오의 팔레트를 만나보세요.':line==='AMBRA'?'일상에 생기를 더하는 색. 어떤 공간에도 자연스럽게 어우러지는 암브라의 다채로운 팔레트를 만나보세요.':line==='MASTROTTO'?'마스트로또의 컬러 팔레트를 만나보세요.':'시간이 흘러도 변함없는 시그니처 컬러를 톤별로 소개합니다.')+NOTE;
-  $('#lib').innerHTML=names.filter(n=>fam==='all'||FAM[n]===fam).map(n=>`<figure data-c="${esc(n)}"><div class="chip grain" style="background:${C[n][0]}"></div>
-    <figcaption>${esc(cn(n))}${ko(n)?` <span style="color:var(--muted);font-weight:400">${ko(n)}</span>`:''}<small>${used[n].join(' · ')}</small></figcaption></figure>`).join('');
+  $('#lib').innerHTML=names.filter(n=>fam==='all'||FAM[n]===fam).map(n=>{const m=CV[n].length;return `<figure data-c="${esc(n)}" data-i="0"><div class="chip" style="background:${C[n][0]}">
+    <img src="${cvSrc(n,0)}" alt="${esc(cn(n))} 가죽 사진" loading="lazy" data-zoom>
+    <span class="sw" style="background:${C[n][0]}"></span>
+    ${m>1?`<button class="cv-nav p" data-d="-1" aria-label="이전 사진">${ARR_L}</button><button class="cv-nav n" data-d="1" aria-label="다음 사진">${ARR_R}</button><span class="cv-dots">${CV[n].map((_,i)=>`<i${i?'':' class="on"'}></i>`).join('')}</span>`:''}</div>
+    <figcaption>${esc(cn(n))}${ko(n)?` <span style="color:var(--muted);font-weight:400">${ko(n)}</span>`:''}<span class="cur">${cvCap(n,0)}</span>${m>1?`<small>${used[n].join(' · ')}</small>`:''}</figcaption></figure>`}).join('');
 }
+let CV={};
+const ARR_L='<svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M9 2L4 7l5 5"/></svg>',
+      ARR_R='<svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M5 2l5 5-5 5"/></svg>';
+const cvSrc=(n,i)=>`img/leather/${CV[n][i].key}/${slug(n)}.jpg`;
+const cvCap=(n,i)=>{const a=CV[n][i];return a.name+(NAME_KO[a.key]?' '+NAME_KO[a.key]:'')};
+function cvSet(f,i){const n=f.dataset.c,m=CV[n].length;i=(i+m)%m;f.dataset.i=i;
+  const im=f.querySelector('img');im.src=cvSrc(n,i);
+  f.querySelectorAll('.cv-dots i').forEach((d,k)=>d.classList.toggle('on',k===i));
+  f.querySelector('.cur').textContent=cvCap(n,i);}
+let lb=null;
+const lbList=()=>[...document.querySelectorAll('#lib figure')].flatMap(f=>CV[f.dataset.c].map((_,i)=>[f.dataset.c,i]));
+function lbStep(d){const L=lbList(),k=L.findIndex(([n,i])=>n===lb.n&&i===lb.i),t=L[(k+d+L.length)%L.length];lbOpen(t[0],t[1]);}
+function lbOpen(n,i){lb={n,i};const m=CV[n].length,L=lbList();let el=$('#lbx');
+  if(!el){el=document.createElement('div');el.id='lbx';el.className='lbx';el.setAttribute('role','dialog');el.setAttribute('aria-modal','true');document.body.appendChild(el);
+    el.addEventListener('click',e=>{const b=e.target.closest('[data-d]');if(b){lbStep(+b.dataset.d);return}
+      if(e.target===el||e.target.closest('.x'))lbClose();});
+    let sx=null;el.addEventListener('touchstart',e=>{sx=e.touches[0].clientX},{passive:true});
+    el.addEventListener('touchend',e=>{if(sx==null)return;const dx=e.changedTouches[0].clientX-sx;sx=null;if(Math.abs(dx)>40)lbStep(dx<0?1:-1)});}
+  el.hidden=false;
+  el.innerHTML=`<button class="x" aria-label="닫기"><svg width="16" height="16" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M1 1l12 12M13 1L1 13"/></svg></button>
+   ${L.length>1?`<button class="nv p" data-d="-1" aria-label="이전 사진">${ARR_L}</button><button class="nv n" data-d="1" aria-label="다음 사진">${ARR_R}</button>`:''}
+   <figure>${PLACEHOLDER?'<span class="pv-badge">예시 이미지</span>':''}<img src="${cvSrc(n,i)}" alt="${esc(cn(n))} 가죽 사진">
+   <figcaption>${esc(cn(n))}${ko(n)?' '+ko(n):''}<small>${cvCap(n,i)}</small></figcaption></figure>`;
+  el.querySelector('.x').focus({preventScroll:true});
+  const f=[...document.querySelectorAll('#lib figure')].find(x=>x.dataset.c===n);if(f)cvSet(f,i);}
+function lbClose(){const el=$('#lbx');if(el)el.hidden=true;lb=null;}
+document.addEventListener('keydown',e=>{if(!lb)return;if(e.key==='Escape')lbClose();else if(e.key==='ArrowRight')lbStep(1);else if(e.key==='ArrowLeft')lbStep(-1);});
+$('#lib').addEventListener('click',e=>{const f=e.target.closest('figure');if(!f)return;
+  const b=e.target.closest('.cv-nav');if(b){cvSet(f,+f.dataset.i+ +b.dataset.d);return}
+  if(e.target.closest('.chip'))lbOpen(f.dataset.c,+f.dataset.i);});
+(()=>{let sx=null,sf=null;$('#lib').addEventListener('touchstart',e=>{sf=e.target.closest('figure');sx=e.touches[0].clientX},{passive:true});
+  $('#lib').addEventListener('touchend',e=>{if(!sf||sx==null)return;const dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>40&&CV[sf.dataset.c].length>1)cvSet(sf,+sf.dataset.i+(dx<0?1:-1));sx=null;sf=null},{passive:true});})();
 function renderAll(){renderArticles();renderColors();
 }
 renderAll();
@@ -923,9 +1090,9 @@ const ART_KO={santa:'산타',nuvolana:'누볼라나 누볼라',oldenglish:'올�
 const COL_KO={'BLACK':'블랙 검정 검은색','ICE':'아이스','COGNAC':'코냑','D-BROWN':'다크브라운 진갈색','MOSS':'모스 카키','BROWN COGNAC':'브라운코냑','BIANCO':'비앙코 흰색 화이트','208 LAMB':'램','UMBER':'엄버','KALE':'케일 그린 녹색','STONE':'스톤','COCCO':'코코','CASTLE ROCK':'캐슬록 캐슬락','LIGHT COGNAC':'라이트코냑 밝은코냑','LIME STONE':'라임스톤','SNOW WHITE':'스노우화이트 흰색 화이트','1501 SADDLE':'새들','CREAM':'크림 아이보리','665 MARMO':'마르모','6044 MIEL':'미엘','AQUA BLUE':'아쿠아블루 하늘색','N-BEIGE':'베이지','AQUA-MINT':'아쿠아민트 민트','M-LUCKY-GREY':'럭키그레이','DEEP GREEN':'딥그린 초록 녹색 그린','NAVY':'네이비 남색','641 LOTUS':'로터스 핑크 분홍','6048 PEACOCK GREEN':'피콕그린 청록','7733 L.GREY':'라이트그레이 연회색','GREY':'그레이 회색','679 MIEL':'미엘','MARRONE':'마로네 밤색','PASTEL-BLUE':'파스텔블루 블루 파란색','WOODY':'우디','GRIGIO':'그리지오','LUCKY-GREY':'럭키그레이'};
 const FAM_KO={light:'라이트 밝은',brown:'브라운 갈색',grey:'그레이 회색',color:'포인트컬러',dark:'다크 어두운'};
 const SEC_IX=[
-  {sec:'intro',b:'palladio',t:'팔라디오 소개',d:'아르치냐노 장인의 프리미엄 가죽',k:'palladio 팔라디오 프리미엄 아르치냐노 아르지아노 이탈리아 하이엔드'},
+  {sec:'intro',b:'palladio',t:'팔라디오 소개',d:'아르지아노 장인의 프리미엄 가죽',k:'palladio 팔라디오 프리미엄 아르지아노 아르지아노 이탈리아 하이엔드'},
   {sec:'intro',b:'ambra',t:'암브라 소개',d:'일상에 스며드는 이탈리아 가죽',k:'ambra 암브라 콘체리아 일상 데일리 상표'},
-  {sec:'intro',b:'mastrotto',t:'마스트로또 소개',d:'이탈리아 아르치냐노의 가죽',k:'mastrotto 마스트로또 마스트로토 마스트로토'},
+  {sec:'intro',b:'mastrotto',t:'마스트로또 소개',d:'이탈리아 아르지아노의 가죽',k:'mastrotto 마스트로또 마스트로토 마스트로토'},
   {sec:'articles',t:'아티클',d:'두께와 컬러로 보는 전체 라인업',k:'아티클 제품 가죽 라인업 상품 article product'},
   {sec:'colors',t:'컬러 라이브러리',d:'톤별 컬러 팔레트',k:'컬러 색상 색깔 팔레트 스와치 color'},
   {sec:'house',t:'다오르의 가치',d:'다오르가 가죽을 대하는 방식',k:'다오르 daor 회사 가치 파트너 파트너십 헤리티지 소개'},
@@ -1019,8 +1186,34 @@ route();
 /* keep muted loops playing (mobile: retry when shown, on return, on first touch — covers Low Power / data-saver blocks) */
 /* phone: swap in a taller cut where the logo sits above the caption */
 if(matchMedia('(max-width:759px)').matches)document.querySelectorAll('video[data-src-m]').forEach(v=>{v.poster=v.dataset.posterM;v.src=v.dataset.srcM;});
+/* editorial photo motion: every large photo drifts slower than the page and gently settles
+   (scale 1.2 -> 1.14) as it passes through the screen; eased per frame so it glides */
+(()=>{const sel='.line-card figure img,.track figure img,.use img,.craft figure img,.request .touch img';
+  const st=new Map();let run=false;
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');}}),{threshold:.15});
+  const scan=()=>document.querySelectorAll(sel).forEach(im=>{if(!st.has(im)){im.classList.add('plx');im.parentElement.classList.add('rv-up');io.observe(im.parentElement);st.set(im,{y:null,s:null});}});
+  const tick=()=>{const vh=innerHeight;let moving=false;
+    st.forEach((v,im)=>{const r=im.parentElement.getBoundingClientRect();if(!r.height||r.bottom<-50||r.top>vh+50)return;
+      const p=Math.min(1,Math.max(0,(vh-r.top)/(vh+r.height))),ty=(.5-p)*r.height*.1,ts=1.2-.06*p;
+      if(v.y===null){v.y=ty;v.s=ts}v.y+=(ty-v.y)*.08;v.s+=(ts-v.s)*.08;if(Math.abs(ty-v.y)>.1)moving=true;
+      im.style.setProperty('--py',v.y.toFixed(2)+'px');im.style.setProperty('--ps',v.s.toFixed(4));});
+    if(moving)requestAnimationFrame(tick);else run=false;};
+  const kick=()=>{if(!run){run=true;requestAnimationFrame(tick)}};
+  scan();kick();addEventListener('scroll',kick,{passive:true});addEventListener('resize',kick);addEventListener('hashchange',()=>setTimeout(()=>{scan();kick()},60));})();
+/* home: Ambra clip is a forward-then-reverse dolly (seamless loop); the Palladio photo drifts with it,
+   timed to the Ambra clip so both panels move at one calm rhythm */
+(()=>{const im=document.querySelector('.hero img.kb'),av=document.querySelector('.hero video[src*="ambra"]');
+  if(!im)return;const t0=performance.now();
+  const tick=t=>{const q=av&&av.duration&&!av.paused?av.currentTime/av.duration:((t-t0)/20080)%1,p=q<.5?2*q:2-2*q;
+    im.style.transform=`scale(${(1.3+.04*p).toFixed(4)}) translateX(${(7.5-15*p).toFixed(3)}%)`;requestAnimationFrame(tick)};
+  requestAnimationFrame(tick);})();
+/* house film: pause / play */
+(()=>{const b=document.querySelector('.film-pp'),v=document.querySelector('.film video');if(!b||!v)return;
+  const P='<svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor" aria-hidden="true"><rect x="3" y="2" width="2.6" height="10"/><rect x="8.4" y="2" width="2.6" height="10"/></svg>',
+        G='<svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor" aria-hidden="true"><path d="M4 2l8 5-8 5z"/></svg>';
+  b.addEventListener('click',()=>{if(v.paused){v.dataset.hold='';v.play();b.innerHTML=P;b.setAttribute('aria-label','영상 일시정지')}else{v.dataset.hold='1';v.pause();b.innerHTML=G;b.setAttribute('aria-label','영상 재생')}});})();
 const vids=[...document.querySelectorAll('video')];
-const kick=()=>vids.forEach(v=>{if(!v.paused||!v.offsetParent)return;v.muted=true;const p=v.play();if(p)p.catch(()=>{});});
+const kick=()=>vids.forEach(v=>{if(!v.paused||!v.offsetParent||v.dataset.hold)return;v.muted=true;const p=v.play();if(p)p.catch(()=>{});});
 vids.forEach(v=>{
   v.muted=true;v.defaultMuted=true;v.playsInline=true;v.setAttribute('muted','');v.setAttribute('playsinline','');v.setAttribute('webkit-playsinline','');
   if(v.dataset.rate){const r=+v.dataset.rate;const set=()=>{v.defaultPlaybackRate=r;v.playbackRate=r};set();v.addEventListener('loadedmetadata',set);v.addEventListener('play',set);}
