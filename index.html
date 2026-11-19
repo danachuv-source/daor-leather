@@ -503,6 +503,25 @@ body{font-size:14.5px}
 .nt b{font-size:12.5px;letter-spacing:.16em}
 .nt small{font-size:11px}
 @media(max-width:720px){.prod .tag{display:none}.prod .spec{font-size:10.5px}}
+/* rhythm with a twist: one wide feature tile in the hairline grid, staggered color columns */
+.prod.feat{grid-column:span 2}
+.prod.feat .sw{aspect-ratio:16/10}
+.prod.feat .fan.lux{rotate:-6deg}
+.prod.feat.rev .fan.lux{rotate:5deg}
+.prod.feat .fan:not(.lux){scale:.84;rotate:-4deg}
+@media(min-width:960px){
+ .prod.feat{display:grid;grid-template-columns:1.25fr 1fr;grid-template-rows:1fr auto auto auto auto;column-gap:clamp(24px,3vw,48px);text-align:left;align-items:end}
+ .prod.feat .sw{grid-row:1/-1;aspect-ratio:auto;align-self:stretch;min-height:420px;margin:0}
+ .prod.feat.rev{grid-template-columns:1fr 1.25fr}
+ .prod.feat.rev .sw{grid-column:2}
+ .prod.feat>span{grid-column:2;justify-self:start}
+ .prod.feat.rev>span{grid-column:1}
+ .prod.feat .nm{font-size:15px;letter-spacing:.26em}
+ .prod.feat .dots{margin-top:6px}
+ .lib{padding-bottom:64px}
+ .lib figure:nth-child(4n+2),.lib figure:nth-child(4n+4){translate:0 64px}
+}
+@media(max-width:959px){.prod.feat .sw{aspect-ratio:4/3}.prod.feat .fan.lux span{width:12%;margin-left:-6%}.prod.feat .fan:not(.lux){scale:.7}.lib figure:nth-child(2n){translate:0 32px}.lib{padding-bottom:32px}}
 /* house film: near full-screen editorial film */
 .film{position:relative;height:min(92svh,62vw + 200px);min-height:420px;overflow:hidden;background:#1b1a18;padding:0;color:#fff}
 .film video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
@@ -880,7 +899,8 @@ function renderArticles(){
   chips($('#lineChips'),LINES,line,k=>{location.hash=k==='ALL'?'articles':k.toLowerCase()});
   const list=A.filter(a=>line==='ALL'||a.line===line);
   $('#artCount').textContent=list.length+' 아티클';
-  $('#pgrid').innerHTML=list.map(a=>`<button class="prod" data-key="${a.key}" aria-label="${a.name} 상세 보기">
+  const n=list.length,fi=(n+1)%3===0?[0]:(n+2)%3===0?[0,n-1]:[];
+  $('#pgrid').innerHTML=list.map((a,i)=>`<button class="prod${fi.includes(i)?' feat'+(i?' rev':''):''}" data-key="${a.key}" aria-label="${a.name} 상세 보기">
     <div class="sw"><span class="tag">${a.line}</span>${a.line==='PALLADIO'?`<div class="fan lux">${luxFan(a.colors)}</div>`:`<div class="fan">${fan(a.colors,6)}</div>`}<img class="ph" src="${shots(a)[0].src}" alt="" loading="lazy"></div>
     <span class="nm">${a.name}</span><span class="ko">${NAME_KO[a.key]||''}</span><span class="spec">${thk(a)}${a.pvc?' · 매칭 PVC':''}</span>
     <span class="dots">${a.colors.slice(0,3).map(c=>`<i style="background:${C[c][0]}"></i>`).join('')}${a.colors.length>3?`+${a.colors.length-3}`:''}</span></button>`).join('');
