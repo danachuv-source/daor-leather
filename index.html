@@ -313,6 +313,12 @@ html,body{overflow-x:clip}
 .lwg-film{position:relative;height:100svh;min-height:420px;overflow:hidden;background:#1b1a18;padding:0}
 .lwg-film video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .9s ease}
 .lwg-film video.fade{opacity:0}
+@media(max-aspect-ratio:1/1){
+.lwg-film,.ed-film{height:auto;min-height:0;display:flex;flex-direction:column}
+.lwg-film video,.ed-film video{position:relative;inset:auto;height:auto;aspect-ratio:16/9;object-fit:contain}
+.lwg-film::after,.ed-film::after{display:none}
+.lwg-film-cap,.ed-cap{position:static;padding-top:28px;padding-bottom:40px}
+.lwg-film-cap .t{text-shadow:none}}
 .lwg-film::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,18,14,.42) 0%,rgba(20,18,14,.12) 45%,transparent 70%),linear-gradient(180deg,transparent 45%,rgba(20,18,14,.3) 100%);pointer-events:none}
 
 .lwg .split{display:grid;gap:44px;grid-template-columns:1fr;align-items:center}
