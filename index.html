@@ -472,10 +472,13 @@ header.top .wrap{position:relative}
 /* house film: near full-screen editorial film */
 .film{position:relative;height:min(92svh,62vw + 200px);min-height:420px;overflow:hidden;background:#1b1a18;padding:0;color:#fff}
 .film video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.film::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(0,0,0,.42));pointer-events:none}
+.film::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(0,0,0,.55));pointer-events:none}
 .film-cap{position:absolute;z-index:1;left:var(--gut-l);right:84px;bottom:clamp(28px,5vw,56px);display:flex;flex-direction:column;gap:8px;padding-left:clamp(0px,3vw,40px)}
 .film-cap .eyebrow{color:rgba(255,255,255,.82)}
 .film-cap p{margin:0;font-family:var(--f-head);font-weight:300;font-size:clamp(17px,2vw,22px)}
+.film-cap small{font-size:13px;font-weight:300;opacity:.86;max-width:30em;line-height:1.6}
+.film-cta{align-self:flex-start;margin-top:10px;display:inline-flex;align-items:center;gap:10px;padding:11px 22px;border:1px solid rgba(255,255,255,.75);border-radius:999px;color:#fff;text-decoration:none;font-size:13.5px;font-weight:400;letter-spacing:.02em;transition:background .3s var(--ease),color .3s var(--ease)}
+.film-cta:hover{background:#fff;color:var(--ink)}
 .film-pp{position:absolute;z-index:1;right:max(var(--gut-r),clamp(16px,3vw,56px));bottom:clamp(28px,5vw,56px);width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.55);color:#fff;display:grid;place-items:center;transition:background .3s var(--ease)}
 .film-pp:hover{background:rgba(255,255,255,.14)}
 @media(max-width:759px){.film{height:78svh}}
@@ -716,7 +719,7 @@ img.plx{transform:translate3d(0,var(--py,0px),0) scale(var(--ps,1.2))!important;
 
   <section class="film" data-s="house" aria-label="다오르 필름">
     <video src="media/daor-film.mp4" poster="img/daor-film-poster.jpg" autoplay muted loop playsinline webkit-playsinline preload="metadata" disablepictureinpicture disableremoteplayback aria-hidden="true"></video>
-    <div class="film-cap"><p>머무는 공간에서, 당신의 스타일까지</p></div>
+    <div class="film-cap"><p>머무는 공간에서, 당신의 스타일까지</p><small>다오르의 가죽으로 새로운 제품을 구상하고 계신가요? 기획 단계부터 함께합니다.</small><a class="film-cta" href="#contact">제품 개발 문의</a></div>
     <button class="film-pp" type="button" aria-label="영상 일시정지"><svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor" aria-hidden="true"><rect x="3" y="2" width="2.6" height="10"/><rect x="8.4" y="2" width="2.6" height="10"/></svg></button>
   </section>
 
