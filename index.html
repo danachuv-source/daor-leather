@@ -469,6 +469,10 @@ header.top .wrap{position:relative}
   .pv-info{overflow:auto;padding:48px 44px 40px}
 }
 
+img.plx{transform:translate3d(0,var(--py,0px),0) scale(var(--ps,1.2))!important;transition:none!important;will-change:transform}
+.rv-up{opacity:0;transform:translateY(28px);transition:opacity 1.4s cubic-bezier(.22,.7,.2,1),transform 1.4s cubic-bezier(.22,.7,.2,1)}
+.rv-up.in{opacity:1;transform:none}
+.craft figure.rv-up.in{transform:none}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
@@ -1097,6 +1101,20 @@ route();
 /* keep muted loops playing (mobile: retry when shown, on return, on first touch — covers Low Power / data-saver blocks) */
 /* phone: swap in a taller cut where the logo sits above the caption */
 if(matchMedia('(max-width:759px)').matches)document.querySelectorAll('video[data-src-m]').forEach(v=>{v.poster=v.dataset.posterM;v.src=v.dataset.srcM;});
+/* editorial photo motion: every large photo drifts slower than the page and gently settles
+   (scale 1.2 -> 1.14) as it passes through the screen; eased per frame so it glides */
+(()=>{const sel='.line-card figure img,.track figure img,.use img,.craft figure img,.request .touch img';
+  const st=new Map();let run=false;
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');}}),{threshold:.15});
+  const scan=()=>document.querySelectorAll(sel).forEach(im=>{if(!st.has(im)){im.classList.add('plx');im.parentElement.classList.add('rv-up');io.observe(im.parentElement);st.set(im,{y:null,s:null});}});
+  const tick=()=>{const vh=innerHeight;let moving=false;
+    st.forEach((v,im)=>{const r=im.parentElement.getBoundingClientRect();if(!r.height||r.bottom<-50||r.top>vh+50)return;
+      const p=Math.min(1,Math.max(0,(vh-r.top)/(vh+r.height))),ty=(.5-p)*r.height*.1,ts=1.2-.06*p;
+      if(v.y===null){v.y=ty;v.s=ts}v.y+=(ty-v.y)*.08;v.s+=(ts-v.s)*.08;if(Math.abs(ty-v.y)>.1)moving=true;
+      im.style.setProperty('--py',v.y.toFixed(2)+'px');im.style.setProperty('--ps',v.s.toFixed(4));});
+    if(moving)requestAnimationFrame(tick);else run=false;};
+  const kick=()=>{if(!run){run=true;requestAnimationFrame(tick)}};
+  scan();kick();addEventListener('scroll',kick,{passive:true});addEventListener('resize',kick);addEventListener('hashchange',()=>setTimeout(()=>{scan();kick()},60));})();
 /* home: Ambra clip is a smooth 2x slow-motion render; the Palladio photo drifts sideways in the same direction,
    timed to the Ambra clip so both panels move at one calm rhythm and loop together */
 (()=>{const im=document.querySelector('.hero img.kb'),av=document.querySelector('.hero video[src*="ambra"]');
