@@ -502,6 +502,19 @@ body{font-size:14.5px}
 .lib figcaption small{font-size:10.5px;letter-spacing:.02em}
 .nt b{font-size:12.5px;letter-spacing:.16em}
 .nt small{font-size:11px}
+/* together: compact */
+.together{padding-block:clamp(48px,6vw,84px)}
+.together .wrap{max-width:1120px}
+.together .h2{font-size:clamp(20px,2.2vw,26px)}
+.nums{gap:clamp(28px,5vw,64px);margin-top:26px}
+.nums b{font-size:clamp(30px,3.4vw,40px)}
+.nums span{font-size:11.5px;letter-spacing:.04em;display:block;margin-top:6px}
+.svc{margin-top:36px;gap:0 28px}
+@media(min-width:960px){.svc{grid-template-columns:repeat(4,1fr)}}
+.svc div{grid-template-columns:22px 1fr;gap:3px 12px;padding:16px 0}
+.svc svg{width:20px;height:20px}
+.svc b{font-size:13.5px;letter-spacing:.02em}
+.svc p{font-size:12px;line-height:1.7}
 @media(max-width:720px){.prod .tag{display:none}.prod .spec{font-size:10.5px}}
 /* rhythm with a twist: one wide feature tile in the hairline grid, staggered color columns */
 .prod.feat{grid-column:span 2}
@@ -781,13 +794,13 @@ img.plx{transform:translate3d(0,var(--py,0px),0) scale(var(--ps,1.2))!important;
       <span class="eyebrow">Together</span>
       <h2 class="h2" style="margin-top:14px;max-width:16em">소재 그 이상의 가치를 전합니다</h2>
       <div class="nums">
-        <div><b>170+</b><span>국내외 가구·소재 거래처</span></div>
-        <div><b>4</b><span>출고 국가 · 한국 중국 이탈리아 스페인</span></div>
+        <div><b>170+</b><span>국내외 가구·소재 파트너</span></div>
+        <div><b>4</b><span>함께하는 나라 · 한국 중국 이탈리아 스페인</span></div>
       </div>
       <div class="svc">
         <div><svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1"><rect x="5" y="4" width="13" height="18" rx="1"/><rect x="10" y="7" width="13" height="18" rx="1"/></svg><b>샘플북 · 스와치</b><p>아티클별 컬러 스와치를 신속히 보내드리고, 신규 디자인 단계부터 함께 검토합니다.</p></div>
-        <div><svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1"><path d="M4 11l10-6 10 6v12H4z"/><path d="M10 23v-7h8v7"/></svg><b>재고 즉시 출고</b><p>남양주 본사 창고에 주력 컬러를 상시 보유해, 주문 당일 출고에 대응합니다.</p></div>
-        <div><svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1"><circle cx="8" cy="20" r="3.5"/><circle cx="20" cy="20" r="3.5"/><path d="M10.5 17.5L22 4M17.5 17.5L6 4"/></svg><b>자동 재단</b><p>자동 재단기로 자른 재단품을 공급해 거래처의 공정 부담을 줄입니다.</p></div>
+        <div><svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1"><path d="M4 11l10-6 10 6v12H4z"/><path d="M10 23v-7h8v7"/></svg><b>상시 준비된 컬러</b><p>남양주 본사에 주력 컬러를 늘 갖추고 있어, 주문 당일 보내드립니다.</p></div>
+        <div><svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1"><circle cx="8" cy="20" r="3.5"/><circle cx="20" cy="20" r="3.5"/><path d="M10.5 17.5L22 4M17.5 17.5L6 4"/></svg><b>자동 재단</b><p>자동 재단기로 자른 재단품을 공급해 파트너의 공정 부담을 줄입니다.</p></div>
         <div><svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1"><rect x="4" y="6" width="9" height="16" rx="1"/><rect x="15" y="6" width="9" height="16" rx="1" stroke-dasharray="2 2"/></svg><b>매칭 PVC</b><p>돌체·루나·솔레·프레스콧 컬러에 맞춘 PVC 원단으로 측·후면 마감을 간편하게 합니다.</p></div>
       </div>
     </div>
