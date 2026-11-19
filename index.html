@@ -1300,9 +1300,14 @@ const kick=()=>vids.forEach(v=>{if(!v.paused||!v.offsetParent||v.dataset.hold)re
 vids.forEach(v=>{
   v.muted=true;v.defaultMuted=true;v.playsInline=true;v.setAttribute('muted','');v.setAttribute('playsinline','');v.setAttribute('webkit-playsinline','');
   if(v.dataset.rate){const r=+v.dataset.rate;const set=()=>{v.defaultPlaybackRate=r;v.playbackRate=r};set();v.addEventListener('loadedmetadata',set);v.addEventListener('play',set);}
-  v.addEventListener('canplay',kick);
+  ['loadedmetadata','loadeddata','canplay','canplaythrough','suspend','stalled'].forEach(t=>v.addEventListener(t,kick));
+  /* in-app browsers (KakaoTalk etc.) can reject the very first play() while the view is still opening: reload and retry */
+  v.addEventListener('pause',()=>{if(!v.dataset.hold&&!v.ended)setTimeout(kick,400)});
+  if(v.readyState===0){try{v.load()}catch(e){}}
 });
 kick();
+window.addEventListener('load',kick);
+[150,500,1000,2000,3500,6000].forEach(ms=>setTimeout(kick,ms));
 window.addEventListener('hashchange',()=>setTimeout(kick,50));
 window.addEventListener('pageshow',kick);
 document.addEventListener('visibilitychange',()=>{if(!document.hidden)kick();});
