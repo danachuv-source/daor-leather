@@ -97,6 +97,9 @@ header.top .wrap{display:grid;grid-template-columns:1fr auto 1fr;align-items:cen
 .hero{position:relative;aspect-ratio:4/5;max-height:860px;overflow:hidden;color:var(--on-image);display:flex;align-items:flex-end;justify-content:center;text-align:center;max-width:100%}
 .hero video,.hero img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 @media(max-width:759px){.hero video.m-top{object-position:center top}}
+.hero img.kb{object-position:50% 40%;transform-origin:52% 45%;animation:kb 26s cubic-bezier(.25,.1,.25,1) infinite alternate;will-change:transform}
+@keyframes kb{from{transform:scale(1.02)}to{transform:scale(1.14) translate(-1%,-1.5%)}}
+@media(prefers-reduced-motion:reduce){.hero img.kb{animation:none}}
 .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.05) 40%,rgba(0,0,0,.55))}
 .hero .cap{position:relative;z-index:1;padding:0 20px clamp(36px,6vw,64px);display:flex;flex-direction:column;align-items:center;gap:10px}
 .hero .cap .mark{font-size:clamp(34px,5vw,56px);letter-spacing:.2em;padding-left:.2em;line-height:1.1}
@@ -194,9 +197,32 @@ header.top .wrap{display:grid;grid-template-columns:1fr auto 1fr;align-items:cen
 
 /* colors */
 .colors{background:var(--paper)}
-.lib{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:22px 16px;margin-top:28px}
+.lib{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:34px 22px;margin-top:32px}
+@media(max-width:560px){.lib{grid-template-columns:1fr 1fr;gap:24px 12px}}
 .lib figure{margin:0;display:flex;flex-direction:column;gap:8px;min-width:0}
-.lib .chip{aspect-ratio:3/2;border-radius:3px;position:relative;overflow:hidden;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08)}
+.lib .chip{aspect-ratio:1/1;border-radius:3px;position:relative;overflow:hidden;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08)}
+.lib .chip img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;cursor:zoom-in;transition:opacity .35s var(--ease),transform .8s var(--ease)}
+.lib .chip:hover img{transform:scale(1.03)}
+.lib .chip .sw{position:absolute;right:10px;bottom:10px;z-index:2;width:22px;height:22px;border-radius:50%;box-shadow:0 0 0 2px rgba(255,255,255,.9);pointer-events:none}
+.cv-nav{position:absolute;top:50%;z-index:2;width:34px;height:34px;margin-top:-17px;border-radius:50%;background:rgba(255,255,255,.88);color:var(--ink);display:grid;place-items:center;opacity:0;transition:opacity .25s var(--ease)}
+.cv-nav.p{left:8px}.cv-nav.n{right:8px}
+.lib .chip:hover .cv-nav,.cv-nav:focus-visible{opacity:1}
+@media(hover:none){.cv-nav{opacity:.9;width:28px;height:28px;margin-top:-14px}}
+.cv-dots{position:absolute;left:0;right:0;bottom:12px;z-index:2;display:flex;justify-content:center;gap:5px;pointer-events:none}
+.cv-dots i{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.55)}.cv-dots i.on{background:#fff}
+.lib figcaption .cur{display:block;font-size:11.5px;color:var(--ink);margin-top:3px;letter-spacing:.02em}
+/* color lightbox */
+.lbx{position:fixed;inset:0;z-index:45;background:rgba(24,23,21,.96);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:56px 16px 24px;animation:fade .3s var(--ease)}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.lbx figure{margin:0;position:relative;max-width:min(92vw,1100px);display:flex;flex-direction:column;align-items:center;gap:14px}
+.lbx img{max-width:100%;max-height:calc(100vh - 160px);object-fit:contain;border-radius:2px;background:#2a2826}
+.lbx figcaption{color:#F4F1EC;font-size:14px;text-align:center;line-height:1.5}
+.lbx figcaption small{display:block;color:rgba(244,241,236,.62);font-size:12px}
+.lbx .x,.lbx .nv{position:absolute;color:#F4F1EC;width:44px;height:44px;display:grid;place-items:center;border-radius:50%}
+.lbx .x{top:12px;right:12px}
+.lbx .nv{top:50%;margin-top:-22px;background:rgba(255,255,255,.08)}.lbx .nv:hover{background:rgba(255,255,255,.18)}
+.lbx .nv.p{left:12px}.lbx .nv.n{right:12px}
+.lbx .pv-badge{top:10px;left:10px}
 .grain::after{content:"";position:absolute;inset:0;opacity:.22;mix-blend-mode:multiply;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .5 0 0 0 0 .5 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 .lib figcaption{font-size:13px;font-weight:400;line-height:1.4}
 .lib figcaption small{display:block;font-weight:300;color:var(--muted);font-size:11.5px;margin-top:2px}
@@ -477,7 +503,7 @@ header.top .wrap{position:relative}
     <div class="gate-logo" aria-hidden="true"><svg viewBox="-1 -1 163 42"><use href="#daorMark"/></svg><small>Dream Leather</small></div>
     <form class="srch gate-srch" role="search" data-srch><button type="button" class="ic" aria-label="검색"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><circle cx="7.6" cy="7.6" r="6"/><path d="M12 12l5 5"/></svg></button><input type="search" placeholder="검색" aria-label="아티클, 컬러, 키워드 검색" autocomplete="off" enterkeyhint="search"><button type="button" class="x">닫기</button></form>
     <a class="hero" href="#palladio">
-      <video class="m-top" src="media/palladio-logo.mp4" poster="img/palladio-logo-poster.jpg" data-src-m="media/palladio-logo-m.mp4" data-poster-m="img/palladio-logo-m-poster.jpg" autoplay muted loop playsinline webkit-playsinline preload="auto" disablepictureinpicture disableremoteplayback aria-hidden="true"></video>
+      <img class="bg kb" src="img/palladio-villa.jpg" alt="" aria-hidden="true" fetchpriority="high">
       <div class="cap">
         <span class="tier">Premium Italian Leather</span>
         <span class="mark">Palladio</span>
@@ -793,13 +819,49 @@ function renderColors(){
   chips($('#famChips'),FAMS,fam,k=>{fam=k;renderColors()});
   const pool=A.filter(a=>line==='ALL'||a.line===line), used={};
   pool.forEach(a=>a.colors.forEach(c=>(used[c]=used[c]||[]).push(a.name+(NAME_KO[a.key]?' '+NAME_KO[a.key]:''))));
+  CV={};pool.forEach(a=>a.colors.forEach(c=>(CV[c]=CV[c]||[]).push(a)));
   const names=Object.keys(used);
   $('#colorTitle').textContent=(BR[line.toLowerCase()]?BR[line.toLowerCase()].ko+', ':'')+`${names.length}가지 컬러 팔레트`;
   const NOTE=' 화면의 색은 참고용이며, 정확한 색감은 실물 스와치로 경험해 보세요.';
   $('#colorLede').textContent=(line==='PALLADIO'?'장인의 손끝에서 깊어진 색. 시간이 흐를수록 더욱 풍부해지는 팔라디오의 팔레트를 만나보세요.':line==='AMBRA'?'일상에 생기를 더하는 색. 어떤 공간에도 자연스럽게 어우러지는 암브라의 다채로운 팔레트를 만나보세요.':line==='MASTROTTO'?'마스트로또의 컬러 팔레트를 만나보세요.':'시간이 흘러도 변함없는 시그니처 컬러를 톤별로 소개합니다.')+NOTE;
-  $('#lib').innerHTML=names.filter(n=>fam==='all'||FAM[n]===fam).map(n=>`<figure data-c="${esc(n)}"><div class="chip grain" style="background:${C[n][0]}"></div>
-    <figcaption>${esc(cn(n))}${ko(n)?` <span style="color:var(--muted);font-weight:400">${ko(n)}</span>`:''}<small>${used[n].join(' · ')}</small></figcaption></figure>`).join('');
+  $('#lib').innerHTML=names.filter(n=>fam==='all'||FAM[n]===fam).map(n=>{const m=CV[n].length;return `<figure data-c="${esc(n)}" data-i="0"><div class="chip" style="background:${C[n][0]}">
+    <img src="${cvSrc(n,0)}" alt="${esc(cn(n))} 가죽 사진" loading="lazy" data-zoom>
+    <span class="sw" style="background:${C[n][0]}"></span>
+    ${m>1?`<button class="cv-nav p" data-d="-1" aria-label="이전 사진">${ARR_L}</button><button class="cv-nav n" data-d="1" aria-label="다음 사진">${ARR_R}</button><span class="cv-dots">${CV[n].map((_,i)=>`<i${i?'':' class="on"'}></i>`).join('')}</span>`:''}</div>
+    <figcaption>${esc(cn(n))}${ko(n)?` <span style="color:var(--muted);font-weight:400">${ko(n)}</span>`:''}<span class="cur">${cvCap(n,0)}</span>${m>1?`<small>${used[n].join(' · ')}</small>`:''}</figcaption></figure>`}).join('');
 }
+let CV={};
+const ARR_L='<svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M9 2L4 7l5 5"/></svg>',
+      ARR_R='<svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M5 2l5 5-5 5"/></svg>';
+const cvSrc=(n,i)=>`img/leather/${CV[n][i].key}/${slug(n)}.jpg`;
+const cvCap=(n,i)=>{const a=CV[n][i];return a.name+(NAME_KO[a.key]?' '+NAME_KO[a.key]:'')};
+function cvSet(f,i){const n=f.dataset.c,m=CV[n].length;i=(i+m)%m;f.dataset.i=i;
+  const im=f.querySelector('img');im.src=cvSrc(n,i);
+  f.querySelectorAll('.cv-dots i').forEach((d,k)=>d.classList.toggle('on',k===i));
+  f.querySelector('.cur').textContent=cvCap(n,i);}
+let lb=null;
+const lbList=()=>[...document.querySelectorAll('#lib figure')].flatMap(f=>CV[f.dataset.c].map((_,i)=>[f.dataset.c,i]));
+function lbStep(d){const L=lbList(),k=L.findIndex(([n,i])=>n===lb.n&&i===lb.i),t=L[(k+d+L.length)%L.length];lbOpen(t[0],t[1]);}
+function lbOpen(n,i){lb={n,i};const m=CV[n].length,L=lbList();let el=$('#lbx');
+  if(!el){el=document.createElement('div');el.id='lbx';el.className='lbx';el.setAttribute('role','dialog');el.setAttribute('aria-modal','true');document.body.appendChild(el);
+    el.addEventListener('click',e=>{const b=e.target.closest('[data-d]');if(b){lbStep(+b.dataset.d);return}
+      if(e.target===el||e.target.closest('.x'))lbClose();});
+    let sx=null;el.addEventListener('touchstart',e=>{sx=e.touches[0].clientX},{passive:true});
+    el.addEventListener('touchend',e=>{if(sx==null)return;const dx=e.changedTouches[0].clientX-sx;sx=null;if(Math.abs(dx)>40)lbStep(dx<0?1:-1)});}
+  el.hidden=false;
+  el.innerHTML=`<button class="x" aria-label="닫기"><svg width="16" height="16" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M1 1l12 12M13 1L1 13"/></svg></button>
+   ${L.length>1?`<button class="nv p" data-d="-1" aria-label="이전 사진">${ARR_L}</button><button class="nv n" data-d="1" aria-label="다음 사진">${ARR_R}</button>`:''}
+   <figure>${PLACEHOLDER?'<span class="pv-badge">예시 이미지</span>':''}<img src="${cvSrc(n,i)}" alt="${esc(cn(n))} 가죽 사진">
+   <figcaption>${esc(cn(n))}${ko(n)?' '+ko(n):''}<small>${cvCap(n,i)}</small></figcaption></figure>`;
+  el.querySelector('.x').focus({preventScroll:true});
+  const f=[...document.querySelectorAll('#lib figure')].find(x=>x.dataset.c===n);if(f)cvSet(f,i);}
+function lbClose(){const el=$('#lbx');if(el)el.hidden=true;lb=null;}
+document.addEventListener('keydown',e=>{if(!lb)return;if(e.key==='Escape')lbClose();else if(e.key==='ArrowRight')lbStep(1);else if(e.key==='ArrowLeft')lbStep(-1);});
+$('#lib').addEventListener('click',e=>{const f=e.target.closest('figure');if(!f)return;
+  const b=e.target.closest('.cv-nav');if(b){cvSet(f,+f.dataset.i+ +b.dataset.d);return}
+  if(e.target.closest('.chip'))lbOpen(f.dataset.c,+f.dataset.i);});
+(()=>{let sx=null,sf=null;$('#lib').addEventListener('touchstart',e=>{sf=e.target.closest('figure');sx=e.touches[0].clientX},{passive:true});
+  $('#lib').addEventListener('touchend',e=>{if(!sf||sx==null)return;const dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>40&&CV[sf.dataset.c].length>1)cvSet(sf,+sf.dataset.i+(dx<0?1:-1));sx=null;sf=null},{passive:true});})();
 function renderAll(){renderArticles();renderColors();
 }
 renderAll();
