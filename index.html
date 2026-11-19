@@ -26,7 +26,7 @@
   --ink:#1D1C1A;
   --muted:#6E6A64;
   --line:#DEDAD3;
-  --verde:#4B5130;       /* gold green — house accent (Momo 2026-11-19) */
+  --verde:#9C7A2E;       /* deep polished gold — hover/focus accent, matches Together gold (Momo 2026-11-19) */
   --gold:#CDB679;
   --cognac:#8A4A24;      /* DL010 COGNAC — small marks only */
   --on-image:#FFFFFF;
@@ -560,7 +560,11 @@ body{font-size:14.5px}
 .nt small{font-size:11px}
 .prod .meta{display:flex;flex-direction:column;align-items:center;gap:5px;width:100%}
 /* together: compact */
-.together{color:#F1EEE3}.nums b{color:var(--gold)}.nums span{color:#CFCBB5}.svc p{color:#D4D0BC}.svc svg{color:var(--gold)}.svc div{border-top-color:rgba(205,182,121,.3)}
+/* together: stone greige + window light, polished gold numbers, mint lines (Momo 2026-11-19) */
+.together{color:#2E2B28;background:radial-gradient(ellipse 80% 70% at 8% -5%,rgba(255,252,244,.9) 0%,rgba(255,252,244,0) 65%),radial-gradient(ellipse 55% 45% at 100% 100%,rgba(140,200,191,.32),rgba(140,200,191,0) 70%),#D4CDC1}
+.together .eyebrow{color:#B08A35}
+.nums b{background:linear-gradient(100deg,#9C7A2E 0%,#E8CE84 38%,#B48C34 55%,#F2DD9C 72%,#9C7A2E 100%);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+.nums span{color:#6E675E}.svc p{color:#57514A}.svc svg{color:#5FB9B0}.svc div{border-top-color:rgba(95,185,176,.55)}
 .together{padding-block:clamp(48px,6vw,84px)}
 .together .wrap{max-width:1120px}
 .together .h2{font-size:clamp(20px,2.2vw,26px)}
