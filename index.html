@@ -79,6 +79,7 @@ header.top .wrap{display:grid;grid-template-columns:1fr auto 1fr;align-items:cen
 .mg:last-child{border-bottom:1px solid var(--line)}
 .mg summary{list-style:none;display:flex;justify-content:space-between;align-items:center;padding:18px 0;cursor:pointer}
 .mg summary::-webkit-details-marker{display:none}
+video.vwait{opacity:0!important}
 video::-webkit-media-controls,video::-webkit-media-controls-start-playback-button,video::-webkit-media-controls-overlay-play-button{display:none!important;-webkit-appearance:none;opacity:0}
 .mg summary span{display:flex;flex-direction:column;gap:2px}
 .mg summary b{font-family:var(--f-mark);font-weight:400;font-size:20px;letter-spacing:.16em}
@@ -1298,6 +1299,9 @@ if(matchMedia('(max-width:759px)').matches)document.querySelectorAll('video[data
 const vids=[...document.querySelectorAll('video')];
 const kick=()=>vids.forEach(v=>{if(!v.paused||!v.offsetParent||v.dataset.hold)return;v.muted=true;const p=v.play();if(p)p.catch(()=>{});});
 vids.forEach(v=>{
+  /* until it is really playing, show the poster as a still (no native play button), like the Palladio photo */
+  const pp=v.getAttribute('poster');if(pp&&v.parentElement){const ps=v.parentElement.style;if(!ps.backgroundImage){ps.backgroundImage='url("'+pp+'")';ps.backgroundSize='cover';ps.backgroundPosition='center'}}
+  if(v.paused)v.classList.add('vwait');v.addEventListener('playing',()=>v.classList.remove('vwait'));
   v.muted=true;v.defaultMuted=true;v.playsInline=true;v.setAttribute('muted','');v.setAttribute('playsinline','');v.setAttribute('webkit-playsinline','');
   if(v.dataset.rate){const r=+v.dataset.rate;const set=()=>{v.defaultPlaybackRate=r;v.playbackRate=r};set();v.addEventListener('loadedmetadata',set);v.addEventListener('play',set);}
   ['loadedmetadata','loadeddata','canplay','canplaythrough','suspend','stalled'].forEach(t=>v.addEventListener(t,kick));
