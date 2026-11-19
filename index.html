@@ -277,6 +277,31 @@ header.top .wrap{display:grid;grid-template-columns:1fr auto 1fr;align-items:cen
 
 /* never let the page itself scroll sideways */
 html,body{overflow-x:clip}
+/* ===== editorial concept inserts ===== */
+.ed-film{position:relative;height:88svh;min-height:420px;overflow:hidden;background:#1b1a18;padding:0}
+.ed-film video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ed-film::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,18,14,.45) 0%,rgba(20,18,14,.1) 50%,transparent 75%);pointer-events:none}
+.ed-cap{position:absolute;z-index:1;left:0;right:0;bottom:12%;padding-left:max(var(--gut-l),6vw);padding-right:var(--gut-r);display:flex;flex-direction:column;gap:14px;color:#FBF8F2}
+.ed-cap .ey{font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:#CDB679}
+.ed-cap p{margin:0;font-weight:300;font-size:clamp(20px,2.2vw,30px);line-height:1.5}
+.ed-cap a{align-self:flex-start;margin-top:6px;color:#FBF8F2;font-size:13.5px;text-decoration:none;border-bottom:1px solid rgba(251,248,242,.6);padding-bottom:3px}
+.ed-tri{background:var(--paper)}
+.ed-tri .row{display:grid;grid-auto-flow:column;grid-auto-columns:min(78vw,420px);gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin-top:44px}
+.ed-tri .row::-webkit-scrollbar{display:none}
+@media(min-width:960px){.ed-tri .row{grid-auto-flow:row;grid-template-columns:repeat(3,1fr);gap:28px;overflow:visible}.ed-tri .row>a:nth-child(2){margin-top:72px}}
+.ed-tri a{display:flex;flex-direction:column;gap:12px;color:inherit;text-decoration:none;scroll-snap-align:start;min-width:0}
+.ed-tri figure{margin:0;aspect-ratio:3/4;overflow:hidden;position:relative;background:var(--tile)}
+.ed-tri figure img{width:100%;height:100%;object-fit:cover}
+.ed-tri h3{font-family:var(--f-head);font-weight:400;font-size:19px;margin:4px 0 0}
+.ed-tri small{font-size:12.5px;color:var(--muted);letter-spacing:.02em}
+.ed-split{padding:0;background:var(--paper)}
+.ed-split .in{display:grid;grid-template-columns:1fr;align-items:center}
+@media(min-width:960px){.ed-split .in{grid-template-columns:7fr 5fr}.ed-split.rev .in{grid-template-columns:5fr 7fr}.ed-split.rev .media{order:2}}
+.ed-split .media{position:relative;aspect-ratio:4/3;overflow:hidden;margin:0;background:#1b1a18}
+@media(min-width:960px){.ed-split .media{aspect-ratio:auto;height:min(86svh,58vw)}}
+.ed-split .media img,.ed-split .media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ed-split .txt{display:flex;flex-direction:column;gap:16px;padding:clamp(40px,6vw,96px) max(var(--gut-r),clamp(24px,5vw,88px)) clamp(48px,6vw,96px) max(var(--gut-l),clamp(24px,5vw,88px))}
+.ed-split .txt .h2{font-size:clamp(24px,2.6vw,34px)}
 /* lwg */
 /* lwg full-screen film */
 .lwg .h2-sub{font-size:.62em;font-weight:300;letter-spacing:0}
@@ -674,6 +699,12 @@ img.plx{transform:translate3d(0,var(--py,0px),0) scale(var(--ps,1.2))!important;
     </div>
   </section>
 
+  <section class="ed-film" data-s="intro" aria-label="다오르 콘셉트 필름">
+    <video src="media/ed/arch.mp4" poster="img/ed/arch-poster.jpg" autoplay muted loop playsinline webkit-playsinline preload="metadata" disablepictureinpicture disableremoteplayback aria-hidden="true"></video>
+    <div class="ed-cap"><span class="ey">Dream Leather</span><p>빛과 시간이 머무는 곳,<br>한 장의 가죽이 형태가 됩니다</p><a href="#articles">아티클 보기</a></div>
+  </section>
+
+
   <section class="ways" id="ways" data-s="house">
     <div class="wrap">
       <div class="sec-head">
@@ -705,6 +736,14 @@ img.plx{transform:translate3d(0,var(--py,0px),0) scale(var(--ps,1.2))!important;
     </div>
   </section>
 
+  <section class="ed-split rev" data-s="house" aria-label="건축 콘셉트 필름">
+    <div class="in">
+      <figure class="media"><video src="media/ed/pavilion.mp4" poster="img/ed/pavilion-poster.jpg" autoplay muted loop playsinline webkit-playsinline preload="metadata" disablepictureinpicture disableremoteplayback aria-hidden="true"></video></figure>
+      <div class="txt"><span class="eyebrow">Architettura</span><h2 class="h2">건축에서 배운<br>균형</h2><p class="lede">팔라디오의 건축이 그러하듯, 오래 바라보아도 편안한 비례와 색을 가죽에 담습니다.</p></div>
+    </div>
+  </section>
+
+
   <section class="articles" id="articles" data-s="articles">
     <div class="wrap">
       <div class="sec-head" style="margin-bottom:32px">
@@ -718,6 +757,18 @@ img.plx{transform:translate3d(0,var(--py,0px),0) scale(var(--ps,1.2))!important;
     </div>
   </section>
 
+  <section class="ed-tri" data-s="articles" aria-label="다오르의 세계">
+    <div class="wrap" style="position:relative">
+      <div class="sec-head"><span class="eyebrow">Il mondo Daor</span><h2 class="h2">다오르의 세계</h2></div>
+      <div class="row">
+        <a href="#colors"><figure><img src="img/ed/colonnade.jpg" alt="석조 회랑 사이에 걸린 코냑·샌드·올리브 가죽" loading="lazy"></figure><h3>비례와 빛</h3><small>컬러 라이브러리 →</small></a>
+        <a href="#house"><figure><img src="img/ed/ribbons.jpg" alt="갤러리를 가로지르는 가죽 리본" loading="lazy"></figure><h3>형태가 되는 소재</h3><small>다오르의 가치 →</small></a>
+        <a href="#lwg"><figure><img src="img/ed/olive.jpg" alt="올리브 가지에 매달린 가죽 스와치와 멀리 보이는 빌라" loading="lazy"></figure><h3>아르지아노의 아침</h3><small>LWG 골드 등급 →</small></a>
+      </div>
+    </div>
+  </section>
+
+
   <section class="colors" id="colors" data-s="colors">
     <div class="wrap">
       <div class="sec-head" style="margin-bottom:28px">
@@ -729,6 +780,14 @@ img.plx{transform:translate3d(0,var(--py,0px),0) scale(var(--ps,1.2))!important;
       <div class="lib" id="lib"></div>
     </div>
   </section>
+
+  <section class="ed-split" data-s="colors" aria-label="컬러 콘셉트">
+    <div class="in">
+      <figure class="media"><img src="img/ed/still.jpg" alt="석회암 위에 쌓인 코냑·아이보리·브라운·올리브 가죽과 올리브 가지" loading="lazy"></figure>
+      <div class="txt"><span class="eyebrow">Swatch</span><h2 class="h2">색은 손끝에서<br>완성됩니다</h2><p class="lede">화면 속 색은 시작일 뿐. 스와치와 샘플북으로 실물의 색과 결을 먼저 만나보세요.</p><a class="ulink" href="#contact" style="align-self:flex-start">스와치 요청</a></div>
+    </div>
+  </section>
+
 
   <section class="craft" id="craft" data-s="craft">
     <div class="wrap split">
@@ -1209,7 +1268,7 @@ route();
 if(matchMedia('(max-width:759px)').matches)document.querySelectorAll('video[data-src-m]').forEach(v=>{v.poster=v.dataset.posterM;v.src=v.dataset.srcM;});
 /* editorial photo motion: every large photo drifts slower than the page and gently settles
    (scale 1.2 -> 1.14) as it passes through the screen; eased per frame so it glides */
-(()=>{const sel='.line-card figure img,.track figure img,.use img,.craft figure img,.request .touch img';
+(()=>{const sel='.ed-tri figure img,.ed-split figure img,.line-card figure img,.track figure img,.use img,.craft figure img,.request .touch img';
   const st=new Map();let run=false;
   const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');}}),{threshold:.15});
   const scan=()=>document.querySelectorAll(sel).forEach(im=>{if(!st.has(im)){im.classList.add('plx');im.parentElement.classList.add('rv-up');io.observe(im.parentElement);st.set(im,{y:null,s:null});}});
@@ -1255,7 +1314,7 @@ v.addEventListener('timeupdate',()=>{if(v.duration&&v.currentTime>v.duration-1)v
 v.addEventListener('ended',()=>{v.currentTime=0;v.play().catch(()=>{});setTimeout(()=>v.classList.remove('fade'),60)});})();</script>
 <script>(()=>{
 const scroller=el=>{for(;el&&el!==document.body;el=el.parentElement){const o=getComputedStyle(el).overflowX;if((o==='auto'||o==='scroll')&&el.scrollWidth>el.clientWidth+2)return el;}return null};
-const mark=()=>document.querySelectorAll('.track,.chips,.vnav .wrap,.pv-track,.pv-thumbs').forEach(e=>e.classList.toggle('dragscroll',e.scrollWidth>e.clientWidth+2));
+const mark=()=>document.querySelectorAll('.ed-tri .row,.track,.chips,.vnav .wrap,.pv-track,.pv-thumbs').forEach(e=>e.classList.toggle('dragscroll',e.scrollWidth>e.clientWidth+2));
 mark();addEventListener('resize',mark);new MutationObserver(()=>requestAnimationFrame(mark)).observe(document.body,{childList:true,subtree:true});
 let t=null,sx=0,sl=0,moved=0,lastX=0,lastT=0,vel=0;
 document.addEventListener('pointerdown',e=>{if(e.pointerType!=='mouse'||e.button!==0)return;const s=scroller(e.target);if(!s)return;t=s;sx=lastX=e.clientX;sl=s.scrollLeft;moved=0;vel=0;lastT=performance.now();},true);
