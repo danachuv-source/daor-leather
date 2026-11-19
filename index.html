@@ -599,8 +599,6 @@ body{font-size:14.5px}
 .devq-cta:hover{background:var(--verde);border-color:var(--verde);color:#fff}
 .film-cta{align-self:flex-start;margin-top:10px;display:inline-flex;align-items:center;gap:10px;padding:11px 22px;border:1px solid rgba(255,255,255,.75);border-radius:999px;color:#fff;text-decoration:none;font-size:13.5px;font-weight:400;letter-spacing:.02em;transition:background .3s var(--ease),color .3s var(--ease)}
 .film-cta:hover{background:#fff;color:var(--ink)}
-.film-pp{position:absolute;z-index:1;right:max(var(--gut-r),clamp(16px,3vw,56px));bottom:clamp(28px,5vw,56px);width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.55);color:#fff;display:grid;place-items:center;transition:background .3s var(--ease)}
-.film-pp:hover{background:rgba(255,255,255,.14)}
 @media(max-width:759px){.film{height:78svh}}
 .film-2{border-top:1px solid rgba(255,255,255,.08)}
 @media(max-width:759px){.film-2 video{object-position:30% 50%}}
@@ -881,12 +879,10 @@ img.plx{transform:translate3d(0,var(--py,0px),0) scale(var(--ps,1.2))!important;
   <section class="film" data-s="house" aria-label="다오르 필름">
     <video src="media/daor-film.mp4" poster="img/daor-film-poster.jpg" autoplay muted loop playsinline webkit-playsinline preload="metadata" disablepictureinpicture disableremoteplayback aria-hidden="true"></video>
     <div class="film-cap"><p>머무는 공간에서, 당신의 스타일까지</p></div>
-    <button class="film-pp" type="button" aria-label="영상 일시정지"><svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor" aria-hidden="true"><rect x="3" y="2" width="2.6" height="10"/><rect x="8.4" y="2" width="2.6" height="10"/></svg></button>
   </section>
   <section class="film film-2" data-s="house" aria-label="다오르 필름, 이동하는 공간">
     <video src="media/daor-drive.mp4" poster="img/daor-drive-poster.jpg" autoplay muted loop playsinline webkit-playsinline preload="metadata" disablepictureinpicture disableremoteplayback aria-hidden="true"></video>
     <div class="film-cap"><p>머무는 순간부터, 나아가는 순간까지</p></div>
-    <button class="film-pp" type="button" aria-label="영상 일시정지"><svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor" aria-hidden="true"><rect x="3" y="2" width="2.6" height="10"/><rect x="8.4" y="2" width="2.6" height="10"/></svg></button>
   </section>
   <section class="devq" data-s="house" aria-label="제품 개발 문의">
     <div class="wrap devq-in">
@@ -1314,11 +1310,6 @@ if(matchMedia('(max-width:759px)').matches)document.querySelectorAll('video[data
   const tick=t=>{const q=av&&av.duration&&!av.paused?av.currentTime/av.duration:((t-t0)/20080)%1,p=q<.5?2*q:2-2*q;
     im.style.transform=`scale(${(1.3+.04*p).toFixed(4)}) translateX(${(7.5-15*p).toFixed(3)}%)`;requestAnimationFrame(tick)};
   requestAnimationFrame(tick);})();
-/* house film: pause / play */
-document.querySelectorAll('.film').forEach(f=>{const b=f.querySelector('.film-pp'),v=f.querySelector('video');if(!b||!v)return;
-  const P='<svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor" aria-hidden="true"><rect x="3" y="2" width="2.6" height="10"/><rect x="8.4" y="2" width="2.6" height="10"/></svg>',
-        G='<svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor" aria-hidden="true"><path d="M4 2l8 5-8 5z"/></svg>';
-  b.addEventListener('click',()=>{if(v.paused){v.dataset.hold='';v.play();b.innerHTML=P;b.setAttribute('aria-label','영상 일시정지')}else{v.dataset.hold='1';v.pause();b.innerHTML=G;b.setAttribute('aria-label','영상 재생')}});});
 const vids=[...document.querySelectorAll('video')];
 const kick=()=>vids.forEach(v=>{if(!v.paused||!v.offsetParent||v.dataset.hold)return;v.muted=true;const p=v.play();if(p)p.catch(()=>{});});
 vids.forEach(v=>{
