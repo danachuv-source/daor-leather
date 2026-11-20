@@ -971,7 +971,7 @@ const C={'BLACK':['#1a1715','DL011'],'ICE':['#dfe2df','DL008'],'COGNAC':['#8a4a2
 'BROWN COGNAC':['#7a4222','DL156'],'BIANCO':['#efebe2','DL155'],'208 LAMB':['#cdb89a','DL171'],'UMBER':['#6a5038','DL179'],'LIME STONE':['#cbc3b2','DL176'],'SNOW WHITE':['#f4f2ec','DL172'],'KALE':['#4f5a40',''],'STONE':['#b9b1a3','DL159'],'COCCO':['#7a5a3e','DL157'],'CASTLE ROCK':['#8a8781','DL158'],'LIGHT COGNAC':['#a86a3c',''],
 '1501 SADDLE':['#94582b',''],'CREAM':['#e9dfc8','DL090'],'665 MARMO':['#a69c8d','DL058'],'6044 MIEL':['#b47b3e','DL108'],'AQUA BLUE':['#5d8796','DL028'],'N-BEIGE':['#d1bc9c','DL034'],'AQUA-MINT':['#9fbfb3','DL071'],
 'M-LUCKY-GREY':['#8e8b86','DL111'],'DEEP GREEN':['#2f4a3a','DL098'],'NAVY':['#26304a','DL005'],'641 LOTUS':['#c9a7a0','DL103'],'6048 PEACOCK GREEN':['#1f5552','DL104'],'7733 L.GREY':['#b9b6b0','DL105'],'GREY':['#7c7a76','DL003'],
-'679 MIEL':['#a8723a','DL164'],'MARRONE':['#5e3a26','DL113'],'PASTEL-BLUE':['#a9bccb','DL075'],'WOODY':['#7b5a3c','DL147'],'GRIGIO':['#8a8782','DL004'],'LUCKY-GREY':['#a19d97','DL073']};
+'679 MIEL':['#a8723a','DL164'],'MARRONE':['#5e3a26','DL113'],'PASTEL-BLUE':['#a9bccb','DL075'],'WOODY':['#ad9c88','DL147'],'GRIGIO':['#8a8782','DL004'],'LUCKY-GREY':['#a19d97','DL073']};
 const NAME_KO={oldenglish:'올드 잉글리시',togo:'토고',campo:'캄포',santa:'산타',nuvolana:'누볼라나',tango:'탱고',prescott:'프레스콧',softprimo:'소프트 프리모',luna:'루나',sole:'솔레',dolce:'돌체'};
 const CN_KO={'BLACK':'블랙','ICE':'아이스','COGNAC':'코냑','D-BROWN':'다크 브라운','MOSS':'모스','BROWN COGNAC':'브라운 코냑','BIANCO':'비앙코','208 LAMB':'램','UMBER':'엄버','KALE':'케일','STONE':'스톤','COCCO':'코코','CASTLE ROCK':'캐슬 록','LIGHT COGNAC':'라이트 코냑','LIME STONE':'라임 스톤','SNOW WHITE':'스노우 화이트','1501 SADDLE':'새들','CREAM':'크림','665 MARMO':'마르모','6044 MIEL':'미엘','AQUA BLUE':'아쿠아 블루','N-BEIGE':'베이지','AQUA-MINT':'아쿠아 민트','M-LUCKY-GREY':'럭키 그레이','DEEP GREEN':'딥 그린','NAVY':'네이비','641 LOTUS':'로터스','6048 PEACOCK GREEN':'피콕 그린','7733 L.GREY':'라이트 그레이','GREY':'그레이','679 MIEL':'미엘','MARRONE':'마로네','PASTEL-BLUE':'파스텔 블루','WOODY':'우디','GRIGIO':'그리지오','LUCKY-GREY':'럭키 그레이'};
 const CN_FIX={'D-BROWN':'DARK BROWN','N-BEIGE':'BEIGE','M-LUCKY-GREY':'LUCKY GREY','7733 L.GREY':'LIGHT GREY'};
@@ -979,7 +979,7 @@ const CN_FIX={'D-BROWN':'DARK BROWN','N-BEIGE':'BEIGE','M-LUCKY-GREY':'LUCKY GRE
 const cn=c=>CN_FIX[c]||c.replace(/^\d+\s+/,'').replace(/-/g,' ');
 const ko=c=>CN_KO[c]||'';
 const thkList=a=>a.thick?a.thick.split(' / '):[];
-const FAM={'BLACK':'dark','D-BROWN':'brown','COGNAC':'brown','BROWN COGNAC':'brown','UMBER':'brown','LIGHT COGNAC':'brown','COCCO':'brown','STONE':'light','CASTLE ROCK':'grey','KALE':'color','1501 SADDLE':'brown','6044 MIEL':'brown','679 MIEL':'brown','MARRONE':'brown','WOODY':'brown','MOSS':'color',
+const FAM={'BLACK':'dark','D-BROWN':'brown','COGNAC':'brown','BROWN COGNAC':'brown','UMBER':'brown','LIGHT COGNAC':'brown','COCCO':'brown','STONE':'light','CASTLE ROCK':'grey','KALE':'color','1501 SADDLE':'brown','6044 MIEL':'brown','679 MIEL':'brown','MARRONE':'brown','WOODY':'light','MOSS':'color',
 'ICE':'light','BIANCO':'light','SNOW WHITE':'light','CREAM':'light','208 LAMB':'light','N-BEIGE':'light','LIME STONE':'light','641 LOTUS':'light',
 '665 MARMO':'grey','M-LUCKY-GREY':'grey','7733 L.GREY':'grey','GREY':'grey','GRIGIO':'grey','LUCKY-GREY':'grey',
 'AQUA BLUE':'color','AQUA-MINT':'color','DEEP GREEN':'color','NAVY':'dark','6048 PEACOCK GREEN':'color','PASTEL-BLUE':'color'};
@@ -994,7 +994,7 @@ const A=[
 {key:'softprimo',name:'SOFT PRIMO',line:'AMBRA',thick:'1.2–1.4 / 1.3–1.5 / 1.4–1.6 / 1.6–1.8 / 1.8–2.0',pvc:false,colors:['CREAM','6044 MIEL','N-BEIGE','AQUA BLUE','AQUA-MINT','M-LUCKY-GREY','DEEP GREEN'],desc:'1.8–2.0mm를 중심으로 한 도톰한 두께. 이름처럼 부드러운 촉감과 다양한 컬러가 강점입니다.'},
 {key:'luna',name:'LUNA',line:'MASTROTTO',thick:'0.9–1.1 / 1.3–1.5 / 1.4–1.6 / 2.3+',pvc:true,colors:['NAVY','BLACK','COGNAC','ICE','N-BEIGE','641 LOTUS','6048 PEACOCK GREEN','7733 L.GREY','DEEP GREEN','GREY'],desc:'가장 넓은 컬러 레인지를 가진 아티클. 포인트 컬러부터 뉴트럴까지 한 아티클로 구성할 수 있습니다.'},
 {key:'sole',name:'SOLE',line:'AMBRA',thick:'1.2–1.3 / 1.2–1.4 / 1.3–1.5 / 1.4–1.6',pvc:true,colors:['679 MIEL','CREAM','MARRONE','7733 L.GREY','DEEP GREEN'],desc:'따뜻한 브라운 계열과 뉴트럴 톤 중심. 합리적인 가격대의 소파에 안정적으로 쓰입니다.'},
-{key:'dolce',name:'DOLCE',line:'AMBRA',thick:'0.9–1.1 / 1.0–1.2 / 1.2–1.4 / 1.3–1.5 / 1.4–1.6 / 1.8–2.0',pvc:true,colors:['CREAM','N-BEIGE','6044 MIEL','COGNAC','WOODY','PASTEL-BLUE','LUCKY-GREY','GRIGIO','DEEP GREEN','BLACK'],desc:'다오르의 대표 볼륨 아티클. 크림부터 파스텔, 그린까지 고른 컬러와 매칭 PVC를 함께 제공합니다.'}];
+{key:'dolce',name:'DOLCE',line:'AMBRA',thick:'0.9–1.1 / 1.0–1.2 / 1.2–1.4 / 1.3–1.5 / 1.4–1.6 / 1.8–2.0',pvc:true,colors:['CREAM','N-BEIGE','6044 MIEL','COGNAC','WOODY','6048 PEACOCK GREEN','PASTEL-BLUE','LUCKY-GREY','GRIGIO','DEEP GREEN','BLACK'],desc:'다오르의 대표 볼륨 아티클. 크림부터 파스텔, 그린까지 고른 컬러와 매칭 PVC를 함께 제공합니다.'}];
 const FAMS=[['all','전체'],['light','라이트'],['brown','브라운'],['grey','그레이'],['color','컬러'],['dark','다크']];
 const LINES=[['ALL','전체'],['PALLADIO','PALLADIO'],['AMBRA','AMBRA'],['MASTROTTO','MASTROTTO']];
 const BR={palladio:{ko:'팔라디오',en:'Palladio'},ambra:{ko:'암브라',en:'Ambra'},mastrotto:{ko:'마스트로또',en:'Mastrotto'}};
@@ -1002,8 +1002,10 @@ const thk=a=>a.thick?a.thick+' mm':'두께 확인 중';
 const $=s=>document.querySelector(s), esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 let line='ALL', fam='all';
 /* Leather photos: replace the files in img/leather/<article>/ with real shots, keeping the same names.
-   drape.jpg = first/hover shot, <color>.jpg = one per color, detail.jpg = close-up. Set PLACEHOLDER=false once replaced. */
-const PLACEHOLDER=true;
+   drape.jpg = first/hover shot, <color>.jpg = one per color, detail.jpg = close-up. Add each replaced file to REAL below so its "예시 이미지" badge disappears. */
+/* Real photos so far (article/file). Everything else still shows the "예시 이미지" badge. */
+const REAL=new Set(['dolce/drape','dolce/detail','dolce/cognac','dolce/6044-miel','dolce/cream','dolce/woody','dolce/6048-peacock-green']);
+const isPh=src=>!REAL.has(src.replace(/^img\/leather\//,'').replace(/\.jpg$/,''));
 const slug=c=>c.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
 function shots(a){return [{src:`img/leather/${a.key}/drape.jpg`,cap:a.name,sub:NAME_KO[a.key]||''},
   ...a.colors.map(c=>({src:`img/leather/${a.key}/${slug(c)}.jpg`,cap:a.name+' '+cn(c),sub:(NAME_KO[a.key]||'')+' '+ko(c),c})),
@@ -1073,7 +1075,7 @@ function lbOpen(n,i){lb={n,i};const m=CV[n].length,L=lbList();let el=$('#lbx');
   el.hidden=false;
   el.innerHTML=`<button class="x" aria-label="닫기"><svg width="16" height="16" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M1 1l12 12M13 1L1 13"/></svg></button>
    ${L.length>1?`<button class="nv p" data-d="-1" aria-label="이전 사진">${ARR_L}</button><button class="nv n" data-d="1" aria-label="다음 사진">${ARR_R}</button>`:''}
-   <figure>${PLACEHOLDER?'<span class="pv-badge">예시 이미지</span>':''}<img src="${cvSrc(n,i)}" alt="${esc(cn(n))} 가죽 사진">
+   <figure>${isPh(cvSrc(n,i))?'<span class="pv-badge">예시 이미지</span>':''}<img src="${cvSrc(n,i)}" alt="${esc(cn(n))} 가죽 사진">
    <figcaption>${esc(cn(n))}${ko(n)?' '+ko(n):''}<small>${cvCap(n,i)}</small></figcaption></figure>`;
   el.querySelector('.x').focus({preventScroll:true});
   const f=[...document.querySelectorAll('#lib figure')].find(x=>x.dataset.c===n);if(f)cvSet(f,i);}
@@ -1095,7 +1097,7 @@ function openArt(key,color){const a=A.find(x=>x.key===key);const S=shots(a);
   sheet.innerHTML=`<div class="in pv" role="dialog" aria-label="${a.name}">
    <div class="pv-gal">
      <div class="pv-stage">
-       ${PLACEHOLDER?'<span class="pv-badge">예시 이미지</span>':''}
+       <span class="pv-badge" id="pvBadge" hidden>예시 이미지</span>
        <button class="pv-x" data-close aria-label="닫기"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M1 1l12 12M13 1L1 13"/></svg></button>
        <button class="pv-nav pv-prev" aria-label="이전 사진">${AR_L}</button><button class="pv-nav pv-next" aria-label="다음 사진">${AR_R}</button>
        <div class="pv-track" tabindex="0" aria-label="${a.name} 사진">${S.map((x,i)=>`<figure class="pv-slide"><img src="${x.src}" alt="${a.name} ${esc(x.cap)} ${esc(x.sub)}" ${i>1?'loading="lazy"':''} draggable="false"></figure>`).join('')}</div>
@@ -1116,7 +1118,7 @@ function openArt(key,color){const a=A.find(x=>x.key===key);const S=shots(a);
   function mark(i){if(i===cur)return;cur=i;const x=S[i];
     $('#pvCap').textContent=x.cap;$('#pvSub').textContent=x.sub;$('#pvNum').textContent=`${i+1} / ${S.length}`;
     th.forEach((b,j)=>b.setAttribute('aria-current',j===i));cb.forEach(b=>b.setAttribute('aria-current',b.dataset.col===x.c));
-    prev.disabled=i===0;next.disabled=i===S.length-1;
+    $('#pvBadge').hidden=!isPh(x.src);prev.disabled=i===0;next.disabled=i===S.length-1;
     th[i].scrollIntoView({block:'nearest',inline:'nearest'});}
   const goTo=(i,smooth)=>{i=Math.max(0,Math.min(S.length-1,i));tr.scrollTo({left:i*tr.clientWidth,behavior:smooth===false?'auto':instant()});mark(i);};
   let raf=0;tr.addEventListener('scroll',()=>{cancelAnimationFrame(raf);raf=requestAnimationFrame(()=>mark(Math.round(tr.scrollLeft/tr.clientWidth)))});
