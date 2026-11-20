@@ -8,7 +8,7 @@ img/leather 폴더 안에 아티클별 폴더가 있습니다.
 - 컬러이름.jpg : 컬러별 사진 (상세 화면에서 컬러를 누르면 나오는 사진)
 
 권장: 정사각형(1:1), 가로세로 1200px 이상, JPG
-모두 교체한 뒤 index.html에서 const PLACEHOLDER=true 를 false 로 바꾸면 "예시 이미지" 표시가 사라집니다.
+실제 사진으로 바꾼 파일은 index.html의 REAL 목록에 "아티클/파일명"(예: dolce/cream)을 추가하면 "예시 이미지" 표시가 사라집니다.
 
 [campo]
   black.jpg
@@ -23,6 +23,7 @@ img/leather 폴더 안에 아티클별 폴더가 있습니다.
 [dolce]
   6044-miel.jpg
   black.jpg
+  6048-peacock-green.jpg
   cognac.jpg
   cream.jpg
   deep-green.jpg
