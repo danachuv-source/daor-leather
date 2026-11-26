@@ -618,7 +618,21 @@ body{font-size:14.5px}
 .film-cta:hover{background:#fff;color:var(--ink)}
 @media(max-width:759px){.film{height:78svh}}
 .film-2{border-top:1px solid rgba(255,255,255,.08)}
-@media(max-width:759px){.film-2 video{object-position:30% 50%}}
+.film-dots{display:none}
+/* 모바일: 영상 원본 비율 그대로(잘림·빈 공간 없음), 두 편을 가로로 넘겨 보기 */
+@media(max-width:759px){
+  .film-duo{position:relative;background:#1b1a18}
+  .film-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;overscroll-behavior-x:contain}
+  .film-track::-webkit-scrollbar{display:none}
+  .film-track .film{flex:0 0 100%;height:auto;min-height:0;aspect-ratio:1280/716;scroll-snap-align:start;scroll-snap-stop:always}
+  .film-track .film-2{border-top:0}
+  .film-track .film video{object-position:50% 50%}
+  .film-track .film-cap{left:20px;right:60px;bottom:16px;padding-left:0}
+  .film-track .film-cap p{font-size:15px}
+  .film-dots{display:flex;gap:7px;position:absolute;right:20px;bottom:20px;z-index:2;pointer-events:none}
+  .film-dots i{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.45);transition:background .3s,transform .3s}
+  .film-dots i.on{background:#fff;transform:scale(1.15)}
+}
 img.plx{transform:translate3d(0,var(--py,0px),0) scale(var(--ps,1.2))!important;transition:none!important;will-change:transform}
 .rv-up{opacity:0;transform:translateY(28px);transition:opacity 1.4s cubic-bezier(.22,.7,.2,1),transform 1.4s cubic-bezier(.22,.7,.2,1)}
 .rv-up.in{opacity:1;transform:none}
@@ -893,6 +907,8 @@ img.plx{transform:translate3d(0,var(--py,0px),0) scale(var(--ps,1.2))!important;
     <img src="../img/lwg-1.jpg" alt="LWG 골드 등급 인증서 확대">
   </div>
 
+  <div class="film-duo" data-s="house">
+  <div class="film-track" id="filmTrack">
   <section class="film" data-s="house" aria-label="다오르 필름, 오후의 휴식">
     <video src="../media/sofa-afternoon.mp4" poster="../img/sofa-afternoon-poster.jpg" autoplay muted loop playsinline webkit-playsinline preload="metadata" disablepictureinpicture disableremoteplayback aria-hidden="true"></video>
     <div class="film-cap"><p>머무는 순간, 온전히 나에게</p></div>
@@ -901,6 +917,9 @@ img.plx{transform:translate3d(0,var(--py,0px),0) scale(var(--ps,1.2))!important;
     <video src="../media/sofa-night.mp4" poster="../img/sofa-night-poster.jpg" autoplay muted loop playsinline webkit-playsinline preload="metadata" disablepictureinpicture disableremoteplayback aria-hidden="true"></video>
     <div class="film-cap"><p>하루의 끝, 가장 깊은 휴식</p></div>
   </section>
+  </div>
+  <div class="film-dots" aria-hidden="true"><i class="on"></i><i></i></div>
+  </div>
 
   <section class="together" id="together" data-s="house">
     <div class="wrap">
@@ -1372,5 +1391,9 @@ const kill=ev=>{ev.preventDefault();ev.stopPropagation();};document.addEventList
 document.addEventListener('pointerup',end,true);document.addEventListener('pointercancel',end,true);
 document.addEventListener('dragstart',e=>{if(scroller(e.target))e.preventDefault()},true);
 })();</script>
+<script>
+(function(){var t=document.getElementById('filmTrack');if(!t)return;var d=t.parentNode.querySelectorAll('.film-dots i');
+t.addEventListener('scroll',function(){var i=Math.round(t.scrollLeft/Math.max(1,t.clientWidth));for(var k=0;k<d.length;k++)d[k].classList.toggle('on',k===i)},{passive:true});})();
+</script>
 </body>
 </html>
