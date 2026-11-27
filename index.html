@@ -1005,24 +1005,30 @@ let line='ALL', fam='all';
    drape.jpg = first/hover shot, <color>.jpg = one per color, detail.jpg = close-up. Add each replaced file to REAL below so its "예시 이미지" badge disappears. */
 /* Real photos so far (article/file). Everything else still shows the "예시 이미지" badge. */
 const REAL=new Set(['dolce/drape','dolce/detail','dolce/cognac','dolce/6044-miel','dolce/cream','dolce/woody','dolce/6048-peacock-green']);
-const isPh=src=>!REAL.has(src.replace(/^img\/leather\//,'').replace(/\.jpg$/,''));
+const isPh=src=>!src.includes('/leather-day/')&&!REAL.has(src.replace(/^(\.\.\/)?img\/leather\//,'').replace(/\.jpg$/,''));
+/* Daylight-corrected real photos (shared with sofa site): img/leather-day/<article>/<color>.jpg + <color>-sw.jpg (flat swatch tile for fans/stripes). */
+const DAY=new Set(['tango/black','tango/ice','tango/cognac','tango/d-brown','tango/moss','prescott/black','dolce/deep-green','dolce/grigio','dolce/lucky-grey']);
+const hasDay=(k,c)=>DAY.has(k+'/'+slug(c));
+const lsrc=(k,c)=>hasDay(k,c)?`img/leather-day/${k}/${slug(c)}.jpg`:`img/leather/${k}/${slug(c)}.jpg`;
+const swb=(k,c)=>hasDay(k,c)?`${C[c][0]} url(img/leather-day/${k}/${slug(c)}-sw.jpg) center/cover`:C[c][0];
+const gr=(k,c)=>hasDay(k,c)?'real':'grain';
 const slug=c=>c.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
 function shots(a){return [{src:`img/leather/${a.key}/drape.jpg`,cap:a.name,sub:NAME_KO[a.key]||''},
-  ...a.colors.map(c=>({src:`img/leather/${a.key}/${slug(c)}.jpg`,cap:a.name+' '+cn(c),sub:(NAME_KO[a.key]||'')+' '+ko(c),c})),
+  ...a.colors.map(c=>({src:lsrc(a.key,c),cap:a.name+' '+cn(c),sub:(NAME_KO[a.key]||'')+' '+ko(c),c})),
   {src:`img/leather/${a.key}/detail.jpg`,cap:a.name,sub:'결 디테일'}];}
 
-function luxFan(colors){
+function luxFan(colors,k){
   const cs=colors.slice(0,7), n=cs.length, spread=n>1?Math.min(64,18*(n-1)):0;
   const lum=h=>{const v=parseInt(h.slice(1),16);return (0.299*(v>>16&255)+0.587*(v>>8&255)+0.114*(v&255))/255};
   return cs.map((c,i)=>{const r=n>1?(-spread/2+spread*i/(n-1)):0;
-    return `<span class="grain" style="background:${C[c][0]};--r:${r}deg;--st:${lum(C[c][0])>.62?'rgba(60,45,30,.32)':'rgba(255,255,255,.34)'}">${i===n-1?'<i class="rv"></i>':''}</span>`}).join('');
+    return `<span class="${gr(k,c)}" style="background:${swb(k,c)};--r:${r}deg;--st:${lum(C[c][0])>.62?'rgba(60,45,30,.32)':'rgba(255,255,255,.34)'}">${i===n-1?'<i class="rv"></i>':''}</span>`}).join('');
 }
-function fan(colors,max){
+function fan(colors,max,k){
   const cs=colors.slice(0,max||6), n=cs.length, spread=Math.min(36,8*n);
   return cs.map((c,i)=>{const r=n>1?(-spread/2+spread*i/(n-1)):0;
-    return `<span class="grain" style="position:relative;background:${C[c][0]};--r:${r}deg;transform:rotate(${r}deg)"></span>`}).join('');
+    return `<span class="${gr(k,c)}" style="position:relative;background:${swb(k,c)};--r:${r}deg;transform:rotate(${r}deg)"></span>`}).join('');
 }
-[['P','PALLADIO'],['A','AMBRA'],['M','MASTROTTO']].forEach(([id,L])=>{$('#names'+id).innerHTML=A.filter(a=>a.line===L).map(a=>`<button class="nt" data-key="${a.key}" aria-label="${a.name} 상세 보기"><span class="st">${a.colors.map(c=>`<span class="grain" style="background:${C[c][0]}"></span>`).join('')}</span><b>${a.name}</b><span class="ko">${NAME_KO[a.key]||''}</span><small>${thk(a)}${a.colors.length?` · ${a.colors.length}색`:''}</small></button>`).join('');});
+[['P','PALLADIO'],['A','AMBRA'],['M','MASTROTTO']].forEach(([id,L])=>{$('#names'+id).innerHTML=A.filter(a=>a.line===L).map(a=>`<button class="nt" data-key="${a.key}" aria-label="${a.name} 상세 보기"><span class="st">${a.colors.map(c=>`<span class="${gr(a.key,c)}" style="background:${swb(a.key,c)}"></span>`).join('')}</span><b>${a.name}</b><span class="ko">${NAME_KO[a.key]||''}</span><small>${thk(a)}${a.colors.length?` · ${a.colors.length}색`:''}</small></button>`).join('');});
 
 function chips(el,list,cur,on){
   el.innerHTML=list.map(([k,l])=>`<button data-k="${k}" aria-pressed="${k===cur}">${l}</button>`).join('');
@@ -1034,9 +1040,9 @@ function renderArticles(){
   $('#artCount').textContent=list.length+' 아티클';
   const n=list.length,fi=(n+1)%3===0?[0]:(n+2)%3===0?[0,n-1]:[];
   $('#pgrid').innerHTML=list.map((a,i)=>`<button class="prod${fi.includes(i)?' feat'+(i?' rev':''):''}" data-key="${a.key}" aria-label="${a.name} 상세 보기">
-    <div class="sw"><span class="tag">${a.line}</span>${a.line==='PALLADIO'?`<div class="fan lux">${luxFan(a.colors)}</div>`:`<div class="fan">${fan(a.colors,6)}</div>`}<img class="ph" src="${shots(a)[0].src}" alt="" loading="lazy"></div>
+    <div class="sw"><span class="tag">${a.line}</span>${a.line==='PALLADIO'?`<div class="fan lux">${luxFan(a.colors,a.key)}</div>`:`<div class="fan">${fan(a.colors,6,a.key)}</div>`}<img class="ph" src="${shots(a)[0].src}" alt="" loading="lazy"></div>
     <div class="meta"><span class="nm">${a.name}</span><span class="ko">${NAME_KO[a.key]||''}</span><span class="spec">${thk(a)}${a.pvc?' · 매칭 PVC':''}</span>
-    <span class="dots">${a.colors.slice(0,3).map(c=>`<i style="background:${C[c][0]}"></i>`).join('')}${a.colors.length>3?`+${a.colors.length-3}`:''}</span></div></button>`).join('');
+    <span class="dots">${a.colors.slice(0,3).map(c=>`<i style="background:${swb(a.key,c)}"></i>`).join('')}${a.colors.length>3?`+${a.colors.length-3}`:''}</span></div></button>`).join('');
 }
 function renderColors(){
   chips($('#famChips'),FAMS,fam,k=>{fam=k;renderColors()});
@@ -1049,7 +1055,7 @@ function renderColors(){
   $('#colorLede').textContent=(line==='PALLADIO'?'장인의 손끝에서 깊어진 색. 시간이 흐를수록 더욱 풍부해지는 팔라디오의 팔레트를 만나보세요.':line==='AMBRA'?'일상에 생기를 더하는 색. 어떤 공간에도 자연스럽게 어우러지는 암브라의 다채로운 팔레트를 만나보세요.':line==='MASTROTTO'?'마스트로또의 컬러 팔레트를 만나보세요.':'시간이 흘러도 변함없는 시그니처 컬러를 톤별로 소개합니다.')+NOTE;
   $('#lib').innerHTML=names.filter(n=>fam==='all'||FAM[n]===fam).map(n=>{const m=CV[n].length;return `<figure data-c="${esc(n)}" data-i="0"><div class="chip" style="background:${C[n][0]}">
     <img src="${cvSrc(n,0)}" alt="${esc(cn(n))} 가죽 사진" loading="lazy" data-zoom>
-    <span class="sw" style="background:${C[n][0]}"></span>
+    <span class="sw" style="background:${swb(CV[n][0].key,n)}"></span>
     ${m>1?`<button class="cv-nav p" data-d="-1" aria-label="이전 사진">${ARR_L}</button><button class="cv-nav n" data-d="1" aria-label="다음 사진">${ARR_R}</button><span class="cv-dots">${CV[n].map((_,i)=>`<i${i?'':' class="on"'}></i>`).join('')}</span>`:''}</div>
     <figcaption>${esc(cn(n))}${ko(n)?` <span style="color:var(--muted);font-weight:400">${ko(n)}</span>`:''}<span class="cur">${cvCap(n,0)}</span>${m>1?`<small>${used[n].join(' · ')}</small>`:''}</figcaption></figure>`}).join('');
 }
@@ -1057,10 +1063,10 @@ let CV={};
 document.addEventListener('touchstart',e=>{const c=e.target.closest&&e.target.closest('.lib .chip');document.querySelectorAll('.lib .chip.touch').forEach(x=>{if(x!==c)x.classList.remove('touch')});if(!c||!c.querySelector('.cv-nav'))return;c.classList.add('touch');clearTimeout(c._t);c._t=setTimeout(()=>c.classList.remove('touch'),3000)},{passive:true});
 const ARR_L='<svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M9 2L4 7l5 5"/></svg>',
       ARR_R='<svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M5 2l5 5-5 5"/></svg>';
-const cvSrc=(n,i)=>`img/leather/${CV[n][i].key}/${slug(n)}.jpg`;
+const cvSrc=(n,i)=>lsrc(CV[n][i].key,n);
 const cvCap=(n,i)=>{const a=CV[n][i];return a.name+(NAME_KO[a.key]?' '+NAME_KO[a.key]:'')};
 function cvSet(f,i){const n=f.dataset.c,m=CV[n].length;i=(i+m)%m;f.dataset.i=i;
-  const im=f.querySelector('img');im.src=cvSrc(n,i);
+  const im=f.querySelector('img');im.src=cvSrc(n,i);f.querySelector('.chip .sw').style.background=swb(CV[n][i].key,n);
   f.querySelectorAll('.cv-dots i').forEach((d,k)=>d.classList.toggle('on',k===i));
   f.querySelector('.cur').textContent=cvCap(n,i);}
 let lb=null;
@@ -1110,7 +1116,7 @@ function openArt(key,color){const a=A.find(x=>x.key===key);const S=shots(a);
    <button class="ulink" data-close>닫기</button></div>
    <p class="lede" style="margin:16px 0 0">${a.desc}</p>
    <dl class="spec2"><div class="thk"><dt>두께 <span>mm</span></dt><dd>${thkList(a).length?thkList(a).map(x=>`<span>${x}</span>`).join(''):'확인 중'}</dd></div><div><dt>컬러</dt><dd>${a.colors.length?a.colors.length+'색':'—'}</dd></div><div><dt>매칭 PVC</dt><dd>${a.pvc?'공급 가능':'—'}</dd></div></dl>
-   <div class="clist">${a.colors.map(c=>`<button data-col="${esc(c)}"><i class="grain" style="position:relative;overflow:hidden;background:${C[c][0]}"></i><span>${esc(cn(c))}<small>${ko(c)}</small></span></button>`).join('')}</div>
+   <div class="clist">${a.colors.map(c=>`<button data-col="${esc(c)}"><i class="${gr(a.key,c)}" style="position:relative;overflow:hidden;background:${swb(a.key,c)}"></i><span>${esc(cn(c))}<small>${ko(c)}</small></span></button>`).join('')}</div>
    <a class="ulink" href="#contact" data-req="${a.line}" style="margin-top:28px">담당 매니저에게 문의</a></div></div>`;
   sheet.hidden=false;
   const tr=sheet.querySelector('.pv-track'),th=[...sheet.querySelectorAll('.pv-thumbs button')],cb=[...sheet.querySelectorAll('.clist button')];
@@ -1249,7 +1255,7 @@ const SUG=['루나','돌체','코냑','딥그린','매칭 PVC','1.4mm','LWG','�
 const sr=document.createElement('div');sr.className='sr';sr.hidden=true;sr.innerHTML='<div class="in" role="listbox" aria-label="검색 결과"><div class="wrap" id="srIn"></div></div>';document.body.appendChild(sr);
 let curForm=null,flat=[],act=-1,pendingGo=null,tmr=0;
 function row(it,i,q){
-  if(it.t==='art'){const a=it.a;return `<button class="sr-i" data-i="${i}" role="option"><span class="st">${a.colors.slice(0,6).map(c=>`<span style="background:${C[c][0]}"></span>`).join('')}</span><span class="tx"><b>${hl(a.name,q)} <small style="display:inline">${NAME_KO[a.key]||''}</small></b><small>${a.line} · ${thk(a)}${a.colors.length?` · ${a.colors.length}색`:''}${a.pvc?' · 매칭 PVC':''}</small></span></button>`;}
+  if(it.t==='art'){const a=it.a;return `<button class="sr-i" data-i="${i}" role="option"><span class="st">${a.colors.slice(0,6).map(c=>`<span style="background:${swb(a.key,c)}"></span>`).join('')}</span><span class="tx"><b>${hl(a.name,q)} <small style="display:inline">${NAME_KO[a.key]||''}</small></b><small>${a.line} · ${thk(a)}${a.colors.length?` · ${a.colors.length}색`:''}${a.pvc?' · 매칭 PVC':''}</small></span></button>`;}
   if(it.t==='col')return `<button class="sr-i" data-i="${i}" role="option"><span class="st grain" style="position:relative;background:${C[it.name][0]}"></span><span class="tx"><b>${hl(cn(it.name),q)}${ko(it.name)?` <small style="display:inline">${ko(it.name)}</small>`:''}</b><small>${it.arts.map(a=>a.name+(NAME_KO[a.key]?" "+NAME_KO[a.key]:"")).join(' · ')}</small></span></button>`;
   return `<button class="sr-i" data-i="${i}" role="option"><span class="st sec">${SEC_ICON}</span><span class="tx"><b>${esc(it.title)}</b><small>${esc(it.d)}</small></span></button>`;
 }
