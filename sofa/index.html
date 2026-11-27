@@ -1019,7 +1019,7 @@ let line='ALL', fam='all';
 /* Real photos so far (article/file). Everything else still shows the "예시 이미지" badge. */
 const REAL=new Set(['dolce/drape','dolce/detail','dolce/cognac','dolce/6044-miel','dolce/cream','dolce/woody','dolce/6048-peacock-green']);
 const isPh=src=>!src.includes('/leather-day/')&&!REAL.has(src.replace(/^(\.\.\/)?img\/leather\//,'').replace(/\.jpg$/,''));
-/* Daylight-corrected real photos (sofa site only): img/leather-day/<article>/<color>.jpg + <color>-sw.jpg (flat swatch tile for fans/stripes). */
+/* Daylight-corrected real photos (shared with root site): img/leather-day/<article>/<color>.jpg + <color>-sw.jpg (flat swatch tile for fans/stripes). */
 const DAY=new Set(['tango/black','tango/ice','tango/cognac','tango/d-brown','tango/moss','prescott/black','dolce/deep-green','dolce/grigio','dolce/lucky-grey']);
 const hasDay=(k,c)=>DAY.has(k+'/'+slug(c));
 const lsrc=(k,c)=>hasDay(k,c)?`../img/leather-day/${k}/${slug(c)}.jpg`:`../img/leather/${k}/${slug(c)}.jpg`;
